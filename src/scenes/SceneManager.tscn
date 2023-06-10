@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="SceneManager" type="Node2D"]
+
+[node name="CurrentScene" type="Node2D" parent="."]
+
+[node name="scene" type="Node2D" parent="CurrentScene"]
