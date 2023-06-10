@@ -27,6 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam 58"
+run/main_scene="res://src/scenes/SceneManager.tscn"
 config/icon="res://icon.png"
 
 [autoload]
