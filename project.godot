@@ -13,6 +13,10 @@ config_version=4
 config/name="Godot Wild Jam 58"
 config/icon="res://icon.png"
 
+[autoload]
+
+State="*res://State.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
