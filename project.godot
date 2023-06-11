@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "BPProbe",
+"language": "GDScript",
+"path": "res://src/ship/blueprint/Probe.gd"
+}, {
 "base": "PartBase",
 "class": "Frame",
 "language": "GDScript",
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://src/ship/thrust/Thruster.gd"
 } ]
 _global_script_class_icons={
+"BPProbe": "",
 "Frame": "",
 "PartBase": "",
 "PartUtil": "",
@@ -55,6 +61,12 @@ State="*res://src/State.gd"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_5="Blueprint"
+2d_physics/layer_9="Parts"
 
 [physics]
 

@@ -1,14 +1,8 @@
 class_name ShipCore
 extends PartBase
 
+# parts:controllers Dictionary
 var parts:		Dictionary = {}
-
-enum PartsTypes { THRUSTER, COLLECTOR, UTIL }
-
-class PartController:
-	var part_type
-	var display_name: String = "part"
-	var key_bind: InputEventAction
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,21 +13,29 @@ func _find_thrusters():
 		if c is Thruster:
 			parts[c] = PartController.new()
 
-func on_part_destruction(part: PartBase):
+func _part_disconnect(part: PartBase):
 	var pt_ctrl = parts.get(part) 
 	if parts.erase(part):
-		unplug_part(pt_ctrl)
-		part.on_destroy()
+		unplug_part(part, pt_ctrl)
+		part.on_part_disconnect()
 
-func plug_part(ctr: PartController):
+func _part_connect(part: PartBase):
+	var pt_ctrl = part.input_controller
+	parts[part] = pt_ctrl
+	plug_part(part, pt_ctrl)
+	part.on_part_connect()
+
+func plug_part(part: PartBase, ctr: PartController):
 	pass
 
-func unplug_part(ctr: PartController):
+func unplug_part(part: PartBase, ctr: PartController):
 	pass
 
 func slice_part(part_from: PartBase):
-	destroy_part(part_from)
-
+	disconnect_parts(part_from)
+	var parent_part: PartBase = part_from.get_parent()
+	parent_part.remove_child_part(part_from)
+	
 	part_from.on_slice()
 
 	#reparent to ship core parent
@@ -42,9 +44,16 @@ func slice_part(part_from: PartBase):
 	get_parent().add_child(part_from)
 	part_from.global_transform = past_global_transform
 
-func destroy_part(start_from_part: PartBase):
+func disconnect_parts(start_from_part: PartBase):
 	for part in start_from_part.children_parts:
-		destroy_part(part)
-		on_part_destruction(part)
+		disconnect_parts(part)
+		_part_disconnect(part)
 
-	on_part_destruction(start_from_part)
+	_part_disconnect(start_from_part)
+
+func connect_parts(start_from_part: PartBase):
+	for part in start_from_part.children_parts:
+		connect_parts(part)
+		_part_connect(part)
+	
+	_part_connect(start_from_part)
