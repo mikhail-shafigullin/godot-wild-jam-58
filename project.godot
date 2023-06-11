@@ -9,10 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PartBase",
+"class": "Frame",
+"language": "GDScript",
+"path": "res://src/ship/struct/Frame.gd"
+}, {
 "base": "RigidBody2D",
 "class": "PartBase",
 "language": "GDScript",
 "path": "res://src/ship/PartBase.gd"
+}, {
+"base": "PartBase",
+"class": "PartUtil",
+"language": "GDScript",
+"path": "res://src/ship/utils/PartUtil.gd"
+}, {
+"base": "PartBase",
+"class": "ShipCore",
+"language": "GDScript",
+"path": "res://src/ship/ShipCore.gd"
 }, {
 "base": "PartBase",
 "class": "Thruster",
@@ -20,7 +35,10 @@ _global_script_classes=[ {
 "path": "res://src/ship/thrust/Thruster.gd"
 } ]
 _global_script_class_icons={
+"Frame": "",
 "PartBase": "",
+"PartUtil": "",
+"ShipCore": "",
 "Thruster": ""
 }
 
@@ -32,6 +50,10 @@ config/icon="res://icon.png"
 [autoload]
 
 State="*res://src/State.gd"
+
+[global]
+
+collision=false
 
 [gui]
 

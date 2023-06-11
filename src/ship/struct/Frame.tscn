@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/ship/struct/Frame.gd" type="Script" id=1]
+[ext_resource path="res://NN_test/1x1.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 19, 12 )
+
+[node name="Frame" type="RigidBody2D"]
+position = Vector2( -1, 0 )
+collision_layer = 0
+script = ExtResource( 1 )
+health = null
+test_join0 = NodePath("PinJoint2D")
+test_join1 = NodePath("PinJoint2D2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.411765, 0.615686, 0.67451, 1 )
+scale = Vector2( 40.5079, 25.3964 )
+texture = ExtResource( 2 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( -19, -12 )
+node_a = NodePath("..")
+softness = 16.0
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2( -19, 11 )
+node_a = NodePath("..")
+softness = 16.0

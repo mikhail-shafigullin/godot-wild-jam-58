@@ -2,4 +2,5 @@ class_name Thruster
 extends PartBase
 
 func fire():
-    apply_impulse(Vector2(), Vector2(0,-100))
+	var up = Vector2.UP.rotated(global_rotation)
+	apply_impulse(Vector2(), up*mass*100)
