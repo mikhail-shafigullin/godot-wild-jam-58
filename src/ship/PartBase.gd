@@ -3,8 +3,6 @@ extends RigidBody2D
 
 #TEMP
 onready var core = State.player
-export var test_join0: NodePath 
-export var test_join1: NodePath 
 #TEMP
 
 export var init_health: float = 100
@@ -49,6 +47,9 @@ func _init():
 func part_slice():
 	core.slice_part(self) 
 
+func part_weld(to_part: PartBase):
+	core.weld_part(self, to_part)
+
 func part_connect():
 	core.connect_parts(self)
 
@@ -79,12 +80,19 @@ func click():
 func grab():
 	grab_layer_memory = collision_layer
 	collision_layer = grab_hover_layers
-	show_probes()
 
 	part_slice()
+	show_probes()
 	is_grabbed = true
 	rotation = 0
 	position = get_global_mouse_position()
+
+func release():
+	if best_part:
+		is_grabbed = false
+		build(best_part)
+		collision_layer = grab_layer_memory		
+		hide_probes()
 
 func show_probes():
 	for p in probes:
@@ -94,27 +102,15 @@ func hide_probes():
 	for p in probes:
 		p.hide()
 
-func release():
-	if best_part:
-		hide_probes()
-		is_grabbed = false
-		collision_layer = grab_layer_memory		
-		build(best_part)
-
 func remove_child_part(part: PartBase):
 	if children_parts.has(part):
 		var index = children_parts.find(part)
 		children_parts.remove(index)
 
 func build(to_part: PartBase):
-	var temp_transform = global_transform
-
-	get_parent().remove_child(self)
-	to_part.add_child(self)
-	global_transform = temp_transform
+	part_weld(to_part)	
 	_create_joints()
 	to_part.children_parts.append(self)
-	part_connect()
 
 func _find_probes():
 	for c in get_children():
@@ -162,9 +158,9 @@ func _create_joints():
 		var joint = PinJoint2D.new()
 		best_part.add_child(joint)
 		joint.global_position = probe.global_position
-		weld(joint)
+		weld_joint(joint)
 
-func weld(joint:PinJoint2D):
+func weld_joint(joint:PinJoint2D):
 	var new_joint = PartJoint.new(joint, global_position)
 	part_joints.append(new_joint)
 	joint.node_a = get_parent().get_path()
@@ -192,14 +188,6 @@ func _ready():
 
 	_find_probes()
 
-	#TEMP remove after blueprint.build() realization
-	#if (!test_join0 or !test_join1)
-	if (!is_parts_root):
-		part_joints = [
-			PartJoint.new(get_node(test_join0), position),
-			PartJoint.new(get_node(test_join1), position)
-		]
-
 func _process(delta):
 	if is_grabbed:
 		position = get_global_mouse_position()
@@ -213,6 +201,6 @@ func _physics_process(delta):
 
 func _update_joints():
 	for j in part_joints:
-		var distance:float = (position - j.rest_position).length()
+		var distance:float = (global_position - j.rest_position).length()
 		if(distance > breaking_distance):
 			part_slice()
