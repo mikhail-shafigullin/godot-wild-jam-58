@@ -65,6 +65,7 @@ common/drop_mouse_on_gui_input_disabled=true
 [layer_names]
 
 2d_physics/layer_1="Player"
+2d_physics/layer_5="Blueprint"
 2d_physics/layer_9="Parts"
 
 [physics]

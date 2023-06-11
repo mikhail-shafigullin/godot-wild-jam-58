@@ -29,6 +29,6 @@ node_a = NodePath("..")
 node_b = NodePath("../TestThruster")
 
 [node name="TestThruster" parent="." instance=ExtResource( 2 )]
-collision_layer = 0
+collision_layer = 256
 test_join0 = NodePath("../PinJoint2D")
-test_join1 = NodePath("../PinJoint2D")
+test_join1 = NodePath(".")

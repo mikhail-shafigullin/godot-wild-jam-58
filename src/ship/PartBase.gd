@@ -13,11 +13,20 @@ export var part_mass: float = 1
 export var armor: float = 1
 export var armor_weak: float = -1
 export var breaking_distance: float = 32.1
+export var can_be_grabbed: bool = true
 
 # array of PartJoints
 # Joins will connect only to parent
 var part_joints: Array = []
 var is_parts_root: bool
+
+class PartJoint:
+	var joint_node: Joint2D
+	var rest_position: Vector2
+	
+	func _init(joint = null, rest_pos = null):
+		self.joint_node = joint
+		self.rest_position = rest_pos
 
 # Array of PartBase children
 var children_parts: Array = []
@@ -29,57 +38,89 @@ class PartController:
 	var key_bind: InputEventAction = null
 	var axis_bind: InputEventAction = null
 
-var inputController: PartController = PartController.new()
+var input_controller: PartController = PartController.new()
 
-func _enter_tree():
+func _init():
 	set_collision_layer_bit(0, false)
-	set_collision_layer_bit(8, false)
-	set_collision_mask_bit(8, true)
-
-class PartJoint:
-	var joint_node: Joint2D
-	var rest_position: Vector2
-	
-	func _init(joint = null, rest_pos = null):
-		self.joint_node = joint
-		self.rest_position = rest_pos
+	set_collision_layer_bit(8, true)
+	#set_collision_mask_bit(8, true)
 
 # Base functions
-func slice():
+func part_slice():
 	core.slice_part(self) 
 
-func destroy():
-	core.destroy_parts(self)
+func part_connect():
+	core.connect_parts(self)
 
-func repair():
+func part_disconnect():
+	core.disconnect_parts(self)
+
+func part_repair():
 	core.repair_part(self)
 
 # Blueprint functions
 var is_blueprint: bool = false
 var is_grabbed: bool = false
+var grab_layer_memory: int = 0
+const grab_hover_layers: int = 16
 var probes: Array
 var active_probes: Array
 var best_part: PartBase
 export var min_joint_score: float = 0.1
 
 # TODO gamepad support
+func click():
+	if not is_grabbed:
+		if can_be_grabbed:
+			grab()
+	else:
+		release()
+
 func grab():
+	grab_layer_memory = collision_layer
+	collision_layer = grab_hover_layers
+	show_probes()
+
+	part_slice()
 	is_grabbed = true
 	rotation = 0
 	position = get_global_mouse_position()
 
-# TODO gamepad support
+func show_probes():
+	for p in probes:
+		p.show()
+
+func hide_probes():
+	for p in probes:
+		p.hide()
+
 func release():
 	if best_part:
-		build()
+		hide_probes()
+		is_grabbed = false
+		collision_layer = grab_layer_memory		
+		build(best_part)
 
-func build():
-	pass #TODO continue
+func remove_child_part(part: PartBase):
+	if children_parts.has(part):
+		var index = children_parts.find(part)
+		children_parts.remove(index)
+
+func build(to_part: PartBase):
+	var temp_transform = global_transform
+
+	get_parent().remove_child(self)
+	to_part.add_child(self)
+	global_transform = temp_transform
+	_create_joints()
+	to_part.children_parts.append(self)
+	part_connect()
 
 func _find_probes():
 	for c in get_children():
 		if c is BPProbe:
 			probes.append(c)
+			c.hide()
 
 func _scan_probes():
 	var nodes_probes: 		Dictionary = {}
@@ -120,10 +161,12 @@ func _create_joints():
 	for probe in active_probes:
 		var joint = PinJoint2D.new()
 		best_part.add_child(joint)
+		joint.global_position = probe.global_position
 		weld(joint)
 
 func weld(joint:PinJoint2D):
-	part_joints.append(joint)
+	var new_joint = PartJoint.new(joint, global_position)
+	part_joints.append(new_joint)
 	joint.node_a = get_parent().get_path()
 	joint.node_b = self.get_path()
 	
@@ -134,8 +177,11 @@ func on_slice():
 			j.joint_node.queue_free()
 	part_joints.clear()
 
-func on_destroy():
+func on_part_disconnect():
 	health = 0
+
+func on_part_connect():
+	pass
 
 func on_repair():
 	health = init_health
@@ -169,4 +215,4 @@ func _update_joints():
 	for j in part_joints:
 		var distance:float = (position - j.rest_position).length()
 		if(distance > breaking_distance):
-			slice()
+			part_slice()
