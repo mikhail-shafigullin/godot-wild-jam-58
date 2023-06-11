@@ -52,10 +52,6 @@ config/icon="res://icon.png"
 
 State="*res://src/State.gd"
 
-[global]
-
-collision=false
-
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

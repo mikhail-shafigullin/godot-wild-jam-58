@@ -23,7 +23,6 @@ func _physics_process(delta):
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed
 	translate(velocity * delta)
-	print(position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
