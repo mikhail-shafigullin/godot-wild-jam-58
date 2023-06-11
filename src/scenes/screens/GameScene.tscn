@@ -84,7 +84,7 @@ color = Color( 0.698039, 0.603922, 0.462745, 1 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 8, -38 )
 motion_scale = Vector2( 0.1, 1 )
-motion_mirroring = Vector2( 4096, 0 )
+motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 0, -3 )
