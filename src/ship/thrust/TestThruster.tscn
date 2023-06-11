@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/ship/blueprint/Probe.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/ship/thrust/TestThruster.gd" type="Script" id=2]
+[ext_resource path="res://NN_test/1x1.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29, 16 )
+
+[node name="TestThruster" type="RigidBody2D"]
+input_pickable = true
+mode = 3
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="1X1" type="Sprite" parent="."]
+scale = Vector2( 55.9614, 30.7577 )
+texture = ExtResource( 3 )
+
+[node name="Probe" parent="." instance=ExtResource( 1 )]
+position = Vector2( -13, -14 )
+
+[node name="Probe2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -13 )
+
+[node name="Probe3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 13, -14 )

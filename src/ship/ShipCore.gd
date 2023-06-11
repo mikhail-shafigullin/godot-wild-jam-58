@@ -3,13 +3,6 @@ extends PartBase
 
 var parts:		Dictionary = {}
 
-enum PartsTypes { THRUSTER, COLLECTOR, UTIL }
-
-class PartController:
-	var part_type
-	var display_name: String = "part"
-	var key_bind: InputEventAction
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_find_thrusters()
