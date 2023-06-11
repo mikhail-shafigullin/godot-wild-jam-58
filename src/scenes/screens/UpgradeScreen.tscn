@@ -1,68 +1,91 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/scenes/screens/UpgradeScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/themes/menu_theme.tres" type="Theme" id=2]
+[ext_resource path="res://src/sprites/UpgradeBackground.png" type="Texture" id=3]
 
 [node name="UpgradeScreen" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="MainScreen" type="Node2D" parent="."]
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MainScreen"]
+[node name="UpgradeBackground" type="Sprite" parent="MainScreen"]
+position = Vector2( 512, 300 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Building" type="Node2D" parent="."]
+
+[node name="UI" type="AspectRatioContainer" parent="."]
 margin_left = 19.0
 margin_top = 19.0
-margin_right = 327.0
+margin_right = 282.0
 margin_bottom = 575.0
 stretch_mode = 0
 alignment_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/AspectRatioContainer"]
-margin_right = 308.0
-margin_bottom = 308.0
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+margin_right = 263.0
+margin_bottom = 316.0
 
-[node name="IslandBuildingButton" type="Button" parent="MainScreen/AspectRatioContainer/VBoxContainer"]
-margin_right = 308.0
-margin_bottom = 32.0
+[node name="Start Launching" type="Button" parent="UI/VBoxContainer"]
+margin_right = 263.0
+margin_bottom = 52.8349
 theme = ExtResource( 2 )
+text = "Start Launching"
+
+[node name="HSeparator4" type="HSeparator" parent="UI/VBoxContainer"]
+margin_top = 56.0
+margin_right = 263.0
+margin_bottom = 62.0
+theme = ExtResource( 2 )
+
+[node name="IslandBuildingButton" type="Button" parent="UI/VBoxContainer"]
+margin_top = 66.0
+margin_right = 263.0
+margin_bottom = 118.835
+theme = ExtResource( 2 )
+disabled = true
 text = "Land Building"
 
-[node name="HSeparator" type="HSeparator" parent="MainScreen/AspectRatioContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 308.0
-margin_bottom = 42.0
+[node name="HSeparator" type="HSeparator" parent="UI/VBoxContainer"]
+margin_top = 122.0
+margin_right = 263.0
+margin_bottom = 128.0
 theme = ExtResource( 2 )
 
-[node name="ShipBuildingButton" type="Button" parent="MainScreen/AspectRatioContainer/VBoxContainer"]
-margin_top = 46.0
-margin_right = 308.0
-margin_bottom = 78.0
+[node name="ShipBuildingButton" type="Button" parent="UI/VBoxContainer"]
+margin_top = 132.0
+margin_right = 263.0
+margin_bottom = 184.835
 theme = ExtResource( 2 )
+disabled = true
 text = "Ship Building"
 
-[node name="HSeparator2" type="HSeparator" parent="MainScreen/AspectRatioContainer/VBoxContainer"]
-margin_top = 82.0
-margin_right = 308.0
-margin_bottom = 88.0
+[node name="HSeparator2" type="HSeparator" parent="UI/VBoxContainer"]
+margin_top = 188.0
+margin_right = 263.0
+margin_bottom = 194.0
 theme = ExtResource( 2 )
 
-[node name="Weaponary" type="Button" parent="MainScreen/AspectRatioContainer/VBoxContainer"]
-margin_top = 92.0
-margin_right = 308.0
-margin_bottom = 124.0
+[node name="Weaponary" type="Button" parent="UI/VBoxContainer"]
+margin_top = 198.0
+margin_right = 263.0
+margin_bottom = 250.835
 theme = ExtResource( 2 )
+disabled = true
 text = "Weaponary"
 
-[node name="HSeparator3" type="HSeparator" parent="MainScreen/AspectRatioContainer/VBoxContainer"]
-margin_top = 128.0
-margin_right = 308.0
-margin_bottom = 134.0
+[node name="HSeparator3" type="HSeparator" parent="UI/VBoxContainer"]
+margin_top = 254.0
+margin_right = 263.0
+margin_bottom = 260.0
 theme = ExtResource( 2 )
 
-[node name="EngineFactory" type="Button" parent="MainScreen/AspectRatioContainer/VBoxContainer"]
-margin_top = 138.0
-margin_right = 308.0
-margin_bottom = 170.0
+[node name="EngineFactory" type="Button" parent="UI/VBoxContainer"]
+margin_top = 264.0
+margin_right = 263.0
+margin_bottom = 316.835
 theme = ExtResource( 2 )
+disabled = true
 text = "Engine"
-
-[node name="Building" type="Node2D" parent="."]

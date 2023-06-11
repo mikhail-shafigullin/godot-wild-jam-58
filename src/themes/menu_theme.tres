@@ -1,14 +1,65 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
-[ext_resource path="res://src/themes/Vollkorn-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/themes/Vollkorn-SemiBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/sprites/button/Button.png" type="Texture" id=2]
+[ext_resource path="res://src/sprites/button/Button_pressed.png" type="Texture" id=3]
+[ext_resource path="res://src/sprites/button/Button_disabled.png" type="Texture" id=4]
+[ext_resource path="res://src/sprites/button/Button_hover.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 18
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 5.5867
+margin_right = 5.5867
+margin_top = 14.5242
+margin_bottom = 11.1734
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 6.4275
+margin_right = 6.4275
+margin_top = 15.5672
+margin_bottom = 10.7142
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( -1, -1, 100, 101 )
+margin_left = 6.9317
+margin_right = 5.89194
+margin_top = 14.0311
+margin_bottom = 12.8038
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 5.72165
+margin_right = 6.6019
+margin_top = 14.5242
+margin_bottom = 11.4433
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
 [sub_resource type="StyleBoxTexture" id=3]
 
 [resource]
+Button/colors/font_color = Color( 0.294118, 0.192157, 0.192157, 1 )
+Button/colors/font_color_disabled = Color( 0.215686, 0.172549, 0.172549, 0.2 )
+Button/colors/font_color_focus = Color( 0.254902, 0.203922, 0.203922, 1 )
+Button/colors/font_color_hover = Color( 0.203922, 0.152941, 0.152941, 1 )
+Button/colors/font_color_pressed = Color( 0.545098, 0.439216, 0.439216, 1 )
 Button/fonts/font = SubResource( 2 )
+Button/styles/disabled = SubResource( 5 )
+Button/styles/hover = SubResource( 6 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 7 )
 HSeparator/constants/separation = 6
 HSeparator/styles/separator = SubResource( 3 )
