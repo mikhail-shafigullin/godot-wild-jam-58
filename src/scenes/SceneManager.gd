@@ -1,15 +1,17 @@
 extends Node2D
 
+onready var transitionScreen = $TransitionScreen
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	State.sceneManager = self
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+var temp_scene: Resource
+
+func transition(scene: Resource):
+	$TransitionScreen/AnimationPlayer.play("toHide")
+	temp_scene = scene
+
+func _on_TransitionScreen_transitioned():
+	$CurrentScene.get_child(0).queue_free()
+	$CurrentScene.add_child(temp_scene.instance())
+	print("sceneTwo")
