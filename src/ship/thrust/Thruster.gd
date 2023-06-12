@@ -2,6 +2,7 @@ class_name Thruster
 extends PartBase
 
 export var thrust_multiplying: float = 1
+export var rate_of_fire: float = 1
 
 func fire():
 	var up = Vector2.UP.rotated(global_rotation)

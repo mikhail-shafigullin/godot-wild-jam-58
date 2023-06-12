@@ -7,6 +7,8 @@ export var interpolation_speed: float = 1
 export var cursor_size: float = 10
 onready var tween = $"Tween"
 var follow: bool = true
+var follow_target: Node2D
+onready var root_scene = State.get_root_scene()
 
 func _ready():
 	mark_normal()
@@ -14,22 +16,33 @@ func _ready():
 
 func _process(delta):
 	if follow:
-		rect_global_position = get_global_mouse_position() - rect_size/2
+		if follow_target:
+			if follow_target is PartBase:
+				rect_global_position = follow_target.get_part_global_position() - rect_size/2
+				rect_rotation = follow_target.get_part_global_rotation()
+			else:
+				rect_global_position = follow_target.global_position - rect_size/2
+				rect_rotation = follow_target.global_rotation_degrees
+		else:
+			rect_global_position = root_scene.get_global_mouse_position() - rect_size/2
+			rect_rotation = root_scene.global_rotation_degrees
 
-func focus_on(global_position: Vector2, size: Vector2):
-	follow = false
-	var center_position = global_position - size/2
-	tween.interpolate_property(self, "rect_global_position",
-		rect_global_position, global_position, interpolation_speed,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+func focus_on(node):
+	follow = true
+	follow_target = node
+
+	var _global_position = node.global_position
+	var size = Vector2.ZERO
+	# tween.interpolate_property(self, "rect_global_position",
+	# 	rect_global_position, _global_position, interpolation_speed,
+	# 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
 	tween.interpolate_property(self, "rect_pivot_offset",
 		rect_pivot_offset, size*0.5, interpolation_speed,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
-	tween.interpolate_property(self, "rect_size",
-		rect_size, size, interpolation_speed,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	set_cursor_size(follow_target.get_part_size())
+	
 
 	tween.start()
 
@@ -37,11 +50,18 @@ func mark_active():
 	add_stylebox_override("panel", sb_active)
 	follow = false
 
-func mark_normal():
+func set_cursor_size(size: Vector2):
 	tween.interpolate_property(self, "rect_size",
-		rect_size, cursor_size, interpolation_speed,
+		rect_size, size, interpolation_speed,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
-	
+
+func mark_normal():
+	set_cursor_size(Vector2(cursor_size, cursor_size))	
 	add_stylebox_override("panel", sb_normal)
 	follow = true
+	follow_target = null
+
+
+func _on_tween_all_completed():
+	pass

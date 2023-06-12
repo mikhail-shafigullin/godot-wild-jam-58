@@ -49,3 +49,4 @@ interpolation_speed = 0.4
 [node name="Tween" type="Tween" parent="Cursor"]
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="tween_all_completed" from="Cursor/Tween" to="Cursor" method="_on_tween_all_completed"]

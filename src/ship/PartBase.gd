@@ -16,6 +16,9 @@ export var armor_weak: float = -1
 export var breaking_distance: float = 10
 export var can_be_grabbed: bool = true
 export var joints_softness: float = 0
+export var part_visual_size: Vector2 = Vector2(10,10)
+export(NodePath) var main_sprite_path 
+onready var main_sprite = get_node(main_sprite_path)
 
 # array of PartJoints
 # Joins will connect only to parent
@@ -67,6 +70,7 @@ func part_repair():
 var probes: Array
 var active_probes: Array
 var best_part: PartBase
+export var max_joint_score: float = 0.2
 export var min_joint_score: float = 0.1
 
 
@@ -118,13 +122,16 @@ func _scan_probes():
 	
 	var best_score: float = min_joint_score
 	for m_part in nodes_score:
-		if best_score < nodes_score[m_part]:
-			best_part = m_part
-			active_probes = nodes_probes[m_part]
+		if part_score_in_range(nodes_score[m_part], m_part):
+			if best_score < nodes_score[m_part]:
+				best_part = m_part
+				active_probes = nodes_probes[m_part]
 
-			for probe in active_probes:
-				probe.mark_active()
+				for probe in active_probes:
+					probe.mark_active()
 
+func part_score_in_range(score: float, _part: PartBase = self) -> bool:
+	return score > _part.min_joint_score and score < _part.max_joint_score
 	
 func _score_probes(pos:Vector2, probes: Array) -> float:
 	var sum = Vector2()
@@ -168,7 +175,23 @@ func find_part_in_children(part: PartBase) -> bool:
 			return find_part_in_children(c)
 	return false
 
+func get_part_global_position() -> Vector2:
+	if main_sprite:
+		return main_sprite.global_position
+	else:
+		return global_position
 
+func get_part_global_rotation() -> float:
+	if main_sprite:
+		return main_sprite.global_rotation_degrees
+	else:
+		return global_rotation_degrees
+
+func get_part_size() -> Vector2:
+	if main_sprite:
+		return main_sprite.texture.get_size() * main_sprite.scale
+	else:
+		return part_visual_size * scale
 	
 # Callbacks
 func on_slice():

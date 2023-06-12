@@ -1,6 +1,8 @@
 class_name BlueprintManager
 extends Control
 
+onready var bp_cursor = $Cursor
+
 var active_part: PartBase
 var holding_part: PartBase
 var grab_layer_memory: int = 0
@@ -25,12 +27,7 @@ func _on_gui_input(event: InputEvent):
 
 func get_part_under_cursor() -> PartBase:
 	var ray_caster: RayCast2D = RayCast2D.new()
-	var scene_root = get_tree().root
-	var _root
-	for n in scene_root.get_children():
-		if n is Node2D:
-			_root = n
-			break
+	var _root = State.get_root_scene()
 	if not _root:
 		print("cant cast ray here")
 		return null
@@ -97,7 +94,16 @@ func rotate_left():
 func rotation_add(amount):
 	rotation_target += amount
 
+func stabilize_part(part: PartBase):
+	part.sleeping = false
+	part.linear_velocity = Vector2.ZERO
+	part.angular_velocity = 0
+
 func grab_part(part: PartBase):
+	stabilize_part(part)
+	# part.mode = RigidBody2D.MODE_STATIC
+	bp_cursor.focus_on(part)
+
 	free_active_part()
 	part.z_index = 999
 	rotation_target  = 0
@@ -111,8 +117,12 @@ func grab_part(part: PartBase):
 	holding_part = part
 	part.on_grab()
 
-func release_part(part: PartBase):
+func release_part(part: PartBase, speed: Vector2 = Vector2.ZERO):
 	print("release part")
+	bp_cursor.mark_normal()
+	stabilize_part(part)
+	# part.mode = RigidBody2D.MODE_RIGID
+	part.apply_impulse(Vector2.ZERO, Vector2(0, -12))
 	part.z_index = 0
 	holding_part = null
 	if part.can_be_build():
