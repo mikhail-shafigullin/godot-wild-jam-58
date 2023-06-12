@@ -77,6 +77,7 @@ common/drop_mouse_on_gui_input_disabled=true
 [physics]
 
 common/enable_pause_aware_picking=true
+2d/default_linear_damp=0.05
 common/physics_interpolation=true
 
 [rendering]

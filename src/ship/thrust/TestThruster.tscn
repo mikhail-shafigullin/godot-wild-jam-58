@@ -11,11 +11,13 @@ extents = Vector2( 29, 16 )
 collision_layer = 272
 input_pickable = true
 mass = 10.0
+contact_monitor = true
 script = ExtResource( 2 )
 breaking_distance = 7.957
 joints_softness = 0.066
 main_sprite_path = NodePath("1X1")
-min_joint_score = 0.048
+max_joint_score = 1.11111e+06
+min_joint_score = 0.001
 thrust_multiplying = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,9 +31,15 @@ texture = ExtResource( 3 )
 position = Vector2( -13, -14 )
 
 [node name="Probe2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -13 )
+position = Vector2( 0, -6 )
 
 [node name="Probe3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 13, -14 )
+
+[node name="Probe4" parent="." instance=ExtResource( 1 )]
+position = Vector2( -13, 11 )
+
+[node name="Probe5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 13, 11 )
 
 [connection signal="input_event" from="." to="." method="_on_TestThruster_input_event"]

@@ -9,6 +9,7 @@ height = 10.0
 [node name="Player" type="RigidBody2D"]
 collision_layer = 272
 script = ExtResource( 1 )
+can_be_grabbed = false
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true

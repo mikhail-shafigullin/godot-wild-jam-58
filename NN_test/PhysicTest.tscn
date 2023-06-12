@@ -9,6 +9,7 @@
 extents = Vector2( 513.5, 52 )
 
 [node name="PhysicTest" type="Node2D"]
+pause_mode = 1
 
 [node name="ground" type="StaticBody2D" parent="."]
 position = Vector2( 8, 583 )
@@ -26,24 +27,38 @@ texture = ExtResource( 1 )
 position = Vector2( 508, 527 )
 mass = 13.92
 breaking_distance = 3.0
-can_be_grabbed = false
-max_joint_score = 0.825
-min_joint_score = 0.002
 
-[node name="TestThrusterZ-5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 252, 527 )
+[node name="BlueZ-5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 353, 518 )
 z_index = -5
 
-[node name="TestThrusterZ5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 276, 519 )
+[node name="1X1" parent="BlueZ-5" index="1"]
+self_modulate = Color( 0.396078, 0.396078, 1, 1 )
+
+[node name="GreeZ5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 415, 522 )
 z_index = 5
 mass = 4.37
 
-[node name="TestThrusterZ0" parent="." instance=ExtResource( 4 )]
-position = Vector2( 247, 521 )
+[node name="1X1" parent="GreeZ5" index="1"]
+self_modulate = Color( 0.396078, 1, 0.396078, 1 )
+
+[node name="RedZ0" parent="." instance=ExtResource( 4 )]
+position = Vector2( 292, 517 )
 joints_softness = 0.29
+
+[node name="1X1" parent="RedZ0" index="1"]
+self_modulate = Color( 1, 0.396078, 0.396078, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
 
 [node name="BlueprintManager" parent="CanvasLayer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[editable path="BlueZ-5"]
+[editable path="GreeZ5"]
+[editable path="RedZ0"]
