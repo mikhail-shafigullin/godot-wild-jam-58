@@ -24,26 +24,37 @@ func plug_part(part: PartBase, ctr: PartController):
 func unplug_part(part: PartBase, ctr: PartController):
 	part.on_part_disconnect()
 
-func slice_part(part_from: PartBase):
-	disconnect_parts(part_from)
-	var parent_part: PartBase = part_from.get_parent()
-	parent_part.remove_child_part(part_from)
+# slice will keep children and remove from parent
+func slice_part(part: PartBase):
+	disconnect_parts(part)
+	var parent = part.get_parent()
+	if parent is PartBase:
+		parent.remove_child_part(part)
 	
-	part_from.on_slice()
+	part.on_slice()
 
 	#reparent to ship core parent
-	var past_global_transform = part_from.global_transform
-	part_from.get_parent().remove_child(part_from)
-	get_parent().add_child(part_from)
-	part_from.global_transform = past_global_transform
+	var past_global_transform = part.global_transform
+	parent.remove_child(part)
+	core.get_parent().add_child(part)
+	part.global_transform = past_global_transform
+
+	fix_joints(part)
  
 func weld_part(part: PartBase, weld_to: PartBase):
 	var temp_transform = part.global_transform
 	part.get_parent().remove_child(part)
 	weld_to.add_child(part)
 	part.global_transform = temp_transform
-	
+	weld_to.children_parts.append(part)
+
 	connect_parts(part)
+
+func fix_joints(part_from: PartBase):
+	for c in part_from.children_parts:
+		fix_joints(c)
+		c.fix_joints_path()
+	part_from.fix_joints_path()
 
 func disconnect_parts(start_from_part: PartBase):
 	for part in start_from_part.children_parts:

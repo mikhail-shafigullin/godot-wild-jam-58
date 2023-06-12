@@ -1,6 +1,9 @@
 class_name PartBase
 extends RigidBody2D
 
+# Disconnecting / Connecting 		will NOT change ship structure
+# Slice 		/ 	Weld 			will change ship structure
+
 #TEMP
 onready var core = State.player
 #TEMP
@@ -12,6 +15,7 @@ export var armor: float = 1
 export var armor_weak: float = -1
 export var breaking_distance: float = 32.1
 export var can_be_grabbed: bool = true
+export var joint_strength: float = 0
 
 # array of PartJoints
 # Joins will connect only to parent
@@ -60,39 +64,11 @@ func part_repair():
 	core.repair_part(self)
 
 # Blueprint functions
-var is_blueprint: bool = false
-var is_grabbed: bool = false
-var grab_layer_memory: int = 0
-const grab_hover_layers: int = 16
 var probes: Array
 var active_probes: Array
 var best_part: PartBase
 export var min_joint_score: float = 0.1
 
-# TODO gamepad support
-func click():
-	if not is_grabbed:
-		if can_be_grabbed:
-			grab()
-	else:
-		release()
-
-func grab():
-	grab_layer_memory = collision_layer
-	collision_layer = grab_hover_layers
-
-	part_slice()
-	show_probes()
-	is_grabbed = true
-	rotation = 0
-	position = get_global_mouse_position()
-
-func release():
-	if best_part:
-		is_grabbed = false
-		build(best_part)
-		collision_layer = grab_layer_memory		
-		hide_probes()
 
 func show_probes():
 	for p in probes:
@@ -110,7 +86,8 @@ func remove_child_part(part: PartBase):
 func build(to_part: PartBase):
 	part_weld(to_part)	
 	_create_joints()
-	to_part.children_parts.append(self)
+	if not children_parts.empty():
+		core.fix_joints(self)
 
 func _find_probes():
 	for c in get_children():
@@ -161,7 +138,7 @@ func _create_joints():
 		weld_joint(joint)
 
 func weld_joint(joint:PinJoint2D):
-	var new_joint = PartJoint.new(joint, global_position)
+	var new_joint = PartJoint.new(joint, position)
 	part_joints.append(new_joint)
 	joint.node_a = get_parent().get_path()
 	joint.node_b = self.get_path()
@@ -182,25 +159,42 @@ func on_part_connect():
 func on_repair():
 	health = init_health
 
-func _ready():
-	#confusing placement will override default mass: Remove?
-	mass = part_mass
+func on_click():
+	pass
 
+func on_grab():
+	show_probes()
+
+func on_release():
+	if best_part:
+		build(best_part)
+		hide_probes()
+
+func on_bp_activate():
+	pass
+
+func on_bp_deactivate():
+	pass
+
+func _ready():
 	_find_probes()
 
-func _process(delta):
-	if is_grabbed:
-		position = get_global_mouse_position()
-
 func _physics_process(delta):
-	if is_blueprint and is_grabbed:
-		_scan_probes()
-
 	if (health > 0 and not is_parts_root):
 		_update_joints()
 
 func _update_joints():
 	for j in part_joints:
-		var distance:float = (global_position - j.rest_position).length()
+		var distance:float = (position - j.rest_position).length()
 		if(distance > breaking_distance):
 			part_slice()
+
+func fix_joints_path():
+	if part_joints.empty():
+		return
+	
+	var new_a: NodePath = part_joints[0].joint_node.get_parent().get_path()
+	var new_b: NodePath = get_path()
+	for joint in part_joints:
+		joint.joint_node.node_a = new_a
+		joint.joint_node.node_b = new_b

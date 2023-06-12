@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=1]
-[ext_resource path="res://src/ship/thrust/TestThruster.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.0
@@ -21,6 +20,3 @@ shape = SubResource( 1 )
 [node name="TempCore" type="Polygon2D" parent="Core"]
 color = Color( 0.733333, 0.733333, 0.733333, 1 )
 polygon = PoolVector2Array( 0, -23, -16, -13, -20, 12, -11, 23, 13, 23, 21, 12, 16, -14 )
-
-[node name="TestThruster" parent="." instance=ExtResource( 2 )]
-collision_layer = 272

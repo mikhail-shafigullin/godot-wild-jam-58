@@ -8,8 +8,11 @@
 extents = Vector2( 29, 16 )
 
 [node name="TestThruster" type="RigidBody2D"]
+collision_layer = 272
 input_pickable = true
+mass = 10.0
 script = ExtResource( 2 )
+thrust_multiplying = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
