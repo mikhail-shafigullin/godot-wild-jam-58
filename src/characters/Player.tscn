@@ -12,6 +12,7 @@ script = ExtResource( 1 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
+editor_draw_limits = true
 
 [node name="Core" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -23 )

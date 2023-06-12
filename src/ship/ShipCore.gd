@@ -47,8 +47,19 @@ func weld_part(part: PartBase, weld_to: PartBase):
 	weld_to.add_child(part)
 	part.global_transform = temp_transform
 	weld_to.children_parts.append(part)
+	
+	if part_has_access_to_core(part):
+		connect_parts(part)
 
-	connect_parts(part)
+func part_has_access_to_core(part: PartBase) -> bool:
+	var parent = part.get_parent()
+	if parent is PartBase:
+		if parent == self:
+			return true
+		else:
+			return part_has_access_to_core(parent)	
+	else:
+		return false
 
 func fix_joints(part_from: PartBase):
 	for c in part_from.children_parts:
@@ -69,3 +80,6 @@ func connect_parts(start_from_part: PartBase):
 		_part_connect(part)
 	
 	_part_connect(start_from_part)
+
+func repair_part(part: PartBase):
+	part.on_repair()

@@ -12,6 +12,9 @@ collision_layer = 272
 input_pickable = true
 mass = 10.0
 script = ExtResource( 2 )
+breaking_distance = 7.957
+joints_softness = 0.066
+min_joint_score = 0.048
 thrust_multiplying = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

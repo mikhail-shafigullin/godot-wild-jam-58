@@ -13,9 +13,9 @@ onready var health = init_health
 export var part_mass: float = 1
 export var armor: float = 1
 export var armor_weak: float = -1
-export var breaking_distance: float = 32.1
+export var breaking_distance: float = 10
 export var can_be_grabbed: bool = true
-export var joint_strength: float = 0
+export var joints_softness: float = 0
 
 # array of PartJoints
 # Joins will connect only to parent
@@ -83,8 +83,13 @@ func remove_child_part(part: PartBase):
 		var index = children_parts.find(part)
 		children_parts.remove(index)
 
-func build(to_part: PartBase):
-	part_weld(to_part)	
+func build():
+	if !best_part:
+		print("cant find part no building for today")
+		return
+	z_index = best_part.z_index+1
+
+	part_weld(best_part)	
 	_create_joints()
 	if not children_parts.empty():
 		core.fix_joints(self)
@@ -133,6 +138,7 @@ func _score_probes(pos:Vector2, probes: Array) -> float:
 func _create_joints():
 	for probe in active_probes:
 		var joint = PinJoint2D.new()
+		joint.softness = joints_softness
 		best_part.add_child(joint)
 		joint.global_position = probe.global_position
 		weld_joint(joint)
@@ -142,6 +148,27 @@ func weld_joint(joint:PinJoint2D):
 	part_joints.append(new_joint)
 	joint.node_a = get_parent().get_path()
 	joint.node_b = self.get_path()
+
+func can_be_build() -> bool:
+	if best_part == null or best_part == self:
+		return false
+	print(best_part.get_path())
+	if !best_part.get_path():
+		return false
+	#recursion check
+	var is_recursive_build = find_part_in_children(best_part)
+	print(is_recursive_build)
+	return !is_recursive_build 
+	
+func find_part_in_children(part: PartBase) -> bool:
+	for c in children_parts:
+		if c == part:
+			return true
+		else:
+			return find_part_in_children(c)
+	return false
+
+
 	
 # Callbacks
 func on_slice():
@@ -154,7 +181,7 @@ func on_part_disconnect():
 	health = 0
 
 func on_part_connect():
-	pass
+	part_repair()
 
 func on_repair():
 	health = init_health
@@ -166,9 +193,7 @@ func on_grab():
 	show_probes()
 
 func on_release():
-	if best_part:
-		build(best_part)
-		hide_probes()
+	hide_probes()
 
 func on_bp_activate():
 	pass
