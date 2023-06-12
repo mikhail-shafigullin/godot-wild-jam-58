@@ -89,3 +89,5 @@ margin_bottom = 316.835
 theme = ExtResource( 2 )
 disabled = true
 text = "Engine"
+
+[connection signal="pressed" from="UI/VBoxContainer/Start Launching" to="." method="_on_Start_Launching_pressed"]

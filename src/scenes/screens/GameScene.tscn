@@ -105,9 +105,6 @@ position = Vector2( -3164, -4742 )
 texture = ExtResource( 2 )
 offset = Vector2( 3167, 1949 )
 flip_v = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CameraPlayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 513, 294 )
@@ -139,20 +136,49 @@ motion_scale = Vector2( 0.1, 1 )
 motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxLayer"]
-position = Vector2( 0, -3 )
+position = Vector2( 1, -8 )
 texture = ExtResource( 4 )
+region_filter_clip = true
+
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -600.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Background"]
 position = Vector2( 8, -38 )
-motion_scale = Vector2( 0.2, 1 )
+motion_scale = Vector2( 0.15, 1 )
 motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxLayer2"]
 texture = ExtResource( 5 )
 
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -600.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="Background"]
 position = Vector2( 8, -38 )
-motion_scale = Vector2( 0.3, 1 )
+motion_scale = Vector2( 0.2, 1 )
 motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxLayer4"]
@@ -160,29 +186,65 @@ position = Vector2( -3897, -570 )
 texture = ExtResource( 6 )
 offset = Vector2( 3897, 531 )
 
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -600.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Background"]
 position = Vector2( 8, -38 )
-motion_scale = Vector2( 0.4, 0.7 )
+motion_scale = Vector2( 0.25, 0.5 )
 motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxLayer5"]
 position = Vector2( 0, -3 )
 texture = ExtResource( 7 )
 
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -600.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="Background"]
 position = Vector2( 8, -38 )
-motion_scale = Vector2( 0.5, 0.5 )
+motion_scale = Vector2( 0.3, 0.3 )
 motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxLayer6"]
-position = Vector2( 0, -3 )
+position = Vector2( 0, -45 )
 texture = ExtResource( 8 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 378.0
-margin_top = 238.0
-margin_right = 418.0
-margin_bottom = 474.0
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -600.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 565, -383 )
