@@ -29,16 +29,20 @@ func slice_part(part: PartBase):
 	disconnect_parts(part)
 	var parent = part.get_parent()
 	if parent is PartBase:
+		parent.sleeping = false
 		parent.remove_child_part(part)
-	
-	part.on_slice()
 
+	part.on_slice()
+	
 	#reparent to ship core parent
 	var past_global_transform = part.global_transform
 	parent.remove_child(part)
 	core.get_parent().add_child(part)
 	part.global_transform = past_global_transform
-
+	
+	if parent is RigidBody2D:
+		parent.sleeping = false
+	
 	fix_joints(part)
  
 func weld_part(part: PartBase, weld_to: PartBase):
@@ -48,9 +52,13 @@ func weld_part(part: PartBase, weld_to: PartBase):
 	part.global_transform = temp_transform
 	weld_to.children_parts.append(part)
 	
+	weld_to.sleeping = false
+	part.sleeping = false
+	
 	if part_has_access_to_core(part):
 		connect_parts(part)
 
+# rewrite move from the top
 func part_has_access_to_core(part: PartBase) -> bool:
 	var parent = part.get_parent()
 	if parent is PartBase:

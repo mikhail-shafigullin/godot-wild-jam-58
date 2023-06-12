@@ -17,6 +17,7 @@ func _process(delta):
 	if holding_part != null:
 		holding_part._scan_probes()
 		holding_part.global_position = holding_part.get_global_mouse_position()
+		holding_part.rotation_degrees = rotation_target
 
 func _on_gui_input(event: InputEvent):
 	if event is InputEventMouseButton:
@@ -95,13 +96,18 @@ func rotation_add(amount):
 	rotation_target += amount
 
 func stabilize_part(part: PartBase):
+	for p in part.children_parts:
+		stabilize_part(p)
+	
 	part.sleeping = false
 	part.linear_velocity = Vector2.ZERO
 	part.angular_velocity = 0
 
+
 func grab_part(part: PartBase):
+	if !part.can_be_grabbed: 
+		return
 	stabilize_part(part)
-	# part.mode = RigidBody2D.MODE_STATIC
 	bp_cursor.focus_on(part)
 
 	free_active_part()
@@ -113,7 +119,7 @@ func grab_part(part: PartBase):
 		part.part_slice()
 
 	part.rotation = 0.0
-	part.position = get_global_mouse_position()
+	part.position = part.get_global_mouse_position()
 	holding_part = part
 	part.on_grab()
 
@@ -122,9 +128,12 @@ func release_part(part: PartBase, speed: Vector2 = Vector2.ZERO):
 	bp_cursor.mark_normal()
 	stabilize_part(part)
 	# part.mode = RigidBody2D.MODE_RIGID
-	part.apply_impulse(Vector2.ZERO, Vector2(0, -12))
 	part.z_index = 0
 	holding_part = null
+
+	print("trying to build %s"%part.name)
+	if (part.best_part):
+		print("build target is %s"%part.best_part.name)
 	if part.can_be_build():
 		part.build()
 	part.on_release()
