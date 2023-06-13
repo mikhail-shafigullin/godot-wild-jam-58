@@ -3,7 +3,7 @@ extends Panel
 const sb_active = preload("res://src/ship/blueprint/cursor_active_sbox.tres")
 const sb_normal = preload("res://src/ship/blueprint/cursor_normal_sbox.tres")
 
-export var interpolation_speed: float = 0.3
+export var interpolation_speed: float = 0.2
 export var cursor_size: float = 10
 onready var tween = $"Tween"
 var follow: bool = true

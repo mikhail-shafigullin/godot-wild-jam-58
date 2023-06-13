@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://NN_test/1x1.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ship/blueprint/BlueprintManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/ship/thrust/TestThruster.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/interface/shop/Shop.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 513.5, 52 )
@@ -55,6 +57,12 @@ thrust_multiplying = 101.0
 
 [node name="1X1" parent="RedZ0" index="1"]
 self_modulate = Color( 1, 0.396078, 0.396078, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlueprintManager" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="Shop" parent="CanvasLayer" instance=ExtResource( 5 )]
 
 [editable path="BlueZ-5"]
 [editable path="GreeZ5"]
