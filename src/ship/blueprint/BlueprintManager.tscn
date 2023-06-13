@@ -8,6 +8,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 1
+mouse_filter = 1
 script = ExtResource( 1 )
 
 [node name="Cursor" type="Panel" parent="."]
@@ -30,22 +31,23 @@ rect_rotation = 0.034269
 custom_constants/separation = 16
 alignment = 1
 
-[node name="Button" type="Button" parent="ToolPanel"]
-margin_right = 38.0
+[node name="Grab" type="Button" parent="ToolPanel"]
+margin_right = 39.0
 margin_bottom = 28.0
 focus_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 1
+text = "grab"
 
-[node name="Button2" type="Button" parent="ToolPanel"]
-margin_left = 54.0
+[node name="Controls" type="Button" parent="ToolPanel"]
+margin_left = 55.0
 margin_right = 93.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button3" type="Button" parent="ToolPanel"]
+[node name="Menu" type="Button" parent="ToolPanel"]
 margin_left = 109.0
 margin_right = 148.0
 margin_bottom = 28.0
@@ -54,3 +56,4 @@ size_flags_vertical = 3
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="tween_all_completed" from="Cursor/Tween" to="Cursor" method="_on_tween_all_completed"]
+[connection signal="pressed" from="ToolPanel/Grab" to="." method="_on_Grab_pressed"]

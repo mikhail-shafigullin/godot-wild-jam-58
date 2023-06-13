@@ -3,7 +3,7 @@ extends Panel
 const sb_active = preload("res://src/ship/blueprint/cursor_active_sbox.tres")
 const sb_normal = preload("res://src/ship/blueprint/cursor_normal_sbox.tres")
 
-export var interpolation_speed: float = 1
+export var interpolation_speed: float = 0.3
 export var cursor_size: float = 10
 onready var tween = $"Tween"
 var follow: bool = true
@@ -46,21 +46,28 @@ func _process(delta):
 		else:
 			set_cursor_position(root_scene.get_global_mouse_position(),
 								root_scene.global_rotation_degrees)
+								
+func lock_on(node, activate = true):
+	if activate:
+		mark_active()
+	follow = true
+	follow_target = node
+	set_cursor_size(follow_target.get_part_size())
 
-func focus_on_part(part: PartBase):
-	mark_active()
+func focus_on_part(part: PartBase, activate = true):
+	mark_normal()
 	tween.stop_all()	
-	rect_size = Vector2.ZERO
-	if follow_target:
-		var prev_center
-		if follow_target is PartBase:
-			prev_center = follow_target.get_part_global_position() + pos_offset - follow_target.get_part_size()*0.5
-		else:
-			prev_center = follow_target.global_position
-		rect_global_position = prev_center
+	# rect_size = Vector2.ZERO
+	# if follow_target:
+	# 	var prev_center
+	# 	if follow_target is PartBase:
+	# 		prev_center = follow_target.get_part_global_position() + pos_offset - follow_target.get_part_size()*0.5
+	# 	else:
+	# 		prev_center = follow_target.global_position
+	# 	rect_global_position = prev_center
 
 	if not get_tree().paused:
-		lock_on(part)
+		lock_on(part, activate)
 		return
 
 	follow = false
@@ -85,13 +92,7 @@ func focus_on_part(part: PartBase):
 func _on_timer_timeout():
 	if (follow_target):
 		lock_on(follow_target)
-
-func lock_on(node):
-	follow = true
-	follow_target = node
-
-
-	set_cursor_size(follow_target.get_part_size())
+		mark_active()
 
 func mark_active():
 	add_stylebox_override("panel", sb_active)

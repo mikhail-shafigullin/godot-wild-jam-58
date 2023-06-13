@@ -34,18 +34,26 @@ func _on_gui_input(event: InputEvent):
 
 	if event is InputEventMouseButton:
 		if event.pressed:
-			var part = bp_cursor.get_part_under_cursor()
-			if part:
-				click_on_part(part)
+			if event.button_index == BUTTON_LEFT:
+				if holding_part:
+					release_part(holding_part)
+				else:
+					bp_cursor.mark_normal()
+					var part = bp_cursor.get_part_under_cursor()
+					if part and part != active_part:
+						click_on_part(part)
+					else:
+						free_active_part()
+			if event.button_index == BUTTON_RIGHT:
+				pass
+		
 
 
 func click_on_part(part: PartBase):
 	print("CLICK")
-	if holding_part:
-		free_active_part()
-	else:
-		bp_cursor.focus_on_part(part)
-		# grab_part(part)
+	activate_part(part)
+	bp_cursor.focus_on_part(part)
+
 
 func free_active_part():
 	if holding_part:
@@ -63,6 +71,7 @@ func activate_part(part: PartBase):
 func deactivate_part(part: PartBase):
 	active_part = null
 	part.on_bp_deactivate()
+	bp_cursor.mark_normal()
 
 func rotate_right():
 	rotation_target += rotation_step
@@ -89,7 +98,8 @@ func grab_part(part: PartBase):
 
 	free_active_part()
 	part.z_index = 999
-	rotation_target  = 0
+	rotation_target = 0
+	bp_cursor.lock_on(part, false)
 
 	var part_parent = part.get_parent()
 	if part_parent is PartBase and !part.is_parts_root:
@@ -114,3 +124,8 @@ func release_part(part: PartBase, speed: Vector2 = Vector2.ZERO):
 	if part.can_be_build():
 		part.build()
 	part.on_release()
+
+
+func _on_Grab_pressed():
+	if active_part:
+		grab_part(active_part)
