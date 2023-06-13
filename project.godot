@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "RayCast2D",
 "class": "BPProbe",
 "language": "GDScript",
 "path": "res://src/ship/blueprint/Probe.gd"

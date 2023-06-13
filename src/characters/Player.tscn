@@ -1,19 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=1]
+[ext_resource path="res://src/ship/blueprint/BlueprintManager.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.0
 height = 10.0
 
 [node name="Player" type="RigidBody2D"]
+pause_mode = 2
 collision_layer = 272
 script = ExtResource( 1 )
-can_be_grabbed = false
+part_visual_size = Vector2( 45, 45 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
+process_mode = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.4
+drag_margin_top = 0.05
+drag_margin_right = 0.4
+drag_margin_bottom = 0.33
 editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="Core" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -23 )
@@ -22,3 +32,7 @@ shape = SubResource( 1 )
 [node name="TempCore" type="Polygon2D" parent="Core"]
 color = Color( 0.733333, 0.733333, 0.733333, 1 )
 polygon = PoolVector2Array( 0, -23, -16, -13, -20, 12, -11, 23, 13, 23, 21, 12, 16, -14 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlueprintManager" parent="CanvasLayer" instance=ExtResource( 2 )]

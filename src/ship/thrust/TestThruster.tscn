@@ -5,7 +5,7 @@
 [ext_resource path="res://NN_test/1x1.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 29, 16 )
+extents = Vector2( 29, 8.5 )
 
 [node name="TestThruster" type="RigidBody2D"]
 collision_layer = 272
@@ -13,33 +13,30 @@ input_pickable = true
 mass = 10.0
 contact_monitor = true
 script = ExtResource( 2 )
-breaking_distance = 7.957
-joints_softness = 0.066
 main_sprite_path = NodePath("1X1")
-max_joint_score = 1.11111e+06
-min_joint_score = 0.001
-thrust_multiplying = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7.5 )
 shape = SubResource( 1 )
 
 [node name="1X1" type="Sprite" parent="."]
-scale = Vector2( 55.9614, 30.7577 )
+position = Vector2( 0, -7.68942 )
+scale = Vector2( 55.9614, 15.3788 )
 texture = ExtResource( 3 )
 
 [node name="Probe" parent="." instance=ExtResource( 1 )]
-position = Vector2( -13, -14 )
+position = Vector2( -23, -15 )
 
 [node name="Probe2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -6 )
+position = Vector2( -12, -15 )
 
 [node name="Probe3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 13, -14 )
+position = Vector2( 24, -15 )
 
 [node name="Probe4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -13, 11 )
+position = Vector2( 0, -15 )
 
 [node name="Probe5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 13, 11 )
+position = Vector2( 12, -15 )
 
 [connection signal="input_event" from="." to="." method="_on_TestThruster_input_event"]

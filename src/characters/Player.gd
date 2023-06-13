@@ -8,7 +8,7 @@ func _enter_tree():
 func _ready():
 	is_parts_root = true
 	can_sleep = false
-	can_be_grabbed = false
+	# can_be_grabbed = false
 
 	camera.make_current()
 

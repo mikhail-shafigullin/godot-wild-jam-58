@@ -1,15 +1,34 @@
+tool
 class_name BPProbe
-extends Area2D
+extends RayCast2D
 
 onready var sprite: Sprite = get_node("sprite")
-onready var area: CollisionShape2D = get_node("shape")
 
 func _ready():
-	var collision_scale:float = area.shape.radius
-	sprite.scale = Vector2(collision_scale, collision_scale)
+	pause_mode = PAUSE_MODE_PROCESS
+	var texture_size: Vector2 = sprite.texture.get_size()
+	var caster_scale:float =  cast_to.length() / max(texture_size.x, texture_size.y) 
+	sprite.position = Vector2(0, cast_to.length()*0.5)
+	sprite.scale = Vector2(caster_scale, caster_scale)
 
 func mark_inactive():
-	sprite.modulate = Color.red
+	sprite.self_modulate = Color.red
 
 func mark_active():
-	sprite.modulate = Color.green
+	sprite.self_modulate = Color.green
+
+func get_overlapping_bodies() -> Array:
+	
+	force_raycast_update()
+	var last_hit = get_collider()
+	var hits: Array = []
+	while last_hit != null:
+		if last_hit:
+			add_exception(last_hit)
+			if last_hit is Node2D:
+				hits.append(last_hit)
+	
+			force_raycast_update()
+			last_hit = get_collider()
+	clear_exceptions()
+	return hits
