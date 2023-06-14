@@ -1,7 +1,7 @@
 extends Node2D
 
 export var target_vp_path : NodePath
-export var wind_dir: Vector2 = Vector2.ZERO
+export var w_offset: Vector2 = Vector2.ZERO
 export var gravity: Vector2 = Vector2(0, -98)
 export var update_length: float = 0.33
 export var update_fps: float = 60
@@ -9,6 +9,7 @@ export var update_on_every_frame: bool = false
 
 onready var sprite_count: int = update_length * update_fps
 
+var uv_to_vp: Vector2 = Vector2(1,1)
 onready var update_time = (1/update_fps)
 var time_past: float
 
@@ -20,6 +21,7 @@ var sprites: Array = []
 var sprite_index: int = 0
 
 func _resize():
+	uv_to_vp = Vector2( 1, 1 ) / vp.get_size()
 	tg_to_vp = vp.get_size() / tg_vp.get_size()
 	for s in sprites:
 		s.scale = tg_to_vp
@@ -32,7 +34,7 @@ func _ready():
 		get_tree().connect("screen_resized", self, "_resize")
 		tg_vp = get_node(target_vp_path)
 		if tg_vp:
-			tg_vp
+			_resize()
 			spawn_sprites()
 			set_process(true)
 
@@ -45,7 +47,7 @@ func _process(delta):
 		sprite.set_position( Vector2.ZERO )
 		
 		for s in sprites:
-			s.set_position( s.position + (gravity + wind_dir)*time_past )
+			s.set_position( s.position + (w_offset)*time_past )
 
 		time_past = 0 
 
