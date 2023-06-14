@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://src/shaders/rainFast.gdshader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/variation = 0.0
+shader_param/o131592_rainRate = 25.0
+shader_param/o131592_rainSpeed = 1.0
+shader_param/o131592_rainAng = 0.0
