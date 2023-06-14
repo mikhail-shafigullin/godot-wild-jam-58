@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://NN_test/Mask.gd" type="Script" id=2]
+
+[node name="Mask" type="Node2D"]
+pause_mode = 1
+physics_interpolation_mode = 1
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
