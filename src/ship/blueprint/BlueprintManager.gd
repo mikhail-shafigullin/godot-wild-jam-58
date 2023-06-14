@@ -1,5 +1,6 @@
 class_name BlueprintManager
 extends Control
+signal bp_paused
 
 onready var bp_cursor = $Cursor
 
@@ -25,8 +26,10 @@ func _process(delta):
 func _on_gui_input(event: InputEvent):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
-			print("pause")
 			get_tree().paused = !get_tree().paused
+			emit_signal("bp_paused")		
+			if get_tree().paused:
+				print("pause")
 	
 	if event is InputEventMouseMotion:
 		if holding_part:
