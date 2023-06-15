@@ -8,7 +8,7 @@ func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
 	var texture_size: Vector2 = sprite.texture.get_size()
 	var caster_scale:float =  cast_to.length() / max(texture_size.x, texture_size.y) 
-	sprite.position = Vector2(0, cast_to.length()*0.5)
+#	sprite.position = Vector2(0, cast_to.length()*0.5)
 	sprite.scale = Vector2(caster_scale, caster_scale)
 
 func mark_inactive():

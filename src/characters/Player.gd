@@ -14,6 +14,6 @@ func _ready():
 
 func _input(event):
 	if(Input.is_action_just_pressed("ui_accept")):
-		for T in parts:
-			if T is Thruster:
-				T.fire()
+		for p in parts:
+			if p is Cannon:
+				p.fire()

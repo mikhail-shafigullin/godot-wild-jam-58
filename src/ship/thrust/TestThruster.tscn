@@ -14,7 +14,6 @@ mass = 82.11
 contact_monitor = true
 script = ExtResource( 2 )
 main_sprite_path = NodePath("1X1")
-thrust_multiplying = 111.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7.5 )
