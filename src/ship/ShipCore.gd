@@ -32,12 +32,14 @@ func slice_part(part: PartBase):
 		return
 	if not part.part_is_connected:
 		return
+	part.on_slice()
 	disconnect_parts(part)
+
 	var parent = part.get_parent()
 	if parent is PartBase:
 		parent.sleeping = false
-		parent.remove_child_part(part)
-
+		if parent.has_part_in_children(part):
+			parent.remove_child_part(part)
 	
 	#reparent to ship core parent
 	var past_global_transform = part.global_transform
@@ -49,7 +51,6 @@ func slice_part(part: PartBase):
 		parent.sleeping = false
 	
 	fix_joints(part)
-	part.on_slice()
  
 func weld_part(part: PartBase, weld_to: PartBase):
 	var temp_transform = part.global_transform
@@ -83,12 +84,12 @@ func fix_joints(part_from: PartBase):
 	part_from.fix_joints_path()
 
 func disconnect_parts(start_from_part: PartBase):
-	if parts.has(start_from_part):
-		for part in start_from_part.children_parts:
-				disconnect_parts(part)
-				_part_disconnect(part)
-		
-		_part_disconnect(start_from_part)
+	# if parts.has(start_from_part):
+	for part in start_from_part.children_parts:
+			disconnect_parts(part)
+			_part_disconnect(part)
+	
+	_part_disconnect(start_from_part)
 
 func connect_parts(start_from_part: PartBase):
 	for part in start_from_part.children_parts:

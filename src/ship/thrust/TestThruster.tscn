@@ -10,10 +10,11 @@ extents = Vector2( 29, 8.5 )
 [node name="TestThruster" type="RigidBody2D"]
 collision_layer = 273
 input_pickable = true
-mass = 10.0
+mass = 82.11
 contact_monitor = true
 script = ExtResource( 2 )
 main_sprite_path = NodePath("1X1")
+thrust_multiplying = 111.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7.5 )

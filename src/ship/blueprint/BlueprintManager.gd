@@ -27,9 +27,9 @@ func _process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("bp_rotate_right"):
-		rotation_target += rotation_step
-	if event.is_action_pressed("bp_rotate_left"):
 		rotation_target -= rotation_step
+	if event.is_action_pressed("bp_rotate_left"):
+		rotation_target += rotation_step
 
 func _on_gui_input(event: InputEvent):
 	if event is InputEventKey:

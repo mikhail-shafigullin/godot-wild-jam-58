@@ -31,7 +31,7 @@ var   custom_popup_menu: Resource   = null
 var part_joints: Array = []
 var is_parts_root: bool
 var part_is_active: bool
-var part_is_connected: bool
+var part_is_connected: bool = false
 
 class PartJoint:
 	var joint_node: Joint2D
@@ -121,7 +121,7 @@ func build():
 	print("build score: %f"% best_score)
 	z_index = best_part.z_index+1
 	best_part.sleeping = false
-	best_part.set_collision_layer_bit(1, false)
+	best_part.set_collision_layer_bit(0, false)
 
 	part_weld(best_part)	
 	_create_joints()
@@ -240,6 +240,7 @@ func on_slice():
 	apply_impulse(Vector2.ZERO, Vector2(randf()*mass,randf()*mass*10))
 
 func on_weld():
+	part_repair()
 	part_is_connected = true
 
 func on_part_disconnect():
@@ -248,7 +249,6 @@ func on_part_disconnect():
 
 func on_part_connect():
 	part_is_active = true
-	part_repair()
 
 func on_repair():
 	health = init_health

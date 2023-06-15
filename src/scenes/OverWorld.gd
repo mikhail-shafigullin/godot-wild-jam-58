@@ -10,6 +10,7 @@ onready var rain_sprite: Sprite = $Camera/Rain
 onready var player: Node2D = $"GameScreen/ViewportControlWorld/World/temp world/Player"
 onready var bp_manager: Control = $GameScreen/UI/BlueprintManager 
 onready var rain_script: ShaderMaterial = rain_sprite.material
+export var shader_uv_scale: Vector3 = Vector3.ONE
 
 func _ready():
 	rain_script.set("shader_param/rainRate", wind_rate)
@@ -31,7 +32,7 @@ func _on_pause():
 		mem_gr = gravity_direction
 		wind_direction = Vector2.ZERO
 		gravity_direction = Vector2.ZERO
-		rain_script.set("shader_param/rainSpeed", 3)
+		rain_script.set("shader_param/rainSpeed", 0)
 		#rain_sprite.rotation = deg2rad(180)
 		set_process(false)
 	else:
@@ -39,22 +40,39 @@ func _on_pause():
 		gravity_direction = mem_gr
 		set_process(true)
 
-var sprite_tr
 func _on_resize():
-	rain_sprite.scale = get_viewport().get_size() / rain_sprite.texture.get_size() * 3
-	sprite_tr =  (1 / rain_sprite.transform.get_scale().y) * rain_script.get("shader_param/uv1_scale").y * 2.5
+	var vp_size = get_viewport().get_size()
+	rain_sprite.scale = Vector2.ONE * vp_size.y * 2.5
+	rain_script.set("shader_param/uv1_scale", shader_uv_scale * 2.5)
 	
+export var rain_fps: int = 60
+export var rain_speed_fps: int = 2
+onready var rain_frame_time: float = 1/ float(rain_fps)
+onready var rain_speed_frame_time: float = 1/ float(rain_speed_fps)
+
+var rain_time_past: float
+var rain_speed_time_past: float
 func _process(delta):
+	rain_time_past += delta
+	rain_speed_fps += delta
+	
 	var player_vel2: Vector2 = player.linear_velocity*Vector2(1,-1)
 	var player_vel3: Vector3 = Vector3(player_vel2.x, -player_vel2.y, 0)
 	var w_offset: Vector2 = ( wind_direction + gravity_direction)
-	var w_speed = (w_offset - player_vel2).length()
-	#var ang = w_offset.angle()
-	#rain_sprite.rotation = -ang - PI*0.5
-	uv_offset -= (Vector3(w_offset.x, w_offset.y, 0) + player_vel3) * delta * sprite_tr
-	rain_script.set("shader_param/uv1_offset", uv_offset)
-	rain_script.set("shader_param/rainSpeed", w_speed * 0.01)
-	#rain_script.set("shader_param/rainRate", wind_rate)
+
+	if (rain_time_past >= rain_frame_time):
+		uv_offset += (Vector3(w_offset.x, w_offset.y, 0) + player_vel3) * rain_time_past * 0.004 * shader_uv_scale.y
+		rain_time_past = 0.0
+	
+	if (rain_speed_fps >= rain_speed_frame_time):
+		var w_speed = (w_offset - player_vel2).length()
+		# var ang = (w_offset - player_vel2).angle()
+		# rain_sprite.rotation = ang - PI*1.5
+		rain_script.set("shader_param/uv1_offset", uv_offset)
+		rain_script.set("shader_param/rainSpeed", w_speed * 0.01)
+		#rain_script.set("shader_param/rainRate", wind_rate)
+		rain_speed_time_past = 0.0
+
 
 	world_mask.w_offset = w_offset - player_vel2
 
