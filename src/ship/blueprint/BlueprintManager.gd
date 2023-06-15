@@ -111,7 +111,7 @@ func grab_part(part: PartBase):
 
 	free_active_part()
 	part.z_index = 999
-	rotation_target = part.global_rotation_degrees
+	rotation_target = (int(part.global_rotation_degrees) / int(rotation_step)) * rotation_step
 	bp_cursor.lock_on(part, false)
 
 	var part_parent = part.get_parent()
