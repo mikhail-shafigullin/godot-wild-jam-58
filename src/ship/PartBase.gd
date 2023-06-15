@@ -15,7 +15,7 @@ export var armor: float = 1
 export var armor_weak: float = -1
 export var breaking_distance: float = 10
 export var can_be_grabbed: bool = true
-export var joints_softness: float = 0.1
+export var joints_softness: float = 0.0
 export var part_visual_size: Vector2 = Vector2(10,10)
 export(NodePath) var main_sprite_path 
 export(Texture) var item_icon
@@ -247,6 +247,11 @@ func on_bp_activate():
 
 func on_bp_deactivate():
 	pass
+
+func on_taking_damage():
+	if health < 0:
+		part_slice()
+	
 
 func _update_joints():
 	for j in part_joints:

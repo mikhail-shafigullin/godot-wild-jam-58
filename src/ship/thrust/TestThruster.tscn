@@ -38,5 +38,3 @@ position = Vector2( 0, -15 )
 
 [node name="Probe5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 12, -15 )
-
-[connection signal="input_event" from="." to="." method="_on_TestThruster_input_event"]
