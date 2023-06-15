@@ -26,7 +26,7 @@ func unplug_part(part: PartBase, ctr: PartController):
 
 # slice will keep children and remove from parent
 func slice_part(part: PartBase):
-	if part == self:
+	if part == self or !parts.has(part):
 		print('game over')
 		return
 	disconnect_parts(part)
