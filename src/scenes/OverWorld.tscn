@@ -8,7 +8,7 @@
 [ext_resource path="res://src/scenes/OverWorld.gd" type="Script" id=7]
 
 [sub_resource type="ViewportTexture" id=1]
-flags = 97
+flags = 77
 viewport_path = NodePath("GameScreen/ViewportControlMask/WorldMask")
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -24,7 +24,7 @@ shader_param/texture_1 = SubResource( 1 )
 [node name="OverWorld" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 7 )
-wind_direction = Vector2( 111, 0 )
+wind_rate = 44.0
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
@@ -32,6 +32,9 @@ wind_direction = Vector2( 111, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="World" type="Viewport" parent="GameScreen/ViewportControlWorld"]
 size = Vector2( 1024, 600 )
@@ -56,6 +59,9 @@ update_scale = false
 margin_left = -256.0
 margin_top = -254.0
 margin_bottom = 2.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="WorldMask" type="Viewport" parent="GameScreen/ViewportControlMask"]
 pause_mode = 1
@@ -100,6 +106,9 @@ drag_margin_right = 0.4
 drag_margin_bottom = 0.33
 editor_draw_limits = true
 editor_draw_drag_margin = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Rain" type="Sprite" parent="Camera"]
 pause_mode = 1
@@ -109,10 +118,23 @@ position = Vector2( -4, 26 )
 rotation = -3.14159
 scale = Vector2( 2048, 2048 )
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [editable path="GameScreen/ViewportControlWorld/World/temp world"]
 [editable path="GameScreen/ViewportControlWorld/World/temp world/Player"]
 [editable path="GameScreen/ViewportControlWorld/World/temp world/BlueZ-5"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/BlueZ-6"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/BlueZ-7"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/BlueZ-8"]
 [editable path="GameScreen/ViewportControlWorld/World/temp world/GreeZ5"]
 [editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ0"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ1"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ2"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ3"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ4"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ5"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ6"]
+[editable path="GameScreen/ViewportControlWorld/World/temp world/RedZ7"]
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]

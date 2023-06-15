@@ -1,5 +1,6 @@
 class_name PartBase
 extends RigidBody2D
+signal on_best_part_change 
 
 # Disconnecting / Connecting 		will NOT change ship structure
 # Slice 		/ 	Weld 			will change ship structure
@@ -10,7 +11,6 @@ onready var core = State.player
 
 export var init_health: float = 100
 onready var health = init_health
-export var part_mass: float = 1
 export var armor: float = 1
 export var armor_weak: float = -1
 export var breaking_distance: float = 10
@@ -21,10 +21,17 @@ export(NodePath) var main_sprite_path
 export(Texture) var item_icon
 onready var main_sprite: Sprite 
 
+const popup_actions: Resource		= preload("res://src/interface/pop_faces/PUFPartActions.tscn")
+var   custom_popup_actions: Resource = null
+const popup_menu_face: Resource 	= null
+var   custom_popup_menu: Resource   = null
+
 # array of PartJoints
 # Joins will connect only to parent
 var part_joints: Array = []
 var is_parts_root: bool
+var part_is_active: bool
+var part_is_connected: bool
 
 class PartJoint:
 	var joint_node: Joint2D
@@ -47,7 +54,7 @@ class PartController:
 var input_controller: PartController = PartController.new()
 
 func _init():
-	set_collision_layer_bit(0, false)
+	# set_collision_layer_bit(0, false)
 	set_collision_layer_bit(8, true)
 	#set_collision_mask_bit(8, true)
 
@@ -62,7 +69,8 @@ func _physics_process(delta):
 
 # Base functions
 func part_slice():
-	core.slice_part(self) 
+	if part_is_connected:
+		core.slice_part(self) 
 
 func part_weld(to_part: PartBase):
 	core.weld_part(self, to_part)
@@ -113,6 +121,7 @@ func build():
 	print("build score: %f"% best_score)
 	z_index = best_part.z_index+1
 	best_part.sleeping = false
+	best_part.set_collision_layer_bit(1, false)
 
 	part_weld(best_part)	
 	_create_joints()
@@ -125,9 +134,11 @@ func _find_probes():
 			probes.append(c)
 			c.hide()
 
+var old_best_part: PartBase
 func _scan_probes():
 	var nodes_probes: 		Dictionary = {}
 	var nodes_score:		Dictionary = {}
+	old_best_part = best_part
 	best_part = null
 	active_probes = []
 
@@ -152,6 +163,9 @@ func _scan_probes():
 
 	for probe in active_probes:
 		probe.mark_active()
+	
+	if old_best_part != best_part:
+		emit_signal("on_best_part_change", best_part)
 
 func part_score_in_range(score: float, _part: PartBase = self) -> bool:
 	return score > _part.min_joint_score and score < _part.max_joint_score
@@ -218,16 +232,22 @@ func get_part_size() -> Vector2:
 	
 # Callbacks
 func on_slice():
+	part_is_connected = false
 	for j in part_joints:
 		if j.joint_node:
 			j.joint_node.queue_free()
 	part_joints.clear()
-	apply_impulse(Vector2.ZERO, Vector2(randf()*mass,randf()*mass))
+	apply_impulse(Vector2.ZERO, Vector2(randf()*mass,randf()*mass*10))
+
+func on_weld():
+	part_is_connected = true
 
 func on_part_disconnect():
+	part_is_active = false
 	health = 0
 
 func on_part_connect():
+	part_is_active = true
 	part_repair()
 
 func on_repair():
@@ -237,16 +257,25 @@ func on_click():
 	pass
 
 func on_grab():
+	set_collision_layer_bit(0, false)
+	set_collision_mask_bit(0, false)
 	show_probes()
 
 func on_release():
+	set_collision_mask_bit(0, true)
 	hide_probes()
 
 func on_bp_activate():
-	pass
+	modulate = Color.lightseagreen
 
 func on_bp_deactivate():
-	pass
+	modulate = Color.white
+
+func on_bp_highlight_start():
+	modulate = Color.lightblue
+
+func on_bp_highlight_end():
+	modulate = Color.white
 
 func on_taking_damage():
 	if health < 0:
@@ -269,3 +298,9 @@ func fix_joints_path():
 	for joint in part_joints:
 		joint.joint_node.node_a = new_a
 		joint.joint_node.node_b = new_b
+
+func get_popup_actions():
+	if custom_popup_actions:
+		return custom_popup_actions.instance()
+	else:
+		return popup_actions.instance()

@@ -8,7 +8,7 @@
 extents = Vector2( 29, 8.5 )
 
 [node name="TestThruster" type="RigidBody2D"]
-collision_layer = 272
+collision_layer = 273
 input_pickable = true
 mass = 10.0
 contact_monitor = true
@@ -18,23 +18,44 @@ main_sprite_path = NodePath("1X1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7.5 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="1X1" type="Sprite" parent="."]
 position = Vector2( 0, -7.68942 )
 scale = Vector2( 55.9614, 15.3788 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe" parent="." instance=ExtResource( 1 )]
 position = Vector2( -23, -15 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe2" parent="." instance=ExtResource( 1 )]
 position = Vector2( -12, -15 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 24, -15 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -15 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 12, -15 )
+__meta__ = {
+"_edit_lock_": true
+}

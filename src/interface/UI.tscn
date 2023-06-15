@@ -19,9 +19,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="WindowDialog" type="WindowDialog" parent="."]
+[node name="PopUp" type="WindowDialog" parent="."]
 visible = true
-margin_left = 272.0
-margin_top = 191.0
-margin_right = 493.0
-margin_bottom = 355.0
+margin_right = 48.0
+margin_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+resizable = true

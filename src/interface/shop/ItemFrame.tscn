@@ -1,17 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://src/interface/shop/ItemFrame.gd" type="Script" id=2]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.717647, 0.290196, 0.290196, 1 )
 
 [node name="ItemFrame" type="Panel"]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -33,14 +29,24 @@ margin_right = 128.0
 margin_bottom = 128.0
 
 [node name="BtnBuy" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_right = 106.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "buy"
-
-[node name="BtnInfo" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 110.0
 margin_right = 128.0
 margin_bottom = 20.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "buy"
+
+[node name="BtnInfo" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -27.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 24.0
+focus_mode = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
 text = "?"
+
+[connection signal="pressed" from="BtnInfo" to="." method="_on_BtnInfo_pressed"]

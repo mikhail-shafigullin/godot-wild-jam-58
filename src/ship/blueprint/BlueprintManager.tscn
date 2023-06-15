@@ -29,7 +29,7 @@ interpolation_speed = 0.1
 margin_right = 148.0
 margin_bottom = 28.0
 rect_rotation = 0.034269
-mouse_filter = 2
+mouse_filter = 0
 custom_constants/separation = 16
 alignment = 1
 
@@ -44,18 +44,21 @@ text = "grab"
 
 [node name="Controls" type="Button" parent="ToolPanel"]
 margin_left = 55.0
-margin_right = 93.0
+margin_right = 113.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "actions"
 
 [node name="Menu" type="Button" parent="ToolPanel"]
-margin_left = 109.0
-margin_right = 148.0
+margin_left = 129.0
+margin_right = 178.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "menu"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="tween_all_completed" from="Cursor/Tween" to="Cursor" method="_on_tween_all_completed"]
 [connection signal="pressed" from="ToolPanel/Grab" to="." method="_on_Grab_pressed"]
+[connection signal="pressed" from="ToolPanel/Controls" to="." method="_on_Controls_pressed"]

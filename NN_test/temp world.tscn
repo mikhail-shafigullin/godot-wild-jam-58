@@ -12,17 +12,47 @@ extents = Vector2( 513.5, 52 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 508, 527 )
-mass = 13.92
+mass = 279.24
 breaking_distance = 3.0
 
 [node name="BlueZ-5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 356, 472 )
+position = Vector2( 366, 473 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
 thrust_multiplying = 101.0
 
 [node name="1X1" parent="BlueZ-5" index="1"]
+self_modulate = Color( 0.435294, 0.435294, 1, 1 )
+
+[node name="BlueZ-6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 335, 469 )
+rotation = 1.60254
+z_index = -5
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="BlueZ-6" index="1"]
+self_modulate = Color( 0.435294, 0.435294, 1, 1 )
+
+[node name="BlueZ-7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 597, 475 )
+rotation = 1.60254
+z_index = -5
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="BlueZ-7" index="1"]
+self_modulate = Color( 0.435294, 0.435294, 1, 1 )
+
+[node name="BlueZ-8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 566, 471 )
+rotation = 1.60254
+z_index = -5
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="BlueZ-8" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 
 [node name="GreeZ5" parent="." instance=ExtResource( 5 )]
@@ -35,12 +65,75 @@ thrust_multiplying = 101.0
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 
 [node name="RedZ0" parent="." instance=ExtResource( 5 )]
-position = Vector2( 292, 517 )
+position = Vector2( 669, 389 )
 rotation = -0.676792
 mass = 57.27
 thrust_multiplying = 101.0
 
 [node name="1X1" parent="RedZ0" index="1"]
+self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+
+[node name="RedZ1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 645, 361 )
+rotation = -0.676792
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="RedZ1" index="1"]
+self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+
+[node name="RedZ2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 632, 332 )
+rotation = -0.676792
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="RedZ2" index="1"]
+self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+
+[node name="RedZ3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 608, 304 )
+rotation = -0.676792
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="RedZ3" index="1"]
+self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+
+[node name="RedZ4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 607, 412 )
+rotation = -0.676792
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="RedZ4" index="1"]
+self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+
+[node name="RedZ5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 583, 384 )
+rotation = -0.676792
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="RedZ5" index="1"]
+self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+
+[node name="RedZ6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 570, 355 )
+rotation = -0.676792
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="RedZ6" index="1"]
+self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+
+[node name="RedZ7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 546, 327 )
+rotation = -0.676792
+mass = 57.27
+thrust_multiplying = 101.0
+
+[node name="1X1" parent="RedZ7" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 
 [node name="ground" type="StaticBody2D" parent="."]
@@ -56,9 +149,27 @@ scale = Vector2( 1015.5, 40 )
 texture = ExtResource( 9 )
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 511, 454 )
+position = Vector2( 695, 78 )
+scale = Vector2( 7.5625, 5.8125 )
 texture = ExtResource( 1 )
+offset = Vector2( 7.62939e-06, -9.53674e-07 )
+
+[node name="Icon2" type="Sprite" parent="."]
+position = Vector2( -36.9999, 60 )
+scale = Vector2( 7.5625, 5.8125 )
+texture = ExtResource( 1 )
+offset = Vector2( 7.62939e-06, -9.53674e-07 )
 
 [editable path="BlueZ-5"]
+[editable path="BlueZ-6"]
+[editable path="BlueZ-7"]
+[editable path="BlueZ-8"]
 [editable path="GreeZ5"]
 [editable path="RedZ0"]
+[editable path="RedZ1"]
+[editable path="RedZ2"]
+[editable path="RedZ3"]
+[editable path="RedZ4"]
+[editable path="RedZ5"]
+[editable path="RedZ6"]
+[editable path="RedZ7"]

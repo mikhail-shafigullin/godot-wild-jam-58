@@ -9,9 +9,10 @@ func _ready():
 	pass
 
 func _part_disconnect(part: PartBase):
-	var pt_ctrl = parts.get(part) 
-	if parts.erase(part):
-		unplug_part(part, pt_ctrl)
+	if parts.has(part):
+		var pt_ctrl = parts.get(part) 
+		if parts.erase(part):
+			unplug_part(part, pt_ctrl)
 
 func _part_connect(part: PartBase):
 	var pt_ctrl = part.input_controller
@@ -26,8 +27,10 @@ func unplug_part(part: PartBase, ctr: PartController):
 
 # slice will keep children and remove from parent
 func slice_part(part: PartBase):
-	if part == self or !parts.has(part):
+	if part == self:
 		print('game over')
+		return
+	if not part.part_is_connected:
 		return
 	disconnect_parts(part)
 	var parent = part.get_parent()
@@ -35,7 +38,6 @@ func slice_part(part: PartBase):
 		parent.sleeping = false
 		parent.remove_child_part(part)
 
-	part.on_slice()
 	
 	#reparent to ship core parent
 	var past_global_transform = part.global_transform
@@ -47,6 +49,7 @@ func slice_part(part: PartBase):
 		parent.sleeping = false
 	
 	fix_joints(part)
+	part.on_slice()
  
 func weld_part(part: PartBase, weld_to: PartBase):
 	var temp_transform = part.global_transform
@@ -57,6 +60,7 @@ func weld_part(part: PartBase, weld_to: PartBase):
 	
 	weld_to.sleeping = false
 	part.sleeping = false
+	part.on_weld()
 	
 	if part_has_access_to_core(part):
 		connect_parts(part)
@@ -79,11 +83,12 @@ func fix_joints(part_from: PartBase):
 	part_from.fix_joints_path()
 
 func disconnect_parts(start_from_part: PartBase):
-	for part in start_from_part.children_parts:
-		disconnect_parts(part)
-		_part_disconnect(part)
-
-	_part_disconnect(start_from_part)
+	if parts.has(start_from_part):
+		for part in start_from_part.children_parts:
+				disconnect_parts(part)
+				_part_disconnect(part)
+		
+		_part_disconnect(start_from_part)
 
 func connect_parts(start_from_part: PartBase):
 	for part in start_from_part.children_parts:

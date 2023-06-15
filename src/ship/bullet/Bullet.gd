@@ -29,7 +29,8 @@ func _on_Bullet_body_entered(body):
 
 func _on_ActivationTimer_timeout():
 	# $CollisionShape2D.set_deferred("disabled", false)
-	connect('body_entered', self, '_on_Bullet_body_entered')
+	if not is_connected("body_entered", self, "_on_Bullet_body_entered"):
+		connect('body_entered', self, '_on_Bullet_body_entered')
 
 
 func _on_Bullet_body_exited(body):

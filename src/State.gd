@@ -4,6 +4,7 @@ extends Node
 var sceneManager: Node2D;
 var player: ShipCore;
 var bp_manager: BlueprintManager;
+var ui: CanvasLayer;
 
 # func _ready():
 # 	get_viewport().transparent_bg = true
