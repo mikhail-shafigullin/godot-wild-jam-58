@@ -170,7 +170,7 @@ const float p_o9144_scale_x = 0.500000000;
 const float p_o9149_sides = 1.000000000;
 const float p_o9149_edge = 0.250000000;
 vec4 o144424_input_in(vec2 uv, float _seed_variation_) {
-float o9149_0_1_f = shape_circle((transform2((uv), vec2((cos(elapsed_time*rainSpeed+elapsed_time*0.1)*0.08)*(2.0*1.0-1.0), (sin(elapsed_time*rainSpeed+elapsed_time)*0.02)*(2.0*1.0-1.0)), p_o9144_rotate*0.01745329251*(2.0*1.0-1.0), vec2(p_o9144_scale_x*(2.0*1.0-1.0), (0.5 + rainSpeed * 0.3)*(2.0*1.0-1.0)))), p_o9149_sides, (rainRate / 200.0)*1.0, p_o9149_edge*1.0);
+float o9149_0_1_f = shape_circle((transform2((uv), vec2((cos(elapsed_time*0.1)*0.08)*(2.0*1.0-1.0), (sin(elapsed_time)*0.02)*(2.0*1.0-1.0)), p_o9144_rotate*0.01745329251*(2.0*1.0-1.0), vec2(p_o9144_scale_x*(2.0*1.0-1.0), (0.5 + rainSpeed * 0.3)*(2.0*1.0-1.0)))), p_o9149_sides, (rainRate / 200.0)*1.0, p_o9149_edge*1.0);
 vec4 o9144_0_1_rgba = vec4(vec3(o9149_0_1_f), 1.0);
 return o9144_0_1_rgba;
 }
