@@ -32,20 +32,21 @@ func set_panel_position():
 	tool_panel.rect_global_position = rect_global_position + rect_size + tool_panel_offset
 
 func _process(delta):
-	pos_offset = State.player.get_canvas_transform().origin - get_canvas_transform().origin
-	if tool_panel.visible:
-		set_panel_position()
-	if follow:
-		if follow_target:
-			if follow_target is PartBase:
-				set_cursor_position(follow_target.get_part_global_position(),
-									follow_target.get_part_global_rotation())
+	if State.player:
+		pos_offset = State.player.get_canvas_transform().origin - get_canvas_transform().origin
+		if tool_panel.visible:
+			set_panel_position()
+		if follow:
+			if follow_target:
+				if follow_target is PartBase:
+					set_cursor_position(follow_target.get_part_global_position(),
+										follow_target.get_part_global_rotation())
+				else:
+					set_cursor_position(follow_target.global_position,
+										follow_target.global_rotation_degrees)
 			else:
-				set_cursor_position(follow_target.global_position,
-									follow_target.global_rotation_degrees)
-		else:
-			set_cursor_position(root_scene.get_global_mouse_position(),
-								root_scene.global_rotation_degrees)
+				set_cursor_position(root_scene.get_global_mouse_position(),
+									root_scene.global_rotation_degrees)
 								
 func lock_on(node, activate = true):
 	if activate:

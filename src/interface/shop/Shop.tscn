@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/themes/menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/interface/shop/ItemFrame.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/interface/shop/Shop.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.717647, 0.290196, 0.290196, 1 )
@@ -11,7 +12,35 @@ margin_right = 304.0
 rect_min_size = Vector2( 200, 200 )
 mouse_filter = 2
 input_pass_on_modal_close_click = false
-theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Money" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -76.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 64, 32 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Mp" type="Label" parent="Money"]
+margin_right = 24.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+text = "MP:"
+
+[node name="Number" type="Label" parent="Money"]
+margin_left = 28.0
+margin_right = 76.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
 
 [node name="ShopHB" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -35,7 +64,128 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 tab_align = 0
 
+[node name="Struct" type="Control" parent="ShopHB/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="ScrollContainer" parent="ShopHB/Container/Struct"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -8.0
+margin_bottom = -36.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="StructGrid" type="GridContainer" parent="ShopHB/Container/Struct/GridContainer"]
+margin_right = 276.0
+margin_bottom = 788.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Control" parent="ShopHB/Container/Struct/GridContainer/StructGrid" instance=ExtResource( 2 )]
+margin_right = 136.0
+
+[node name="Control2" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_left = 140.0
+margin_right = 276.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control3" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_top = 132.0
+margin_right = 136.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control4" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_left = 140.0
+margin_top = 132.0
+margin_right = 276.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control5" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_top = 264.0
+margin_right = 136.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control6" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_left = 140.0
+margin_top = 264.0
+margin_right = 276.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control7" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_top = 396.0
+margin_right = 136.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control8" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_left = 140.0
+margin_top = 396.0
+margin_right = 276.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control9" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_top = 528.0
+margin_right = 136.0
+margin_bottom = 656.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control10" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_left = 140.0
+margin_top = 528.0
+margin_right = 276.0
+margin_bottom = 656.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control11" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_top = 660.0
+margin_right = 136.0
+margin_bottom = 788.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control12" type="Panel" parent="ShopHB/Container/Struct/GridContainer/StructGrid"]
+margin_left = 140.0
+margin_top = 660.0
+margin_right = 276.0
+margin_bottom = 788.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
 [node name="Thrust" type="Control" parent="ShopHB/Container"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -52,21 +202,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="ItemsGrid" type="GridContainer" parent="ShopHB/Container/Thrust/GridContainer"]
-margin_right = 276.0
+[node name="TrustGrid" type="GridContainer" parent="ShopHB/Container/Thrust/GridContainer"]
+margin_right = 288.0
 margin_bottom = 788.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="Control" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_right = 136.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control2" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control2" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_left = 140.0
 margin_right = 276.0
 margin_bottom = 128.0
@@ -74,7 +224,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control3" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control3" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_top = 132.0
 margin_right = 136.0
 margin_bottom = 260.0
@@ -82,7 +232,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control4" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control4" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_left = 140.0
 margin_top = 132.0
 margin_right = 276.0
@@ -91,7 +241,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control5" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control5" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_top = 264.0
 margin_right = 136.0
 margin_bottom = 392.0
@@ -99,7 +249,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control6" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control6" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_left = 140.0
 margin_top = 264.0
 margin_right = 276.0
@@ -108,7 +258,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control7" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control7" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_top = 396.0
 margin_right = 136.0
 margin_bottom = 524.0
@@ -116,7 +266,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control8" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control8" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_left = 140.0
 margin_top = 396.0
 margin_right = 276.0
@@ -125,7 +275,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control9" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control9" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_top = 528.0
 margin_right = 136.0
 margin_bottom = 656.0
@@ -133,7 +283,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control10" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control10" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_left = 140.0
 margin_top = 528.0
 margin_right = 276.0
@@ -142,7 +292,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control11" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control11" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_top = 660.0
 margin_right = 136.0
 margin_bottom = 788.0
@@ -150,7 +300,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control12" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/ItemsGrid"]
+[node name="Control12" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
 margin_left = 140.0
 margin_top = 660.0
 margin_right = 276.0
@@ -177,21 +327,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="ItemsGrid" type="GridContainer" parent="ShopHB/Container/Collect/GridContainer"]
+[node name="CollectGrid" type="GridContainer" parent="ShopHB/Container/Collect/GridContainer"]
 margin_right = 288.0
 margin_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="Control" type="Panel" parent="ShopHB/Container/Collect/GridContainer/ItemsGrid"]
+[node name="Control" type="Panel" parent="ShopHB/Container/Collect/GridContainer/CollectGrid"]
 margin_right = 159.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control2" type="Panel" parent="ShopHB/Container/Collect/GridContainer/ItemsGrid"]
+[node name="Control2" type="Panel" parent="ShopHB/Container/Collect/GridContainer/CollectGrid"]
 margin_left = 163.0
 margin_right = 322.0
 margin_bottom = 128.0
@@ -199,7 +349,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control3" type="Panel" parent="ShopHB/Container/Collect/GridContainer/ItemsGrid"]
+[node name="Control3" type="Panel" parent="ShopHB/Container/Collect/GridContainer/CollectGrid"]
 margin_top = 132.0
 margin_right = 159.0
 margin_bottom = 260.0
@@ -207,7 +357,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control4" type="Panel" parent="ShopHB/Container/Collect/GridContainer/ItemsGrid"]
+[node name="Control4" type="Panel" parent="ShopHB/Container/Collect/GridContainer/CollectGrid"]
 margin_left = 163.0
 margin_top = 132.0
 margin_right = 322.0
@@ -216,7 +366,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control5" type="Panel" parent="ShopHB/Container/Collect/GridContainer/ItemsGrid"]
+[node name="Control5" type="Panel" parent="ShopHB/Container/Collect/GridContainer/CollectGrid"]
 margin_top = 264.0
 margin_right = 159.0
 margin_bottom = 392.0
@@ -242,21 +392,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="ItemsGrid" type="GridContainer" parent="ShopHB/Container/Util/GridContainer"]
+[node name="UtilGrid" type="GridContainer" parent="ShopHB/Container/Util/GridContainer"]
 margin_right = 288.0
 margin_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="Control" type="Panel" parent="ShopHB/Container/Util/GridContainer/ItemsGrid"]
+[node name="Control" type="Panel" parent="ShopHB/Container/Util/GridContainer/UtilGrid"]
 margin_right = 159.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control2" type="Panel" parent="ShopHB/Container/Util/GridContainer/ItemsGrid"]
+[node name="Control2" type="Panel" parent="ShopHB/Container/Util/GridContainer/UtilGrid"]
 margin_left = 163.0
 margin_right = 322.0
 margin_bottom = 128.0
@@ -264,7 +414,7 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="Control3" type="Panel" parent="ShopHB/Container/Util/GridContainer/ItemsGrid"]
+[node name="Control3" type="Panel" parent="ShopHB/Container/Util/GridContainer/UtilGrid"]
 margin_top = 132.0
 margin_right = 159.0
 margin_bottom = 260.0
@@ -280,32 +430,3 @@ margin_bottom = 600.835
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-
-[node name="Money" type="HBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -64.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 64, 32 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Mp" type="Label" parent="Money"]
-margin_right = 24.0
-margin_bottom = 32.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-text = "MP:"
-valign = 1
-
-[node name="Number" type="Label" parent="Money"]
-margin_left = 28.0
-margin_right = 64.0
-margin_bottom = 32.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-align = 1
-valign = 1
-autowrap = true
-clip_text = true

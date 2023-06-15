@@ -18,6 +18,7 @@ export var can_be_grabbed: bool = true
 export var joints_softness: float = 0.1
 export var part_visual_size: Vector2 = Vector2(10,10)
 export(NodePath) var main_sprite_path 
+export(Texture) var item_icon
 onready var main_sprite: Sprite 
 
 # array of PartJoints
