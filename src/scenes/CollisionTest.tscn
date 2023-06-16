@@ -25,7 +25,6 @@ position = Vector2( 323, 174 )
 rotation = 3.15312
 z_index = -5
 mass = 57.27
-thrust_multiplying = 101.0
 
 [node name="1X1" parent="BlueZ-5" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -35,7 +34,6 @@ position = Vector2( 551, 119 )
 rotation = 3.15312
 z_index = -5
 mass = 57.27
-thrust_multiplying = 101.0
 
 [node name="1X1" parent="BlueZ-6" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )

@@ -17,9 +17,9 @@ __meta__ = {
 }
 
 [node name="Save" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="Shop" parent="." instance=ExtResource( 3 )]
-margin_left = 0.0
 __meta__ = {
 "_edit_lock_": true
 }

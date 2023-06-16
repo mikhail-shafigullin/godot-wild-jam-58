@@ -1,6 +1,6 @@
 extends Button
 
-var scancode: int;
+var scancode: int = -1;
 
 func _pressed():
 	var binder = State.ui.binder_dialog

@@ -156,6 +156,21 @@ func _on_Grab_pressed():
 		grab_part(active_part)
 
 
+var waiting_for_part: PartBase
+var wait_face
 func _on_Controls_pressed():
 	if active_part:
-		State.ui.show_popup(active_part.get_popup_actions(), {})
+		wait_face = active_part.get_popup_actions()
+		State.ui.show_popup(wait_face, {})
+		wait_face.setup_for(active_part.action_controller)
+		State.ui.popup.connect("visibility_changed", self, "on_popup_close")
+		waiting_for_part = active_part
+
+func on_popup_close():
+	if waiting_for_part:
+		State.ui.popup.disconnect("visibility_changed", self, "on_popup_close")
+		waiting_for_part.action_controller = wait_face.get_controller()
+		wait_face.queue_free()
+		waiting_for_part.part_reconnect()
+		
+	

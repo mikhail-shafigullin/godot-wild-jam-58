@@ -49,22 +49,9 @@ class PartJoint:
 # Array of PartBase children
 var children_parts: Array = []
 
-class ActionController:
-	# [ { ActionType.CALL : [0 keycode, 1 [func_name(s)] }, ... ]
-		# [0 function = on_press, # 1 (optional) function = on_release]
-
-	# [ { ActionType.SET  : [0   var  , 1  value   ] }, ... ]
-	enum ActionType { CALL, SET}
-	var data: Array = [] 
 
 var action_controller: ActionController = ActionController.new()
 
-func bind_action(scancode: int, function_press: String, function_release = null):
-	var functions: Array = [function_press]
-	if function_release: functions.append(function_release);
-
-	action_controller.data.append_array( [{ ActionController.ActionType.CALL :
-									 [scancode, functions] }])
 
 func _init():
 	# set_collision_layer_bit(0, false)
@@ -96,6 +83,11 @@ func part_disconnect():
 
 func part_repair():
 	core.repair_part(self)
+
+func part_reconnect():
+	if part_is_connected:
+		part_disconnect_input()
+		part_connect_input()	
 
 # Blueprint functions
 var probes: Array
@@ -183,14 +175,14 @@ func _scan_probes():
 func part_score_in_range(score: float, _part: PartBase = self) -> bool:
 	return score > _part.min_joint_score and score < _part.max_joint_score
 	
-func _score_probes(pos:Vector2, probes: Array) -> float:
+func _score_probes(pos:Vector2, _probes: Array) -> float:
 	var sum = Vector2()
-	for probe in probes:
+	for probe in _probes:
 		sum += probe.global_position
-	var avr_pos: Vector2 = sum / probes.size()
+	var avr_pos: Vector2 = sum / _probes.size()
 	
 	var dist: float = pos.distance_to(avr_pos)
-	return probes.size() + (1 - 1/(ceil(dist) + 0.01))
+	return _probes.size() + (1 - 1/(ceil(dist) + 0.01))
 
 func _create_joints():
 	for probe in active_probes:
@@ -332,14 +324,24 @@ func part_connect_input():
 func part_disconnect_input():
 	clear_action_call()
 
+var holding_keys: Dictionary = {}
 func _input(event):
 	if event is InputEventKey:
 		if (input_map.has(event.scancode)):
 			if event.pressed:
-				var func_name = input_map[event.scancode].get("pressed")
+				if  not holding_keys.has(event.scancode):
+					holding_keys[event.scancode] = true
+					var func_name = input_map[event.scancode].get("pressed")
+					if func_name:
+						if has_method(func_name):
+							call(func_name)
+			else:
+				holding_keys.erase(event.scancode)
+				var func_name = input_map[event.scancode].get("released")
 				if func_name:
 					if has_method(func_name):
 						call(func_name)
+				
 
 
 # [0   "var"  ,  "value"   ]
