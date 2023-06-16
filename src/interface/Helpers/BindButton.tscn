@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/interface/Helpers/BindButton.gd" type="Script" id=1]
+
+[node name="BindButton" type="Button"]
+process_priority = -178
+margin_right = 42.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 42, 42 )
+focus_mode = 0
+shortcut_in_tooltip = false
+button_mask = 3
+enabled_focus_mode = 0
+text = "[KEY]"
+script = ExtResource( 1 )

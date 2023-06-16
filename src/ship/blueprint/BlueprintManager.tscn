@@ -30,8 +30,9 @@ margin_right = 148.0
 margin_bottom = 28.0
 rect_rotation = 0.034269
 mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_constants/separation = 16
-alignment = 1
 
 [node name="Grab" type="Button" parent="ToolPanel"]
 margin_right = 39.0

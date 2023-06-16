@@ -140,7 +140,7 @@ func release_part(part: PartBase):
 	holding_part.disconnect('on_best_part_change', self, "_highlight_new_part")
 	holding_part = null
 	if not get_tree().paused:
-		part.apply_impulse(Vector2.ZERO, Input.get_last_mouse_speed()*part.mass*0.25)
+		part.apply_impulse(Vector2.ZERO, Vector2.ONE * randf()*part.mass*16)
 
 	if (part.best_part):
 		print("build target is %s"%part.best_part.name)

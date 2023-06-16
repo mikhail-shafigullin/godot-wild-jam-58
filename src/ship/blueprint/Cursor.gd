@@ -10,7 +10,7 @@ var follow: bool = true
 var follow_target: Node2D
 onready var root_scene = State.get_root_scene()
 onready var tool_panel: HBoxContainer = $"../ToolPanel"
-export var tool_panel_offset: Vector2 = Vector2(-20, 0)
+var tool_panel_offset: Vector2 = Vector2(-20, 0)
 var timer: Timer
 var pos_offset: Vector2
 
@@ -24,9 +24,14 @@ func _ready():
 
 func set_cursor_position(new_center: Vector2, _rotation: float = 0):
 	rect_global_position = new_center - rect_size/2 + pos_offset
-	set_panel_position()
 	rect_pivot_offset = rect_size*0.5
 	rect_rotation = _rotation 
+	if (new_center.x > get_viewport().size.x * 0.5):
+		tool_panel_offset = Vector2(-tool_panel.rect_size.x, 0)
+	else:
+		tool_panel_offset = Vector2(-20,0)
+	if tool_panel.visible:
+		set_panel_position()
 
 func set_panel_position():
 	tool_panel.rect_global_position = rect_global_position + rect_size + tool_panel_offset
@@ -34,8 +39,6 @@ func set_panel_position():
 func _process(delta):
 	if State.player:
 		pos_offset = State.player.get_canvas_transform().origin - get_canvas_transform().origin
-		if tool_panel.visible:
-			set_panel_position()
 		if follow:
 			if follow_target:
 				if follow_target is PartBase:
@@ -53,7 +56,9 @@ func lock_on(node, activate = true):
 		mark_active()
 	follow = true
 	follow_target = node
-	set_cursor_size(follow_target.get_part_size())
+	var target_size: Vector2 = follow_target.get_part_size()
+	rect_size = target_size + Vector2(16,16)
+	set_cursor_size(target_size)
 
 func focus_on_part(part: PartBase, activate = true):
 	mark_normal()
@@ -94,6 +99,7 @@ func _on_timer_timeout():
 	if (follow_target):
 		lock_on(follow_target)
 		mark_active()
+		timer.stop()
 
 func mark_active():
 	add_stylebox_override("panel", sb_active)

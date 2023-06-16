@@ -3,6 +3,7 @@ extends CanvasLayer
 onready var popup: WindowDialog = $"PopUp"
 onready var shop: Panel = $Shop
 onready var bp_manager: BlueprintManager = $BlueprintManager
+onready var binder_dialog: ConfirmationDialog = $ActionBindDialog
 
 var popup_size: Vector2
 func _ready():
