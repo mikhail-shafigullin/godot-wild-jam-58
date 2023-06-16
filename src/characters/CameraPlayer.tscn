@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/characters/CameraPlayer.gd" type="Script" id=1]
-[ext_resource path="res://src/sprites/Player_test.png" type="Texture" id=2]
+[ext_resource path="res://src/sprites/player/buildBlocks/BuildBlocks.png" type="Texture" id=2]
 [ext_resource path="res://src/sprites/animations/blast02/Blast02_0003.png" type="Texture" id=3]
 [ext_resource path="res://src/sprites/animations/blast02/Blast02_0007.png" type="Texture" id=4]
 [ext_resource path="res://src/sprites/animations/blast02/Blast02_0004.png" type="Texture" id=5]
@@ -10,6 +10,35 @@
 [ext_resource path="res://src/sprites/animations/blast02/Blast02_0001.png" type="Texture" id=8]
 [ext_resource path="res://src/sprites/animations/blast02/Blast02_0000.png" type="Texture" id=9]
 [ext_resource path="res://src/sprites/animations/blast02/Blast02_0002.png" type="Texture" id=10]
+[ext_resource path="res://src/sprites/player/core/Core_0001.png" type="Texture" id=11]
+[ext_resource path="res://src/sprites/player/core/Core_0004.png" type="Texture" id=12]
+[ext_resource path="res://src/sprites/player/core/Core_0006.png" type="Texture" id=13]
+[ext_resource path="res://src/sprites/player/core/Core_0002.png" type="Texture" id=14]
+[ext_resource path="res://src/sprites/player/core/Core_0005.png" type="Texture" id=15]
+[ext_resource path="res://src/sprites/player/core/Core_0007.png" type="Texture" id=16]
+[ext_resource path="res://src/sprites/player/core/Core_0000.png" type="Texture" id=17]
+[ext_resource path="res://src/sprites/player/core/Core_0003.png" type="Texture" id=18]
+[ext_resource path="res://src/sprites/player/engine/Engine_0000.png" type="Texture" id=19]
+[ext_resource path="res://src/sprites/player/engine/Engine_0002.png" type="Texture" id=20]
+[ext_resource path="res://src/sprites/player/engine/Engine_0003.png" type="Texture" id=21]
+[ext_resource path="res://src/sprites/player/engine/Engine_0001.png" type="Texture" id=22]
+[ext_resource path="res://src/sprites/player/engine/Engine_0004.png" type="Texture" id=23]
+[ext_resource path="res://src/sprites/player/engine/Engine_0005.png" type="Texture" id=24]
+[ext_resource path="res://src/sprites/player/turret/Turret_0002.png" type="Texture" id=25]
+[ext_resource path="res://src/sprites/player/turret/Turret_0000.png" type="Texture" id=26]
+[ext_resource path="res://src/sprites/player/turret/Turret_0001.png" type="Texture" id=27]
+[ext_resource path="res://src/sprites/player/turret/Turret_0004.png" type="Texture" id=28]
+[ext_resource path="res://src/sprites/player/turret/Turret_0003.png" type="Texture" id=29]
+[ext_resource path="res://src/sprites/player/turret/Turret_0005.png" type="Texture" id=30]
+[ext_resource path="res://src/sprites/player/Turret.png" type="Texture" id=31]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 71.5, 69.5 )
@@ -22,27 +51,100 @@ animations = [ {
 "speed": 30.0
 } ]
 
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
+
 [node name="CameraPlayer" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -33, 1 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 35, 1 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 2, -40 )
+rotation = -1.55908
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1, 1.19209e-07 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 3 )
+frame = 7
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.499998, 1.5 )
-scale = Vector2( 0.075, 0.075 )
-texture = ExtResource( 2 )
-
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+visible = false
 contact_monitor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
+[node name="BuildBlocks" type="Sprite" parent="RigidBody2D"]
+position = Vector2( -126, 25 )
+texture = ExtResource( 2 )
+
+[node name="BuildBlocks2" type="Sprite" parent="RigidBody2D"]
+position = Vector2( -187, -85 )
+texture = ExtResource( 2 )
+
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( 12, -6.99997 )
-scale = Vector2( 0.255376, 0.255376 )
+position = Vector2( 13, 24 )
+scale = Vector2( 0.208333, 0.208333 )
 frames = SubResource( 2 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( -51, 31 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 4 )
 frame = 3
+playing = true
+offset = Vector2( -9.75604, -131.707 )
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="."]
+position = Vector2( 62, 31 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 4 )
+frame = 5
+playing = true
+offset = Vector2( -9.75604, -131.707 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( -2, -80 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 31 )
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -67 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 5 )
 playing = true
