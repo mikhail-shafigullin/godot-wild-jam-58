@@ -3,6 +3,7 @@ extends PartBase
 
 # parts:controllers Dictionary
 var parts:		Dictionary = {}
+var resource : float = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

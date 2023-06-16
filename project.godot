@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://src/ship/blueprint/BlueprintManager.gd"
 }, {
 "base": "PartBase",
+"class": "Cannon",
+"language": "GDScript",
+"path": "res://src/ship/cannon/Cannon.gd"
+}, {
+"base": "PartBase",
 "class": "Frame",
 "language": "GDScript",
 "path": "res://src/ship/struct/Frame.gd"
@@ -52,6 +57,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BPProbe": "",
 "BlueprintManager": "",
+"Cannon": "",
 "Frame": "",
 "PartBase": "",
 "PartUtil": "",
