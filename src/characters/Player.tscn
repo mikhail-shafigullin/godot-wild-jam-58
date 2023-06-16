@@ -10,7 +10,16 @@ height = 10.0
 pause_mode = 2
 collision_layer = 272
 script = ExtResource( 1 )
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
 part_visual_size = Vector2( 45, 45 )
+main_sprite_path = null
+max_joint_score = null
+min_joint_score = null
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true

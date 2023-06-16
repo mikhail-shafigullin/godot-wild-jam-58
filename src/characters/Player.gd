@@ -17,3 +17,4 @@ func _input(event):
 		for p in parts:
 			if p is Cannon:
 				p.fire()
+

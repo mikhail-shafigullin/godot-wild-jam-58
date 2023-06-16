@@ -2,7 +2,7 @@ class_name ShipCore
 extends PartBase
 
 # parts:controllers Dictionary
-var parts:		Dictionary = {}
+var parts:	Array = []
 var resource : float = 100
 
 # Called when the node enters the scene tree for the first time.
@@ -11,20 +11,20 @@ func _ready():
 
 func _part_disconnect(part: PartBase):
 	if parts.has(part):
-		var pt_ctrl = parts.get(part) 
-		if parts.erase(part):
-			unplug_part(part, pt_ctrl)
+		unplug_part(part)
 
 func _part_connect(part: PartBase):
-	var pt_ctrl = part.input_controller
-	parts[part] = pt_ctrl
-	plug_part(part, pt_ctrl)
+	plug_part(part)
 
-func plug_part(part: PartBase, ctr: PartController):
+func plug_part(part: PartBase):
+	parts.append(part)
 	part.on_part_connect()
 
-func unplug_part(part: PartBase, ctr: PartController):
+func unplug_part(part: PartBase):
 	part.on_part_disconnect()
+	var index = parts.find(part)
+	if index != -1:
+		parts.remove(index)
 
 # slice will keep children and remove from parent
 func slice_part(part: PartBase):
@@ -59,7 +59,6 @@ func weld_part(part: PartBase, weld_to: PartBase):
 	weld_to.add_child(part)
 	part.global_transform = temp_transform
 	weld_to.children_parts.append(part)
-	
 	weld_to.sleeping = false
 	part.sleeping = false
 	part.on_weld()

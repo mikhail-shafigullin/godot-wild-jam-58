@@ -13,7 +13,19 @@ input_pickable = true
 mass = 82.11
 contact_monitor = true
 script = ExtResource( 2 )
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = 0.1
+part_visual_size = null
 main_sprite_path = NodePath("1X1")
+max_joint_score = null
+min_joint_score = null
+thrust_multiplying = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7.5 )

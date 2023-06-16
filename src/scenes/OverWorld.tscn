@@ -56,6 +56,201 @@ remote_path = NodePath("../../../../../../../Camera")
 update_rotation = false
 update_scale = false
 
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-5" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-5" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-5" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-5" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-5" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-6" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-6" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-6" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-6" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-6" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-7" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-7" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-7" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-7" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-7" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-8" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-8" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-8" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-8" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/BlueZ-8" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/GreeZ5" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/GreeZ5" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/GreeZ5" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/GreeZ5" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/GreeZ5" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ0" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ0" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ0" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ0" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ0" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ1" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ1" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ1" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ1" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ1" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ2" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ2" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ2" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ2" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ2" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ3" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ3" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ3" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ3" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ3" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ4" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ4" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ4" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ4" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ4" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ5" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ5" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ5" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ5" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ5" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ6" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ6" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ6" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ6" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ6" index="6"]
+position = Vector2( 0, -5 )
+
+[node name="Probe" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ7" index="2"]
+position = Vector2( 0, -5 )
+
+[node name="Probe2" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ7" index="3"]
+position = Vector2( 0, -5 )
+
+[node name="Probe3" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ7" index="4"]
+position = Vector2( 0, -5 )
+
+[node name="Probe4" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ7" index="5"]
+position = Vector2( 0, -5 )
+
+[node name="Probe5" parent="GameScreen/ViewportControlWorld/World/temp world/RedZ7" index="6"]
+position = Vector2( 0, -5 )
+
 [node name="ViewportControlMask" type="ViewportContainer" parent="GameScreen"]
 margin_left = -256.0
 margin_top = -254.0

@@ -1,4 +1,5 @@
 class_name PartBase
+
 extends RigidBody2D
 signal on_best_part_change 
 
@@ -8,6 +9,10 @@ signal on_best_part_change
 #TEMP
 onready var core = State.player
 #TEMP
+
+
+# { keycode : [{ pressed : [functions, ...]} , released : [functions, ...] ] }
+var input_map: Dictionary = {}
 
 export var init_health: float = 100
 onready var health = init_health
@@ -21,10 +26,10 @@ export(NodePath) var main_sprite_path
 export(Texture) var item_icon
 onready var main_sprite: Sprite 
 
-const popup_actions: Resource		= preload("res://src/interface/pop_faces/PUFPartActions.tscn")
+const popup_actions: Resource		 = preload("res://src/interface/pop_faces/PUFPartActions.tscn")
 var   custom_popup_actions: Resource = null
-const popup_menu_face: Resource 	= null
-var   custom_popup_menu: Resource   = null
+const popup_menu_face: Resource 	 = null
+var   custom_popup_menu: Resource    = null
 
 # array of PartJoints
 # Joins will connect only to parent
@@ -44,14 +49,22 @@ class PartJoint:
 # Array of PartBase children
 var children_parts: Array = []
 
-enum PartsTypes { FRAME, THRUSTER, COLLECTOR, UTIL }
-class PartController:
-	var part_type = PartsTypes.FRAME
-	var display_name: String = "part"
-	var key_bind: InputEventAction = null
-	var axis_bind: InputEventAction = null
+class ActionController:
+	# [ { ActionType.CALL : [0 keycode, 1 [func_name(s)] }, ... ]
+		# [0 function = on_press, # 1 (optional) function = on_release]
 
-var input_controller: PartController = PartController.new()
+	# [ { ActionType.SET  : [0   var  , 1  value   ] }, ... ]
+	enum ActionType { CALL, SET}
+	var data: Array = [] 
+
+var action_controller: ActionController = ActionController.new()
+
+func bind_action(scancode: int, function_press: String, function_release = null):
+	var functions: Array = [function_press]
+	if function_release: functions.append(function_release);
+
+	action_controller.data.append_array( [{ ActionController.ActionType.CALL :
+									 [scancode, functions] }])
 
 func _init():
 	# set_collision_layer_bit(0, false)
@@ -246,9 +259,13 @@ func on_weld():
 func on_part_disconnect():
 	part_is_active = false
 	health = 0
+	print("part disconnected")
+	part_disconnect_input()
 
 func on_part_connect():
 	part_is_active = true
+	print("part connected")
+	part_connect_input()
 
 func on_repair():
 	health = init_health
@@ -304,3 +321,61 @@ func get_popup_actions():
 		return custom_popup_actions.instance()
 	else:
 		return popup_actions.instance()
+
+func part_connect_input():
+	for dictionary in action_controller.data:
+		if dictionary.has(ActionController.ActionType.CALL):
+			set_action_call(dictionary.get(ActionController.ActionType.CALL))
+		if dictionary.has(ActionController.ActionType.SET):
+			set_action_call(dictionary.get(ActionController.ActionType.SET))
+			
+func part_disconnect_input():
+	clear_action_call()
+
+func _input(event):
+	if event is InputEventKey:
+		if (input_map.has(event.scancode)):
+			if event.pressed:
+				var func_name = input_map[event.scancode].get("pressed")
+				if func_name:
+					if has_method(func_name):
+						call(func_name)
+
+
+# [0   "var"  ,  "value"   ]
+func set_part_value( data: Array ):
+	if data.size() > 2:
+		print("-- fail -- set part value")
+		return
+	set(data[0], data[1] )
+
+
+# { keycode : { pressed :[functions], [functions] } }
+func set_action_call( data: Array ):
+		var scancode: int = data[0]
+		var functions: Array = data[1]
+		var func_size = functions.size()
+		
+		if not input_map.has(scancode):
+			input_map[scancode] = {}
+	
+		var map = input_map[scancode]; 
+		map["pressed"] = functions[0]
+		if func_size > 1:
+			map["released"] = functions[1]
+
+func clear_action_call():
+	input_map = {}
+	# No.
+	# for key in data:
+		# var scancode = data[0]
+		# var functions: Array = data[1]
+		# var func_size = functions.size()
+		# if input_map.has(scancode):
+		# 	if input_map[scancode].has("pressed"):
+		# 		input_map[scancode]["pressed"].erase(functions[0])
+		# 	if func_size > 1: 
+		# 		if input_map[scancode].has("released"):
+		# 			input_map[scancode]["released"].erase(functions[1])
+
+

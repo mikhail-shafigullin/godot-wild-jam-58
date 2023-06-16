@@ -21,6 +21,17 @@ position = Vector2( 366, 473 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="BlueZ-5" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -30,6 +41,17 @@ position = Vector2( 335, 469 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="BlueZ-6" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -39,6 +61,17 @@ position = Vector2( 597, 475 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="BlueZ-7" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -48,6 +81,17 @@ position = Vector2( 566, 471 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="BlueZ-8" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -56,6 +100,17 @@ self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 position = Vector2( 415, 522 )
 z_index = 5
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="GreeZ5" index="1"]
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
@@ -64,6 +119,17 @@ self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 position = Vector2( 803, 491 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ0" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -72,6 +138,17 @@ self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 position = Vector2( 779, 463 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ1" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -80,6 +157,17 @@ self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 position = Vector2( 766, 434 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ2" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -88,6 +176,17 @@ self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 position = Vector2( 742, 406 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ3" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -96,6 +195,17 @@ self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 position = Vector2( 741, 514 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ4" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -104,6 +214,17 @@ self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 position = Vector2( 716, 486 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ5" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -112,6 +233,17 @@ self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 position = Vector2( 704, 457 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ6" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -120,6 +252,17 @@ self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 position = Vector2( 680, 429 )
 rotation = -0.676792
 mass = 57.27
+init_health = null
+armor = null
+armor_weak = null
+breaking_distance = null
+can_be_grabbed = null
+joints_softness = null
+part_visual_size = null
+max_joint_score = null
+min_joint_score = null
+rate_of_fire = null
+bullet_impulse = null
 
 [node name="1X1" parent="RedZ7" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )

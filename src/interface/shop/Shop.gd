@@ -61,3 +61,10 @@ func get_files(path):
 	dir.list_dir_end()
 
 	return files
+
+
+func _on_ShowButton_toggled(button_pressed:bool):
+	if button_pressed:
+		$AnimationPlayer.play("hide")
+	else:
+		$AnimationPlayer.play("show")
