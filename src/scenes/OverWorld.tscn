@@ -174,7 +174,8 @@ colors = PoolColorArray( 0.0431373, 0.0823529, 0.121569, 0, 0.0431373, 0.0823529
 gradient = SubResource( 25 )
 fill_to = Vector2( 0, 1 )
 
-[sub_resource type="ViewportTexture" id=41]
+[sub_resource type="ViewportTexture" id=1]
+flags = 77
 viewport_path = NodePath("GameScreen/ViewportControlMask/WorldMask")
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -185,7 +186,7 @@ shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/rainRate = 10.0
 shader_param/rainSpeed = 0.0
 shader_param/variation = 0.0
-shader_param/texture_1 = SubResource( 41 )
+shader_param/texture_1 = SubResource( 1 )
 
 [node name="OverWorld" type="Node2D"]
 pause_mode = 2
@@ -563,7 +564,6 @@ texture = SubResource( 39 )
 offset = Vector2( 94.1593, -27.3596 )
 
 [node name="Camera" type="Camera2D" parent="."]
-current = true
 process_mode = 0
 drag_margin_left = 0.4
 drag_margin_top = 0.05

@@ -3,7 +3,7 @@ extends PartBase
 
 #export var thrust_multiplying: float = 1
 #export var rate_of_fire: float = 1
-export var bullet_impulse_value: float = 3000
+export var bullet_impulse_value: float = 666
 
 var bullet_scene = load("res://src/ship/bullet/Bullet.tscn")
 onready var axis = $Axis
@@ -25,15 +25,14 @@ func _input(event):
 		if event is InputEventMouseMotion:
 			axis.look_at(get_global_mouse_position())
 			axis.rotation_degrees = clamp(axis.rotation_degrees, rotation_min_degrees, rotation_max_degrees)
-			print("cannon_angle = ", axis.global_rotation)
 
 func fire():
 	if core.resource > 0:
 		var bullet = bullet_scene.instance()
 		bullet.global_transform = global_transform
+		bullet.linear_velocity = linear_velocity
 		bullet.cannon = self
 		core.get_parent().add_child(bullet)
-#		print("impulse_angle = ", axis.global_rotation)
 		var impulse = bullet_impulse_value * Vector2.RIGHT.rotated(axis.global_rotation)
 		bullet.apply_impulse(Vector2(), impulse)
 		apply_impulse(Vector2(), -impulse)

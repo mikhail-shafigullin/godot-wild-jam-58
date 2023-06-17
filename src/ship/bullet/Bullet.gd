@@ -1,10 +1,11 @@
+class_name Bullet
 extends RigidBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var cannon : Cannon
+export var damage: float = 20
+var cannon: Cannon
+
+var blast_scene = load("res://src/scenes/effects/Blast.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,10 +18,12 @@ func _ready():
 
 
 func _on_Bullet_body_entered(body):
-	# $EffectArea/CollisionShape2D.set_deferred("disabled", false)
+	var blast = blast_scene.instance()
+	blast.global_transform = global_transform
+	cannon.core.get_parent().add_child(blast)
 	for b in $EffectArea.get_overlapping_bodies():
 		if b is PartBase:
-			b.health -= 20
+			b.health -= damage
 			print(b.health)
 			b.on_taking_damage()
 	queue_free()
