@@ -6,6 +6,7 @@ extends PartBase
 export var bullet_impulse: Vector2 = Vector2(0, -3000)
 
 var bullet_scene = load("res://src/ship/bullet/Bullet.tscn")
+onready var axis = $Axis
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,11 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _input(event):
+	if part_is_connected:
+		if event is InputEventMouseMotion:
+			axis.look_at(get_global_mouse_position())
+
 func fire():
 	if core.resource > 0:
 		var bullet = bullet_scene.instance()
@@ -27,3 +33,4 @@ func fire():
 		bullet.apply_impulse(Vector2(), impulse)
 		apply_impulse(Vector2(), -impulse)
 		core.resource -= 1
+	

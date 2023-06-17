@@ -1,31 +1,76 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/ship/blueprint/Probe.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ship/cannon/Cannon.gd" type="Script" id=2]
-[ext_resource path="res://NN_test/1x1.png" type="Texture" id=3]
+[ext_resource path="res://src/sprites/player/turret/Turret_0001.png" type="Texture" id=3]
+[ext_resource path="res://src/sprites/player/turret/Turret_0002.png" type="Texture" id=4]
+[ext_resource path="res://src/sprites/player/turret/Turret_0004.png" type="Texture" id=5]
+[ext_resource path="res://src/sprites/player/turret/Turret_0003.png" type="Texture" id=6]
+[ext_resource path="res://src/sprites/player/turret/Turret_0000.png" type="Texture" id=7]
+[ext_resource path="res://src/sprites/player/turret/Turret_0005.png" type="Texture" id=8]
+[ext_resource path="res://src/sprites/player/turret/Turret.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 50, 10 )
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
 
 [node name="Cannon" type="RigidBody2D"]
 script = ExtResource( 2 )
-main_sprite_path = NodePath("Sprite")
+__meta__ = {
+"_edit_horizontal_guides_": [ -62.0 ]
+}
+breaking_distance = 50.0
+main_sprite_path = NodePath("AnimatedSprite")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="Axis" type="Node2D" parent="."]
+position = Vector2( 0, -12 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 100, 20 )
-texture = ExtResource( 3 )
+[node name="Sprite" type="Sprite" parent="Axis"]
+position = Vector2( 4, 1 )
+rotation = 2.10083
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 2 )
+frame = 4
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe" parent="." instance=ExtResource( 1 )]
-position = Vector2( -30, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 30, 0 )
+position = Vector2( 0, 12 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 10, 0 )
+position = Vector2( 12, 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -10, 0 )
+position = Vector2( -12, 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -111.481, 148.43 )
+scale = Vector2( 10.8125, 3.88925 )
+polygon = PoolVector2Array( 8.64566, -40.9925, 8.55318, -35.8501, 9.47803, -33.0218, 11.4202, -33.0218, 11.8827, -33.536, 12.2526, -37.1357, 12.0676, -40.7353, 10.3104, -42.5352 )
