@@ -26,6 +26,11 @@ __meta__ = {
 breaking_distance = 50.0
 main_sprite_path = NodePath("AnimatedSprite")
 
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -111.481, 148.43 )
+scale = Vector2( 10.8125, 3.88925 )
+polygon = PoolVector2Array( 8.64566, -40.9925, 8.55318, -35.8501, 9.47803, -33.0218, 11.4202, -33.0218, 11.8827, -33.536, 12.2526, -37.1357, 12.0676, -40.7353, 10.3104, -42.5352 )
+
 [node name="Axis" type="Node2D" parent="."]
 position = Vector2( 0, -12 )
 __meta__ = {
@@ -41,7 +46,6 @@ texture = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 2 )
-frame = 4
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -69,8 +73,3 @@ position = Vector2( -12, 6 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -111.481, 148.43 )
-scale = Vector2( 10.8125, 3.88925 )
-polygon = PoolVector2Array( 8.64566, -40.9925, 8.55318, -35.8501, 9.47803, -33.0218, 11.4202, -33.0218, 11.8827, -33.536, 12.2526, -37.1357, 12.0676, -40.7353, 10.3104, -42.5352 )

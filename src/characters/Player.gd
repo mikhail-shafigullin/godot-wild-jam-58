@@ -13,10 +13,3 @@ func _ready():
 	set_collision_mask_bit(6, true)
 
 	camera.make_current()
-
-func _input(event):
-	if(Input.is_action_just_pressed("ui_accept")):
-		for p in parts:
-			if p is Cannon:
-				p.fire()
-

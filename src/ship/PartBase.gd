@@ -18,6 +18,7 @@ export var init_health: float = 100
 onready var health = init_health
 export var price: float = 100
 export var description: String = "part"
+export var basic_mass: float = 10
 export var armor: float = 1
 export var armor_weak: float = -1
 export var breaking_distance: float = 10
