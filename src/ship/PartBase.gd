@@ -23,7 +23,7 @@ export var armor: float = 1
 export var armor_weak: float = -1
 export var breaking_distance: float = 10
 export var can_be_grabbed: bool = true
-export var joints_softness: float = 0.0
+export var joints_softness: float = 0.1
 export var part_visual_size: Vector2 = Vector2(10,10)
 export(NodePath) var main_sprite_path 
 export(Texture) var item_icon
@@ -69,10 +69,11 @@ var action_controller: ActionController = ActionController.new()
 func _ready():
 	collision_layer = 0
 	collision_mask = 0
-	set_collision_mask_bit(8, true)
-	set_collision_mask_bit(0, true)
-	set_collision_layer_bit(0, true)
-	set_collision_layer_bit(4, true)
+	set_collision_layer_bit(0, true) # grabbable parts
+	set_collision_layer_bit(2, true) # inactive parts
+	set_collision_mask_bit(1, true) # active parts
+	set_collision_mask_bit(2, true) # inactive parts
+	set_collision_mask_bit(5, true) # walls
 
 	if (main_sprite_path):
 		main_sprite = get_node(main_sprite_path)
@@ -140,7 +141,7 @@ func build():
 		return
 	print("build score: %f"% best_score)
 	best_part.sleeping = false
-	best_part.set_collision_layer_bit(0, false)
+#	best_part.set_collision_layer_bit(0, false)
 
 	part_weld(best_part)	
 	_create_joints()
@@ -271,6 +272,10 @@ func on_slice():
 func on_weld():
 	part_repair()
 	part_is_connected = true
+	set_collision_layer_bit(1, true) # active parts
+	set_collision_layer_bit(2, false) # inactive parts
+	set_collision_mask_bit(1, false) # active parts
+	set_collision_mask_bit(2, true) # inactive parts
 
 func on_part_disconnect():
 	part_is_active = false
@@ -290,15 +295,17 @@ func on_click():
 	pass
 
 func on_grab():
-	set_collision_layer_bit(0, false)
-	set_collision_mask_bit(0, false)
-	set_collision_layer_bit(4, false)
+	set_collision_layer_bit(1, false) # active parts
+	set_collision_layer_bit(2, false) # inactive parts
+	set_collision_mask_bit(1, false) # active parts
+	set_collision_mask_bit(2, false) # inactive parts
 	show_probes()
 
 func on_release():
-	set_collision_mask_bit(0, true)
-	set_collision_layer_bit(4, true)
-	set_collision_mask_bit(4, false)
+	set_collision_layer_bit(1, false) # active parts
+	set_collision_layer_bit(2, true) # inactive parts
+	set_collision_mask_bit(1, true) # active parts
+	set_collision_mask_bit(2, true) # inactive parts
 	hide_probes()
 
 func on_bp_activate():

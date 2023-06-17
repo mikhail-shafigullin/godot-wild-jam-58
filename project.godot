@@ -24,10 +24,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ship/blueprint/BlueprintManager.gd"
 }, {
-"base": "PartBase",
+"base": "Reference",
 "class": "Cannon",
 "language": "GDScript",
-"path": "res://src/ship/cannon/Cannon.gd"
+"path": "res://src/ship/thrust/Cannon.gd"
 }, {
 "base": "RigidBody2D",
 "class": "EnemyBase",
@@ -125,9 +125,12 @@ bp_rotate_left={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_5="Blueprint"
-2d_physics/layer_9="Parts"
+2d_physics/layer_1="grabbable_parts"
+2d_physics/layer_2="active_parts"
+2d_physics/layer_3="inactive_parts"
+2d_physics/layer_4="bullets"
+2d_physics/layer_5="blueprints"
+2d_physics/layer_6="walls"
 
 [physics]
 

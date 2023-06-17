@@ -45,6 +45,7 @@ func _on_BtnBuy_pressed():
 
 func buy_part():
 	if update_frame():
+		State.world.money_spend += item_price
 		State.bp_manager.buy_part(item_path, item_price)
 		update_visual()
 

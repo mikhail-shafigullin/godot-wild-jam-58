@@ -19,7 +19,8 @@ animations = [ {
 } ]
 
 [node name="Collector" type="RigidBody2D"]
-collision_mask = 257
+collision_layer = 0
+collision_mask = 0
 mass = 7.73
 script = ExtResource( 1 )
 joints_softness = 0.02
@@ -44,7 +45,6 @@ collision_mask = 273
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.21, 0.21 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 __meta__ = {
 "_edit_lock_": true

@@ -11,8 +11,8 @@ func _ready():
 	sprite.scale = Vector2(caster_scale, caster_scale)
 	position -= cast_to * 0.5
 
-	set_collision_mask_bit(8, true)
-	set_collision_mask_bit(4, true)
+	set_collision_mask_bit(1, true)
+	set_collision_mask_bit(2, true)
 
 func mark_inactive():
 	sprite.self_modulate = Color.red

@@ -41,8 +41,10 @@ func buy_part(path: String, price: float):
 			State.get_root_scene().add_child(new_part)
 			grab_part(new_part)	
 	
-
+onready var grab_button = $ToolPanel/Grab
 func _on_gui_input(event: InputEvent):
+	if State.world.player_out:
+		grab_button.disabled = true
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().paused = !get_tree().paused
@@ -144,6 +146,7 @@ func _highlight_new_part(part: PartBase = null):
 
 func release_part(part: PartBase):
 	print("release part")
+	State.ui.shop.show_shop()
 	bp_cursor.mark_normal()
 	stabilize_part(part)
 	# part.mode = RigidBody2D.MODE_RIGID
@@ -152,14 +155,14 @@ func release_part(part: PartBase):
 	holding_part = null
 	if not get_tree().paused:
 		part.apply_impulse(Vector2.ZERO, Vector2.ONE * randf()*part.mass*16)
-
+	part.on_release()
 	if (part.best_part):
 		print("build target is %s"%part.best_part.name)
 	if part.can_be_build():
 		part.build()
 	else:
-		part.set_collision_layer_bit(0, true)
-	part.on_release()
+#		part.set_collision_layer_bit(0, true)
+		pass
 
 
 func _on_Grab_pressed():

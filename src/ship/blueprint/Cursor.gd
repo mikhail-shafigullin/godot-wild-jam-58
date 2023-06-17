@@ -126,7 +126,7 @@ func get_part_under_cursor() -> PartBase:
 		return null
 	
 	_root.add_child(ray_caster)
-	ray_caster.collision_mask = 255
+	ray_caster.set_collision_mask_bit(0, true) # grabbable parts (may be omitted)
 	ray_caster.transform = Transform2D()
 	ray_caster.global_position = _root.get_global_mouse_position() + Vector2(10,10)
 	ray_caster.cast_to = Vector2(-30, -30)

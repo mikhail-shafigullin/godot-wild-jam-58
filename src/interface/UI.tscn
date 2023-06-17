@@ -57,7 +57,7 @@ anchor_bottom = 1.0
 margin_left = -71.5
 margin_top = -33.0
 margin_right = 71.5
-text = "kill"
+text = "restart"
 
 [node name="Fuel" type="TextureProgress" parent="UI"]
 anchor_left = 0.5
