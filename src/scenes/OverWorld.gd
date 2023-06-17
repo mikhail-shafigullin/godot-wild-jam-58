@@ -84,6 +84,7 @@ func _on_pause():
 		#rain_sprite.rotation = deg2rad(180)
 		set_process(false)
 	else:
+		
 		wind_direction = mem_wind
 		gravity_direction = mem_gr
 		set_process(true)

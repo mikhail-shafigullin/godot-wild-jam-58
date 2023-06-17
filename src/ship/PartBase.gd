@@ -32,7 +32,7 @@ onready var main_sprite
 func get_part_data() -> Dictionary:
 	var data: Dictionary = {}
 	data["price"] = price
-	data["mass"] = mass
+	data["mass"] = basic_mass
 	data["brake_point"] = breaking_distance
 	data["armor"] = armor
 	data["softness"] = joints_softness
@@ -74,6 +74,8 @@ func _ready():
 	set_collision_mask_bit(1, true) # active parts
 	set_collision_mask_bit(2, true) # inactive parts
 	set_collision_mask_bit(5, true) # walls
+
+	mass = basic_mass
 
 	if (main_sprite_path):
 		main_sprite = get_node(main_sprite_path)
