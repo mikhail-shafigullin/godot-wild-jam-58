@@ -35,7 +35,7 @@ size_flags_vertical = 0
 custom_constants/separation = 16
 
 [node name="Grab" type="Button" parent="ToolPanel"]
-margin_right = 39.0
+margin_right = 66.0
 margin_bottom = 28.0
 focus_mode = 1
 size_flags_horizontal = 3
@@ -44,14 +44,15 @@ enabled_focus_mode = 1
 text = "grab"
 
 [node name="Controls" type="Button" parent="ToolPanel"]
-margin_left = 55.0
-margin_right = 113.0
+margin_left = 82.0
+margin_right = 148.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "actions"
 
 [node name="Menu" type="Button" parent="ToolPanel"]
+visible = false
 margin_left = 129.0
 margin_right = 178.0
 margin_bottom = 28.0

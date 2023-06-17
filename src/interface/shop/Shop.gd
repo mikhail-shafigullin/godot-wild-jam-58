@@ -36,11 +36,10 @@ func _populate_grid(grid: GridContainer, items_path: String):
 		if r_n is PartBase:
 			print("yes")
 			var frame = item_frame.instance()
-			frame.item_name = f
+			frame.item_name = f.split(".")[0]
+			#print("part name: %s"%f.split(".")[0])
 			frame.item_texture = r_n.item_icon
 			grid.add_child(frame)
-
-
 
 		r_n.queue_free()
 

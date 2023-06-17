@@ -12,7 +12,26 @@ onready var bp_manager: Control = $GameScreen/UI/BlueprintManager
 onready var rain_script: ShaderMaterial = rain_sprite.material
 export var shader_uv_scale: Vector3 = Vector3.ONE
 
+const game_over_popup_face: Resource = preload("res://src/interface/pop_faces/PUFGameOver.tscn")
+
+var money_spend: float = 0
+var max_hight: float = 0
+var score: float = 0
+
+func game_over():
+	State.ui.get_node("DeathRect").show()
+	State.ui.show_popup(game_over_popup_face.instance(), {"title": "Game over"})
+	State.ui.popup.rect_position = State.ui.get_viewport().size * 0.5 - State.ui.popup.rect_size * 0.5
+	State.ui.popup.connect("visibility_changed", self, "_global_game_over")
+
+func _global_game_over():
+	State.game_over()
+
+func refund_money() -> float:
+	return 0.0
+
 func _ready():
+	State.world = self
 	rain_script.set("shader_param/rainRate", wind_rate)
 	rain_script.set("shader_param/rainSpeed", 1)
 	rain_script.set("shader_param/uv1_offset", Vector3(0,0,0))
@@ -70,7 +89,7 @@ func _process(delta):
 		# rain_sprite.rotation = ang - PI*1.5
 		rain_script.set("shader_param/uv1_offset", uv_offset)
 		rain_script.set("shader_param/rainSpeed", w_speed * 0.01)
-		#rain_script.set("shader_param/rainRate", wind_rate)
+		rain_script.set("shader_param/rainRate", wind_rate)
 		rain_speed_time_past = 0.0
 
 
