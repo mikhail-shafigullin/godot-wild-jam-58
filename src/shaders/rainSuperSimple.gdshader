@@ -190,7 +190,7 @@ float o144424_0_rnd =  float((seed_o144424+fract(_seed_variation_)))+o144424_0_m
 vec4 o144424_0_1_rgba = o144424_input_in(get_from_tileset(1.0, o144424_0_rnd, custom_uv_transform(o144424_0_map.xy, vec2(p_o144424_sx, p_o144424_sy), p_o144424_rotate*0.01745329251, p_o144424_scale, vec2(o144424_0_map.z, float((seed_o144424+fract(_seed_variation_)))))), false ? o144424_0_rnd : 0.0);
 
 	vec4 color_tex = o144424_0_1_rgba;
-	o144424_0_1_rgba.a = 1.0 - texture(texture_1, SCREEN_UV).a;
+	o144424_0_1_rgba.a = 1.0 - texture(texture_1, SCREEN_UV).a * 0.75;
 	color_tex = mix(pow((color_tex + vec4(0.055)) * (1.0 / (1.0 + 0.055)),vec4(2.4)),color_tex * (1.0 / 12.92),lessThan(color_tex,vec4(0.04045)));
 	COLOR = o144424_0_1_rgba;
 

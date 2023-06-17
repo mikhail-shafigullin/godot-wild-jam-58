@@ -298,6 +298,7 @@ func on_grab():
 func on_release():
 	set_collision_mask_bit(0, true)
 	set_collision_layer_bit(4, true)
+	set_collision_mask_bit(4, false)
 	hide_probes()
 
 func on_bp_activate():

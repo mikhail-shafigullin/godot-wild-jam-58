@@ -1,14 +1,180 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://NN_test/Mask.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/UI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://NN_test/temp world.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/World.tscn" type="PackedScene" id=3]
 [ext_resource path="res://NN_test/1x1.png" type="Texture" id=4]
 [ext_resource path="res://src/shaders/rainSuperSimple.gdshader" type="Shader" id=5]
+[ext_resource path="res://src/shaders/foliage_shader.tres" type="Shader" id=6]
 [ext_resource path="res://src/scenes/OverWorld.gd" type="Script" id=7]
+[ext_resource path="res://src/scenes/helper/CameraSync.gd" type="Script" id=8]
+[ext_resource path="res://src/sprites/backgrounds/background1.png" type="Texture" id=9]
+[ext_resource path="res://src/sprites/backgrounds/background3.png" type="Texture" id=10]
+[ext_resource path="res://src/sprites/backgrounds/background2.png" type="Texture" id=11]
+[ext_resource path="res://src/sprites/backgrounds/background4.png" type="Texture" id=12]
+[ext_resource path="res://src/sprites/backgrounds/background6.png" type="Texture" id=13]
+[ext_resource path="res://src/sprites/tiles/TileWater.png" type="Texture" id=14]
+[ext_resource path="res://src/sprites/backgrounds/clouds/cloud_1.png" type="Texture" id=15]
+[ext_resource path="res://src/shaders/foliage.tres" type="Material" id=16]
+[ext_resource path="res://src/sprites/backgrounds/background5.png" type="Texture" id=17]
+[ext_resource path="res://src/shaders/fog_shader.tres" type="Shader" id=18]
+[ext_resource path="res://src/shaders/star_shader.tres" type="Shader" id=19]
+[ext_resource path="res://src/sprites/backgrounds/background_sky_1.png" type="Texture" id=20]
+[ext_resource path="res://src/sprites/backgrounds/background_sky_0.png" type="Texture" id=21]
+[ext_resource path="res://src/sprites/backgrounds/background_sky_2.png" type="Texture" id=22]
 
-[sub_resource type="ViewportTexture" id=1]
-flags = 77
+[sub_resource type="ShaderMaterial" id=26]
+shader = ExtResource( 6 )
+shader_param/x_intensity = 0.1
+shader_param/y_intensity = 0.5
+shader_param/offset = 0.0
+shader_param/speed = 2.0
+shader_param/wave_frequency = 20.0
+shader_param/wave_length = 200.0
+
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0.0949721, 0.603352, 0.955307 )
+colors = PoolColorArray( 0.894118, 0.933333, 0.952941, 1, 0.843137, 0.690196, 0.666667, 1, 0.843137, 0.690196, 0.666667, 1 )
+
+[sub_resource type="GradientTexture2D" id=27]
+gradient = SubResource( 15 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="OpenSimplexNoise" id=28]
+period = 16.6
+persistence = 0.928
+lacunarity = 1.07
+
+[sub_resource type="NoiseTexture" id=13]
+width = 2048
+seamless = true
+noise = SubResource( 28 )
+
+[sub_resource type="ShaderMaterial" id=29]
+shader = ExtResource( 18 )
+shader_param/octaves = 3
+shader_param/starting_amplitude = 0.294
+shader_param/starting_frequency = 2.0
+shader_param/shift = -0.177
+shader_param/velocity = Vector2( -0.02, 0 )
+shader_param/fog_color = Color( 0.321569, 0.164706, 0.164706, 1 )
+shader_param/noise = SubResource( 13 )
+
+[sub_resource type="ConvexPolygonShape2D" id=30]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="TileSet" id=31]
+0/name = "TileWater.png 0"
+0/texture = ExtResource( 14 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 30 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 30 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "TileWater.png 1"
+1/texture = ExtResource( 14 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 64, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 3 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[sub_resource type="ShaderMaterial" id=32]
+shader = ExtResource( 6 )
+shader_param/x_intensity = 1.0
+shader_param/y_intensity = 0.5
+shader_param/offset = 500.0
+shader_param/speed = 1.0
+shader_param/wave_frequency = 5.0
+shader_param/wave_length = 200.0
+
+[sub_resource type="ShaderMaterial" id=33]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/x_intensity = 3.0
+shader_param/y_intensity = 0.5
+shader_param/offset = 200.0
+shader_param/speed = 1.992
+shader_param/wave_frequency = 20.0
+shader_param/wave_length = 200.0
+
+[sub_resource type="ShaderMaterial" id=34]
+shader = ExtResource( 6 )
+shader_param/x_intensity = 1.0
+shader_param/y_intensity = 0.5
+shader_param/offset = 20.0
+shader_param/speed = 2.0
+shader_param/wave_frequency = 20.0
+shader_param/wave_length = 200.0
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0.100559, 0.726257, 1 )
+colors = PoolColorArray( 0.0941176, 0.494118, 0.866667, 1, 0.0774, 0.599133, 0.86, 1, 0.239216, 0.811765, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=35]
+gradient = SubResource( 19 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="Gradient" id=24]
+colors = PoolColorArray( 0.0431373, 0.0823529, 0.121569, 1, 0.0941176, 0.494118, 0.866667, 1 )
+
+[sub_resource type="GradientTexture2D" id=36]
+gradient = SubResource( 24 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=37]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/x_intensity = 5.0
+shader_param/y_intensity = 0.5
+shader_param/offset = 200.0
+shader_param/speed = 1.0
+shader_param/wave_frequency = 20.0
+shader_param/wave_length = 200.0
+
+[sub_resource type="ShaderMaterial" id=38]
+shader = ExtResource( 19 )
+shader_param/bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Gradient" id=25]
+colors = PoolColorArray( 0.0431373, 0.0823529, 0.121569, 0, 0.0431373, 0.0823529, 0.121569, 1 )
+
+[sub_resource type="GradientTexture2D" id=39]
+gradient = SubResource( 25 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="ViewportTexture" id=41]
 viewport_path = NodePath("GameScreen/ViewportControlMask/WorldMask")
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -19,12 +185,12 @@ shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/rainRate = 10.0
 shader_param/rainSpeed = 0.0
 shader_param/variation = 0.0
-shader_param/texture_1 = SubResource( 1 )
+shader_param/texture_1 = SubResource( 41 )
 
 [node name="OverWorld" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 7 )
-rain_rate = 10.0
+rain_rate = 48.507
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
@@ -48,7 +214,7 @@ disable_3d = true
 usage = 1
 render_target_update_mode = 3
 
-[node name="temp world" parent="GameScreen/ViewportControlWorld/World" instance=ExtResource( 3 )]
+[node name="World" parent="GameScreen/ViewportControlWorld/World" instance=ExtResource( 3 )]
 
 [node name="ViewportControlMask" type="ViewportContainer" parent="GameScreen"]
 margin_left = -256.0
@@ -91,32 +257,328 @@ visible = false
 [node name="UILayer" parent="GameScreen" instance=ExtResource( 2 )]
 layer = 8
 
+[node name="Foreground" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Foreground"]
+position = Vector2( 8, -38 )
+motion_scale = Vector2( 0.45, 0.3 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="Foreground/ParallaxLayer6"]
+modulate = Color( 1, 1, 1, 0.458824 )
+material = SubResource( 26 )
+position = Vector2( 0, -3 )
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="Foreground/ParallaxLayer6"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -600.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
+motion_mirroring = Vector2( 2000, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/ParallaxLayer"]
+margin_left = -616.0
+margin_top = -1729.0
+margin_right = 1461.0
+margin_bottom = -792.0
+texture = SubResource( 27 )
+expand = true
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Foreground"]
+position = Vector2( 8, -38 )
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Fog" type="ColorRect" parent="Foreground/ParallaxLayer5"]
+material = SubResource( 29 )
+margin_left = -1024.0
+margin_top = -775.0
+margin_right = 1024.0
+margin_bottom = 804.0
+
+[node name="Sprite" type="Sprite" parent="Foreground/ParallaxLayer5"]
+position = Vector2( -3164, -2142 )
+texture = ExtResource( 13 )
+offset = Vector2( 3167, 1949 )
+
+[node name="Sprite2" type="Sprite" parent="Foreground/ParallaxLayer5"]
+position = Vector2( -3164, -4233 )
+texture = ExtResource( 21 )
+offset = Vector2( 3167, 1949 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 31 )
+cell_y_sort = true
+show_collision = true
+collision_use_kinematic = true
+format = 1
+tile_data = PoolIntArray( 524277, 0, 0, 524278, 0, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 524282, 0, 0, 524283, 0, 0, 524284, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 589813, 1, 0, 589814, 1, 0, 589815, 1, 0, 589816, 1, 0, 589817, 1, 0, 589818, 1, 0, 589819, 1, 0, 589820, 1, 0, 589821, 1, 0, 589822, 1, 0, 589823, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 524308, 1, 0, 524309, 1, 0, 524310, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 655349, 1, 0, 655350, 1, 0, 655351, 1, 0, 655352, 1, 0, 655353, 1, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 1, 0, 589849, 1, 0, 720885, 1, 0, 720886, 1, 0, 720887, 1, 0, 720888, 1, 0, 720889, 1, 0, 720890, 1, 0, 720891, 1, 0, 720892, 1, 0, 720893, 1, 0, 720894, 1, 0, 720895, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 786421, 1, 0, 786422, 1, 0, 786423, 1, 0, 786424, 1, 0, 786425, 1, 0, 786426, 1, 0, 786427, 1, 0, 786428, 1, 0, 786429, 1, 0, 786430, 1, 0, 786431, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 1, 0, 720917, 1, 0, 720918, 1, 0, 720919, 1, 0, 720920, 1, 0, 720921, 1, 0 )
+
+[node name="GarbageLevel" type="Node2D" parent="."]
+
+[node name="Background" type="ParallaxBackground" parent="GarbageLevel"]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="GarbageLevel/Background"]
+position = Vector2( 8, -38 )
+motion_mirroring = Vector2( 2000, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="GarbageLevel/Background/ParallaxLayer3"]
+margin_left = -611.0
+margin_top = -865.0
+margin_right = 1430.0
+margin_bottom = 594.0
+color = Color( 0.439216, 0.376471, 0.372549, 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="GarbageLevel/Background"]
+position = Vector2( 8, -38 )
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="GarbageLevel/Background/ParallaxLayer"]
+material = SubResource( 32 )
+position = Vector2( 1, -8 )
+texture = ExtResource( 9 )
+region_filter_clip = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="GarbageLevel/Background/ParallaxLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -466.0
+margin_right = 1024.0
+margin_bottom = 734.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="GarbageLevel/Background"]
+position = Vector2( 8, -38 )
+motion_scale = Vector2( 0.15, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="GarbageLevel/Background/ParallaxLayer2"]
+position = Vector2( 0, -23 )
+texture = ExtResource( 11 )
+
+[node name="ColorRect" type="ColorRect" parent="GarbageLevel/Background/ParallaxLayer2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -466.0
+margin_right = 1024.0
+margin_bottom = 734.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="GarbageLevel/Background"]
+position = Vector2( 8, -38 )
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="GarbageLevel/Background/ParallaxLayer4"]
+material = SubResource( 33 )
+position = Vector2( -3897, -570 )
+texture = ExtResource( 10 )
+offset = Vector2( 3897, 531 )
+
+[node name="ColorRect" type="ColorRect" parent="GarbageLevel/Background/ParallaxLayer4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -466.0
+margin_right = 1024.0
+margin_bottom = 734.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="GarbageLevel/Background"]
+position = Vector2( 8, -38 )
+motion_scale = Vector2( 0.25, 0.5 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="GarbageLevel/Background/ParallaxLayer5"]
+material = ExtResource( 16 )
+position = Vector2( 0, -3 )
+texture = ExtResource( 12 )
+
+[node name="ColorRect" type="ColorRect" parent="GarbageLevel/Background/ParallaxLayer5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -466.0
+margin_right = 1024.0
+margin_bottom = 734.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="GarbageLevel/Background"]
+position = Vector2( 8, -38 )
+motion_scale = Vector2( 0.3, 0.9 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="GarbageLevel/Background/ParallaxLayer6"]
+material = SubResource( 34 )
+position = Vector2( 0, -45 )
+texture = ExtResource( 17 )
+
+[node name="ColorRect" type="ColorRect" parent="GarbageLevel/Background/ParallaxLayer6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -466.0
+margin_right = 1024.0
+margin_bottom = 734.0
+color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
+
+[node name="SkyLevel" type="Node2D" parent="."]
+
+[node name="Background" type="ParallaxBackground" parent="SkyLevel"]
+layer = -98
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="SkyLevel/Background"]
+position = Vector2( 8, -38 )
+motion_mirroring = Vector2( 2200, 0 )
+
+[node name="Sprite" type="Sprite" parent="SkyLevel/Background/ParallaxLayer3"]
+position = Vector2( 451, -3571.01 )
+scale = Vector2( 35.3125, 43.5313 )
+texture = SubResource( 35 )
+offset = Vector2( 7.50443, 11.3252 )
+
+[node name="Sprite2" type="Sprite" parent="SkyLevel/Background/ParallaxLayer3"]
+position = Vector2( 451, -6356.01 )
+scale = Vector2( 35.3125, 43.5313 )
+texture = SubResource( 36 )
+offset = Vector2( 7.50443, 11.3252 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="SkyLevel/Background"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="SkyLevel/Background/ParallaxLayer2"]
+material = SubResource( 33 )
+position = Vector2( -3897, -2892.01 )
+texture = ExtResource( 20 )
+offset = Vector2( 3897, 531 )
+
+[node name="Sprite2" type="Sprite" parent="SkyLevel/Background/ParallaxLayer2"]
+material = SubResource( 33 )
+position = Vector2( -4081, -3407.01 )
+texture = ExtResource( 20 )
+offset = Vector2( 4438, -366 )
+
+[node name="Sprite3" type="Sprite" parent="SkyLevel/Background/ParallaxLayer2"]
+material = SubResource( 33 )
+position = Vector2( -3762, -5771.01 )
+texture = ExtResource( 20 )
+offset = Vector2( 3897, 531 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="SkyLevel/Background"]
+motion_scale = Vector2( 0.1, 0.6 )
+motion_offset = Vector2( 0, 850 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="SkyLevel/Background/ParallaxLayer"]
+material = SubResource( 33 )
+position = Vector2( -3897, -2856 )
+texture = ExtResource( 22 )
+offset = Vector2( 3897, 531 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="SkyLevel/Background"]
+motion_scale = Vector2( 0.4, 0.8 )
+motion_offset = Vector2( 0, 500 )
+motion_mirroring = Vector2( 4096, 0 )
+
+[node name="Sprite2" type="Sprite" parent="SkyLevel/Background/ParallaxLayer4"]
+material = SubResource( 37 )
+position = Vector2( -4179, -2769.01 )
+texture = ExtResource( 15 )
+offset = Vector2( 3897, 531 )
+
+[node name="Sprite3" type="Sprite" parent="SkyLevel/Background/ParallaxLayer4"]
+material = SubResource( 37 )
+position = Vector2( 929, -2654.01 )
+texture = ExtResource( 15 )
+offset = Vector2( 733, -260 )
+flip_h = true
+
+[node name="Sprite4" type="Sprite" parent="SkyLevel/Background/ParallaxLayer4"]
+material = SubResource( 37 )
+position = Vector2( -5578, -4074.01 )
+texture = ExtResource( 15 )
+offset = Vector2( 3897, 531 )
+
+[node name="Sprite5" type="Sprite" parent="SkyLevel/Background/ParallaxLayer4"]
+material = SubResource( 37 )
+position = Vector2( -416, -3710.01 )
+texture = ExtResource( 15 )
+offset = Vector2( 733, -260 )
+flip_h = true
+
+[node name="CosmicLevel" type="Node2D" parent="."]
+
+[node name="Background" type="ParallaxBackground" parent="CosmicLevel"]
+layer = -98
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="CosmicLevel/Background"]
+position = Vector2( 8, -38 )
+motion_mirroring = Vector2( 2200, 0 )
+
+[node name="Sprite2" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+material = SubResource( 38 )
+position = Vector2( -2609, -7554.96 )
+scale = Vector2( 35.3125, 64.6406 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
+[node name="Sprite3" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+position = Vector2( -2609, -7367.83 )
+scale = Vector2( 35.3125, 24.3125 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
+[node name="Sprite4" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+position = Vector2( -2609, -7367.83 )
+scale = Vector2( 35.3125, 24.3125 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 508, 527 )
 current = true
 process_mode = 0
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
 drag_margin_left = 0.4
 drag_margin_top = 0.05
 drag_margin_right = 0.4
 drag_margin_bottom = 0.33
 editor_draw_limits = true
 editor_draw_drag_margin = true
-__meta__ = {
-"_edit_lock_": true
-}
+script = ExtResource( 8 )
 
 [node name="Rain" type="Sprite" parent="Camera"]
 pause_mode = 1
-self_modulate = Color( 0.611765, 0.803922, 0.807843, 0.419608 )
+self_modulate = Color( 0.611765, 0.803922, 0.807843, 0.658824 )
 material = SubResource( 2 )
-position = Vector2( -4, 26 )
-scale = Vector2( 512, 512 )
+z_as_relative = false
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]
 [editable path="GameScreen/UILayer"]

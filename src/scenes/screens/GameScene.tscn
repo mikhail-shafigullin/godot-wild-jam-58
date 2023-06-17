@@ -1,6 +1,5 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=72 format=2]
 
-[ext_resource path="res://src/characters/CameraPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/sprites/backgrounds/background6.png" type="Texture" id=2]
 [ext_resource path="res://src/sprites/tiles/TileWater.png" type="Texture" id=3]
 [ext_resource path="res://src/sprites/backgrounds/background1.png" type="Texture" id=4]
@@ -58,12 +57,12 @@ shader_param/speed = 2.0
 shader_param/wave_frequency = 20.0
 shader_param/wave_length = 200.0
 
-[sub_resource type="Gradient" id=15]
+[sub_resource type="Gradient" id=31]
 offsets = PoolRealArray( 0.0949721, 0.603352, 0.955307 )
 colors = PoolColorArray( 0.894118, 0.933333, 0.952941, 1, 0.843137, 0.690196, 0.666667, 1, 0.843137, 0.690196, 0.666667, 1 )
 
 [sub_resource type="GradientTexture2D" id=16]
-gradient = SubResource( 15 )
+gradient = SubResource( 31 )
 fill_to = Vector2( 0, 1 )
 
 [sub_resource type="OpenSimplexNoise" id=12]
@@ -71,7 +70,7 @@ period = 16.6
 persistence = 0.928
 lacunarity = 1.07
 
-[sub_resource type="NoiseTexture" id=13]
+[sub_resource type="NoiseTexture" id=32]
 width = 2048
 seamless = true
 noise = SubResource( 12 )
@@ -84,12 +83,12 @@ shader_param/starting_frequency = 2.0
 shader_param/shift = -0.177
 shader_param/velocity = Vector2( -0.02, 0 )
 shader_param/fog_color = Color( 0.321569, 0.164706, 0.164706, 1 )
-shader_param/noise = SubResource( 13 )
+shader_param/noise = SubResource( 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=33]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=34]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="TileSet" id=1]
@@ -103,14 +102,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 2 )
+0/shape = SubResource( 33 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 33 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -124,14 +123,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 3 )
+1/shape = SubResource( 34 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 34 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -164,19 +163,19 @@ shader_param/speed = 2.0
 shader_param/wave_frequency = 20.0
 shader_param/wave_length = 200.0
 
-[sub_resource type="Gradient" id=19]
+[sub_resource type="Gradient" id=35]
 offsets = PoolRealArray( 0.100559, 0.726257, 1 )
 colors = PoolColorArray( 0.0941176, 0.494118, 0.866667, 1, 0.0774, 0.599133, 0.86, 1, 0.239216, 0.811765, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=20]
-gradient = SubResource( 19 )
+gradient = SubResource( 35 )
 fill_to = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=24]
+[sub_resource type="Gradient" id=36]
 colors = PoolColorArray( 0.0431373, 0.0823529, 0.121569, 1, 0.0941176, 0.494118, 0.866667, 1 )
 
 [sub_resource type="GradientTexture2D" id=22]
-gradient = SubResource( 24 )
+gradient = SubResource( 36 )
 fill_to = Vector2( 0, 1 )
 
 [sub_resource type="ShaderMaterial" id=23]
@@ -193,11 +192,11 @@ shader_param/wave_length = 200.0
 shader = ExtResource( 36 )
 shader_param/bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="Gradient" id=25]
+[sub_resource type="Gradient" id=37]
 colors = PoolColorArray( 0.0431373, 0.0823529, 0.121569, 0, 0.0431373, 0.0823529, 0.121569, 1 )
 
 [sub_resource type="GradientTexture2D" id=26]
-gradient = SubResource( 25 )
+gradient = SubResource( 37 )
 fill_to = Vector2( 0, 1 )
 
 [sub_resource type="SpriteFrames" id=17]
@@ -304,9 +303,6 @@ show_collision = true
 collision_use_kinematic = true
 format = 1
 tile_data = PoolIntArray( 524277, 0, 0, 524278, 0, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 524282, 0, 0, 524283, 0, 0, 524284, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 589813, 1, 0, 589814, 1, 0, 589815, 1, 0, 589816, 1, 0, 589817, 1, 0, 589818, 1, 0, 589819, 1, 0, 589820, 1, 0, 589821, 1, 0, 589822, 1, 0, 589823, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 524308, 1, 0, 524309, 1, 0, 524310, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 655349, 1, 0, 655350, 1, 0, 655351, 1, 0, 655352, 1, 0, 655353, 1, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 1, 0, 589849, 1, 0, 720885, 1, 0, 720886, 1, 0, 720887, 1, 0, 720888, 1, 0, 720889, 1, 0, 720890, 1, 0, 720891, 1, 0, 720892, 1, 0, 720893, 1, 0, 720894, 1, 0, 720895, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 786421, 1, 0, 786422, 1, 0, 786423, 1, 0, 786424, 1, 0, 786425, 1, 0, 786426, 1, 0, 786427, 1, 0, 786428, 1, 0, 786429, 1, 0, 786430, 1, 0, 786431, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 1, 0, 720917, 1, 0, 720918, 1, 0, 720919, 1, 0, 720920, 1, 0, 720921, 1, 0 )
-
-[node name="CameraPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 549, -8 )
 
 [node name="GarbageLevel" type="Node2D" parent="."]
 
@@ -549,26 +545,25 @@ offset = Vector2( 94.1593, -27.3596 )
 position = Vector2( 346, 258 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 17 )
-frame = 11
+frame = 5
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 506, 185 )
 scale = Vector2( 0.255376, 0.255376 )
 frames = SubResource( 18 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
 position = Vector2( 776, -119 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 29 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="."]
 position = Vector2( 878.03, -182.75 )
 scale = Vector2( 0.53, 0.53 )
 frames = SubResource( 30 )
-frame = 1
+frame = 4
 playing = true
