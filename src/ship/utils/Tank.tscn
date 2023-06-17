@@ -28,7 +28,7 @@ polygon = PoolVector2Array( -7.2026, -8.29718, -7.62387, -8.19253, -7.62387, -7.
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Probe" parent="." instance=ExtResource( 8 )]
