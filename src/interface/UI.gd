@@ -5,6 +5,7 @@ onready var shop: Panel = $UI/Shop
 onready var bp_manager: BlueprintManager = $UI/BlueprintManager
 onready var binder_dialog: ConfirmationDialog = $UI/ActionBindDialog
 onready var fuel_gauge: TextureProgress = $UI/Fuel
+onready var restart_button: Button = $UI/Button
 
 var popup_size: Vector2
 func _ready():

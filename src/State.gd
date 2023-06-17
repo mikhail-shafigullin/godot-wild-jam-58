@@ -14,6 +14,11 @@ var soundManager: Node2D;
 const world_res = preload("res://src/scenes/OverWorld.tscn")
 const save_path = "user://game.save"
 
+const unlocks = {
+	-111 : "Frame",
+	-55555555 : "Collector"
+}
+
 #unlocked parts names
 var unlocked_parts: Array = ["TestThruster"]
 
@@ -66,6 +71,7 @@ func get_root_scene() -> Node2D:
 func game_over():
 	var world_parent = world.get_parent()
 	scrap += world.refund_money()
+	unlocked_parts += world.get_unlocked_parts()
 
 	save_game()
 	world.queue_free()

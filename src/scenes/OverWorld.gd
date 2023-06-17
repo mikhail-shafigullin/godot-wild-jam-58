@@ -24,7 +24,11 @@ var wind: Vector2
 
 func game_over():
 	State.ui.get_node("UI/DeathRect").show()
-	State.ui.show_popup(game_over_popup_face.instance(), {"title": "Game over"})
+	State.ui.show_popup(game_over_popup_face.instance(), {	"title": "Game over",
+															"max_hight": max_hight,
+															"refund": refund_money(), 
+															"parts_unlocked": get_unlocked_parts()})
+
 	State.ui.popup.rect_position = State.ui.get_viewport().size * 0.5 - State.ui.popup.rect_size * 0.5
 	State.ui.popup.connect("visibility_changed", self, "_global_game_over")
 
@@ -32,7 +36,18 @@ func _global_game_over():
 	State.game_over()
 
 func refund_money() -> float:
-	return 0.0
+	if !player_out:
+		return money_spend
+	print(abs(max_hight))
+	return max(abs(max_hight) / 150 + score + (money_spend * (max_hight / 6500)), 100)
+
+func get_unlocked_parts():
+	var unlocked = []
+	for key in State.unlocks:
+		if !State.unlocked_parts.has(State.unlocks[key]):
+			if max_hight > key:
+				unlocked.push_back(State.unlocks[key])
+	return unlocked
 
 func get_wind():
 	return wind
@@ -110,9 +125,13 @@ func _process(delta):
 	world_mask.w_offset = w_offset - player_vel2
 
 
-
+func _physics_process(_delta):
+	var pyp = -player.global_position.y
+	if pyp > max_hight:
+		max_hight = pyp
 
 func player_out():
 	emit_signal("player_leave_base")
 	player_out = true
-	State.ui.shop.hide()
+	State.ui.shop.hide_node()
+	# State.ui.restart_button.hide()

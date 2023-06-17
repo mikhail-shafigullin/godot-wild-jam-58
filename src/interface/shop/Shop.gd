@@ -76,6 +76,9 @@ func hide_shop():
 	$AnimationPlayer.play("hide")
 	$ShowButton.pressed = true
 
+func hide_node():
+	hide()
+
 func show_shop():
 	$AnimationPlayer.play("show")
 	$ShowButton.pressed = false
