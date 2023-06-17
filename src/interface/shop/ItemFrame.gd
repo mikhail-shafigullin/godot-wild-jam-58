@@ -27,4 +27,4 @@ func update_visual():
 		lock()
 
 func _on_BtnInfo_pressed():
-	State.ui.show_popup(popup_face.instance(), {"title": "part %s"%item_name})
+	State.ui.show_popup(popup_face.instance(), {"title": "%s"%item_name})

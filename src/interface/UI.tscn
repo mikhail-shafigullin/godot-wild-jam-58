@@ -54,25 +54,14 @@ margin_right = 71.5
 text = "kill"
 
 [node name="Fuel" type="TextureProgress" parent="."]
-margin_left = 333.0
-margin_top = 466.0
-margin_right = 444.0
-margin_bottom = 577.0
-max_value = 1.0
-step = 0.1
-value = 1.0
-allow_greater = true
-allow_lesser = true
-texture_progress = ExtResource( 4 )
-fill_mode = 3
-radial_fill_degrees = 45.9
-nine_patch_stretch = true
-
-[node name="Fuel2" type="TextureProgress" parent="."]
-margin_left = 589.0
-margin_top = 468.0
-margin_right = 700.0
-margin_bottom = 579.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -179.0
+margin_top = -121.0
+margin_right = -68.0
+margin_bottom = -10.0
 max_value = 1.0
 step = 0.1
 value = 1.0
