@@ -69,40 +69,21 @@ tracks/1/keys = {
 }
 
 [node name="Shop" type="Panel"]
-margin_right = 300.0
+margin_left = -300.0
 margin_bottom = 604.0
 rect_min_size = Vector2( 300, 500 )
 mouse_filter = 2
 input_pass_on_modal_close_click = false
 script = ExtResource( 3 )
 
-[node name="Money" type="HBoxContainer" parent="."]
+[node name="ShowButton" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0.356863 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -76.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 64, 32 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Mp" type="Label" parent="Money"]
-margin_right = 24.0
-margin_bottom = 32.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-text = "MP:"
-
-[node name="Number" type="Label" parent="Money"]
-margin_left = 28.0
-margin_right = 76.0
-margin_bottom = 32.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_right = 67.0
+toggle_mode = true
 
 [node name="ShopHB" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -117,8 +98,38 @@ size_flags_vertical = 1
 text = "shop"
 align = 1
 
-[node name="Container" type="TabContainer" parent="ShopHB"]
+[node name="Money" type="HBoxContainer" parent="ShopHB"]
 margin_top = 18.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 64, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Mp" type="Label" parent="ShopHB/Money"]
+margin_right = 104.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.52
+text = "Money:"
+align = 1
+valign = 1
+
+[node name="Number" type="Label" parent="ShopHB/Money"]
+margin_left = 108.0
+margin_right = 300.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.96
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Container" type="TabContainer" parent="ShopHB"]
+margin_top = 54.0
 margin_right = 300.0
 margin_bottom = 604.0
 size_flags_horizontal = 3
@@ -391,7 +402,7 @@ scroll_horizontal_enabled = false
 
 [node name="CollectGrid" type="GridContainer" parent="ShopHB/Container/Collect/GridContainer"]
 margin_right = 284.0
-margin_bottom = 514.0
+margin_bottom = 478.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -456,7 +467,7 @@ scroll_horizontal_enabled = false
 
 [node name="UtilGrid" type="GridContainer" parent="ShopHB/Container/Util/GridContainer"]
 margin_right = 284.0
-margin_bottom = 514.0
+margin_bottom = 478.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -493,19 +504,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 
-[node name="ShowButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0.356863 )
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 53.0
-margin_right = 56.0
-margin_bottom = -61.0
-toggle_mode = true
-pressed = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "hide"
+autoplay = "show"
 anims/hide = SubResource( 5 )
 anims/show = SubResource( 4 )
 

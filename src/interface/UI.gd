@@ -31,3 +31,7 @@ func show_popup(popup_face: PopUpFace, data: Dictionary):
 
 	
 	popup.window_title = popup_face.title
+
+
+func _on_Button_pressed():
+	State.world.game_over()
