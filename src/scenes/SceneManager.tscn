@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scenes/SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/screens/MainMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/TransitionScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/SoundManager.gd" type="Script" id=4]
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,6 +13,9 @@ script = ExtResource( 1 )
 [node name="MainMenu" parent="CurrentScene" instance=ExtResource( 2 )]
 
 [node name="TransitionScreen" parent="." instance=ExtResource( 3 )]
+
+[node name="SoundManager" type="Node2D" parent="."]
+script = ExtResource( 4 )
 
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
 
