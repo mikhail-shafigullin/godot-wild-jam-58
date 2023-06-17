@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=105 format=2]
 
 [ext_resource path="res://src/sprites/animations/enemies/boss/Boss_jesus.png" type="Texture" id=1]
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0019.png" type="Texture" id=2]
@@ -31,7 +31,7 @@
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0006.png" type="Texture" id=29]
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0026.png" type="Texture" id=30]
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0005.png" type="Texture" id=31]
-[ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0001.png" type="Texture" id=32]
+[ext_resource path="res://src/characters/BossEye.tscn" type="PackedScene" id=32]
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0003.png" type="Texture" id=33]
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0015.png" type="Texture" id=34]
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0033.png" type="Texture" id=35]
@@ -52,11 +52,207 @@
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0044.png" type="Texture" id=50]
 [ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0046.png" type="Texture" id=51]
 [ext_resource path="res://src/characters/Boss.gd" type="Script" id=52]
+[ext_resource path="res://src/sprites/animations/enemies/boss/Boss_wing.png" type="Texture" id=53]
+[ext_resource path="res://src/characters/EyesManager.gd" type="Script" id=54]
+[ext_resource path="res://src/sprites/animations/enemies/boss/eyes/BossEyes_0001.png" type="Texture" id=55]
+
+[sub_resource type="CircleShape2D" id=48]
+radius = 78.6233
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 37.8572, 58.5715 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.3572, 55.7144 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 37.8572, 29.2858 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 60.3572, 34.2858 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 49.2859, 45.0001 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 37.8572, 46.4287 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 37.8572, 45.0001 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 37.8572, 52.143 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 29.2858, 32.8572 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 37.8572, 32.1429 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 50.3572, 37.8572 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 25.7143, 30.7143 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 33.9286, 53.5715 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 42.5001, 47.8572 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 40.3572, 45.0001 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 42.5001, 62.8572 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 36.7858, 54.2858 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 39.6429, 48.5715 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 47.8573, 40.7143 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 62.8573, 40.0001 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 37.8572, 52.8572 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 49.2858, 51.4287 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 49.2858, 40.7144 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 46.4287, 55.7144 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 37.8572, 45.0001 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 37.8572, 45.0001 )
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 37.8572, 58.5715 )
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 37.8572, 45.0001 )
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 41.0715, 49.2858 )
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 33.9286, 42.8572 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 32.8572, 69.2859 )
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 49.1072, 42.8573 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 37.8572, 29.2858 )
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 58.5716, 35.7143 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 50.0001, 39.2858 )
+
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 62.143, 38.5715 )
+
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 52.143, 34.2858 )
+
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 37.8572, 30.7143 )
+
+[sub_resource type="RectangleShape2D" id=39]
+extents = Vector2( 42.8572, 51.4287 )
+
+[sub_resource type="RectangleShape2D" id=40]
+extents = Vector2( 37.8572, 47.1429 )
+
+[sub_resource type="RectangleShape2D" id=41]
+extents = Vector2( 36.0715, 37.8572 )
+
+[sub_resource type="RectangleShape2D" id=42]
+extents = Vector2( 32.143, 54.2858 )
+
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 37.8572, 33.5715 )
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 36.0715, 71.4287 )
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 30.0001, 53.5715 )
+
+[sub_resource type="RectangleShape2D" id=46]
+extents = Vector2( 40.3572, 45.7144 )
+
+[sub_resource type="RectangleShape2D" id=47]
+extents = Vector2( 48.9287, 39.2858 )
+
+[sub_resource type="Animation" id=49]
+resource_name = "BossAnimation"
 
 [node name="Boss" type="Node2D"]
-position = Vector2( 518, 315 )
+position = Vector2( 526, 300 )
 scale = Vector2( 0.7, 0.7 )
 script = ExtResource( 52 )
+
+[node name="Wings" type="Node2D" parent="."]
+
+[node name="right" type="Node2D" parent="Wings"]
+
+[node name="Sprite3" type="Sprite" parent="Wings/right"]
+position = Vector2( -131.429, -120 )
+rotation = 0.348935
+texture = ExtResource( 53 )
+offset = Vector2( 868.572, 132.857 )
+
+[node name="Sprite" type="Sprite" parent="Wings/right"]
+position = Vector2( -125.714, -132.857 )
+rotation = 0.00302985
+texture = ExtResource( 53 )
+offset = Vector2( 868.572, 132.857 )
+
+[node name="Sprite2" type="Sprite" parent="Wings/right"]
+position = Vector2( 887.143, -184.286 )
+rotation = -0.459559
+texture = ExtResource( 53 )
+offset = Vector2( -124.286, -191.429 )
+
+[node name="left" type="Node2D" parent="Wings"]
+position = Vector2( 17.1429, -28.5714 )
+
+[node name="Sprite2" type="Sprite" parent="Wings/left"]
+position = Vector2( -482.857, 411.429 )
+rotation = -0.40369
+texture = ExtResource( 53 )
+offset = Vector2( -124.286, -191.429 )
+flip_h = true
+
+[node name="Sprite" type="Sprite" parent="Wings/left"]
+position = Vector2( -1627.14, -132.857 )
+rotation = 0.00302985
+texture = ExtResource( 53 )
+offset = Vector2( 868.572, 132.857 )
+flip_h = true
+
+[node name="Sprite3" type="Sprite" parent="Wings/left"]
+position = Vector2( -1475.71, -650 )
+rotation = 0.348935
+texture = ExtResource( 53 )
+offset = Vector2( 868.572, 132.857 )
+flip_h = true
 
 [node name="Boss" type="Sprite" parent="."]
 texture = ExtResource( 20 )
@@ -64,203 +260,404 @@ texture = ExtResource( 20 )
 [node name="BossJesus" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
+[node name="RigidBody2D" type="RigidBody2D" parent="BossJesus"]
+mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossJesus/RigidBody2D"]
+position = Vector2( 4.28571, 8.57141 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 48 )
+
 [node name="BossEyesClosed" type="Sprite" parent="."]
 position = Vector2( 0, -22 )
 texture = ExtResource( 5 )
 
 [node name="eyes" type="Node2D" parent="."]
+script = ExtResource( 54 )
 
-[node name="BossEyes0001" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 32 )
+[node name="BossEyes0001" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 55 )
 
-[node name="BossEyes0002" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 28 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0001"]
+position = Vector2( 1.42859, -116.571 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 1 )
 
-[node name="BossEyes0003" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 33 )
+[node name="BossEyes0002" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 28 )
 
-[node name="BossEyes0004" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 6 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0002"]
+position = Vector2( -93.5714, -116.571 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 1 )
 
-[node name="BossEyes0005" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 31 )
+[node name="BossEyes0003" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 33 )
 
-[node name="BossEyes0006" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 29 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0003"]
+position = Vector2( -174.643, -140.857 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 2 )
 
-[node name="BossEyes0007" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 17 )
+[node name="BossEyes0004" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 6 )
 
-[node name="BossEyes0008" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 24 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0004"]
+position = Vector2( -97.1428, -43 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 3 )
 
-[node name="BossEyes0009" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 15 )
+[node name="BossEyes0005" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 31 )
 
-[node name="BossEyes0010" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 18 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0005"]
+position = Vector2( 193.929, 32 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 4 )
 
-[node name="BossEyes0011" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 19 )
+[node name="BossEyes0006" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 29 )
 
-[node name="BossEyes0012" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 7 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0006"]
+position = Vector2( -212.143, 138.429 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 5 )
 
-[node name="BossEyes0013" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 3 )
+[node name="BossEyes0007" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 17 )
 
-[node name="BossEyes0014" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 16 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0007"]
+position = Vector2( 51.4286, 284.143 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 6 )
 
-[node name="BossEyes0015" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 34 )
+[node name="BossEyes0008" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 24 )
 
-[node name="BossEyes0016" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 22 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0008"]
+position = Vector2( -245.714, -165.857 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 7 )
 
-[node name="BossEyes0017" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 21 )
+[node name="BossEyes0009" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 15 )
 
-[node name="BossEyes0018" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 23 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0009"]
+position = Vector2( 170.714, -128.714 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 8 )
 
-[node name="BossEyes0019" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 2 )
+[node name="BossEyes0010" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 18 )
 
-[node name="BossEyes0020" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 8 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0010"]
+position = Vector2( 275, 173.429 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 9 )
 
-[node name="BossEyes0021" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 13 )
+[node name="BossEyes0011" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 19 )
 
-[node name="BossEyes0022" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 9 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0011"]
+position = Vector2( 137.143, -273 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 10 )
 
-[node name="BossEyes0023" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 37 )
+[node name="BossEyes0012" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 7 )
 
-[node name="BossEyes0024" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 4 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0012"]
+position = Vector2( -271.786, 1.28574 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 11 )
 
-[node name="BossEyes0025" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 25 )
+[node name="BossEyes0013" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 3 )
 
-[node name="BossEyes0026" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 30 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0013"]
+position = Vector2( -72.8571, -283 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 12 )
 
-[node name="BossEyes0027" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 39 )
+[node name="BossEyes0014" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 16 )
 
-[node name="BossEyes0028" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 26 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0014"]
+position = Vector2( -63.9286, 165.571 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 13 )
 
-[node name="BossEyes0029" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 27 )
+[node name="BossEyes0015" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 34 )
 
-[node name="BossEyes0030" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 10 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0015"]
+position = Vector2( -81.0714, 277 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 14 )
 
-[node name="BossEyes0031" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 11 )
+[node name="BossEyes0016" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 22 )
 
-[node name="BossEyes0032" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 12 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0016"]
+position = Vector2( 183.929, 224.143 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 15 )
 
-[node name="BossEyes0033" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 35 )
+[node name="BossEyes0017" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 21 )
 
-[node name="BossEyes0034" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 36 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0017"]
+position = Vector2( 98.9286, 163.429 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 16 )
 
-[node name="BossEyes0035" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 38 )
+[node name="BossEyes0018" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 23 )
 
-[node name="BossEyes0036" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 14 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0018"]
+position = Vector2( 67.5, -243.714 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 17 )
 
-[node name="BossEyes0037" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 40 )
+[node name="BossEyes0019" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 2 )
 
-[node name="BossEyes0038" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 41 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0019"]
+position = Vector2( -201.786, 214.857 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 18 )
 
-[node name="BossEyes0039" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 44 )
+[node name="BossEyes0020" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 8 )
 
-[node name="BossEyes0040" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 45 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0020"]
+position = Vector2( 266.429, -81.5715 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 19 )
 
-[node name="BossEyes0041" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 43 )
+[node name="BossEyes0021" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 13 )
 
-[node name="BossEyes0042" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 42 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0021"]
+position = Vector2( -182.857, -39.4286 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 20 )
 
-[node name="BossEyes0043" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 47 )
+[node name="BossEyes0022" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 9 )
 
-[node name="BossEyes0044" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 50 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0022"]
+position = Vector2( 98.5714, -83.7142 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 21 )
 
-[node name="BossEyes0045" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 49 )
+[node name="BossEyes0023" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 37 )
 
-[node name="BossEyes0046" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 51 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0023"]
+position = Vector2( 215, 136.286 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 22 )
 
-[node name="BossEyes0047" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 46 )
+[node name="BossEyes0024" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 4 )
 
-[node name="BossEyes0048" type="Sprite" parent="eyes"]
-position = Vector2( 0, -22 )
-texture = ExtResource( 48 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0024"]
+position = Vector2( -272.143, 82.7143 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 23 )
+
+[node name="BossEyes0025" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0025"]
+position = Vector2( 87.8571, -172.286 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 24 )
+
+[node name="BossEyes0026" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 30 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0026"]
+position = Vector2( -178.571, -224.429 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 25 )
+
+[node name="BossEyes0027" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 39 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0027"]
+position = Vector2( -124.286, -250.143 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 26 )
+
+[node name="BossEyes0028" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 26 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0028"]
+position = Vector2( -15.7143, -243.714 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 27 )
+
+[node name="BossEyes0029" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0029"]
+position = Vector2( 31.4286, -290.143 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 28 )
+
+[node name="BossEyes0030" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0030"]
+position = Vector2( 180.357, -224.429 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 29 )
+
+[node name="BossEyes0031" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0031"]
+position = Vector2( 247.5, -162.286 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 30 )
+
+[node name="BossEyes0032" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0032"]
+position = Vector2( -61.4286, -185.857 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 31 )
+
+[node name="BossEyes0033" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 35 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0033"]
+position = Vector2( -259.464, -86.5714 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 32 )
+
+[node name="BossEyes0034" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0034"]
+position = Vector2( 115.714, -23 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 33 )
+
+[node name="BossEyes0035" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 38 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0035"]
+position = Vector2( 195.714, -38 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 34 )
+
+[node name="BossEyes0036" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0036"]
+position = Vector2( 275.714, 4.14285 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 35 )
+
+[node name="BossEyes0037" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 40 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0037"]
+position = Vector2( -190.714, 33.4286 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 36 )
+
+[node name="BossEyes0038" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 41 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0038"]
+position = Vector2( -123.571, 50.5714 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 37 )
+
+[node name="BossEyes0039" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 44 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0039"]
+position = Vector2( 137.143, 44.1429 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 38 )
+
+[node name="BossEyes0040" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 45 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0040"]
+position = Vector2( 141.429, 110.571 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 39 )
+
+[node name="BossEyes0041" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 43 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0041"]
+position = Vector2( -121.429, 117.714 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 40 )
+
+[node name="BossEyes0042" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 42 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0042"]
+position = Vector2( -268.214, 178.429 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 41 )
+
+[node name="BossEyes0043" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 47 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0043"]
+position = Vector2( -130.714, 210.571 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 42 )
+
+[node name="BossEyes0044" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 50 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0044"]
+position = Vector2( -147.143, 277 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 43 )
+
+[node name="BossEyes0045" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 49 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0045"]
+position = Vector2( -1.78571, 230.571 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 44 )
+
+[node name="BossEyes0046" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 51 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0046"]
+position = Vector2( 48.5714, 185.571 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 45 )
+
+[node name="BossEyes0047" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 46 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0047"]
+position = Vector2( 124.643, 257.714 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 46 )
+
+[node name="BossEyes0048" parent="eyes" instance=ExtResource( 32 )]
+eyeTexture = ExtResource( 48 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eyes/BossEyes0048"]
+position = Vector2( 269.643, 82.7143 )
+scale = Vector2( 0.999998, 0.999998 )
+shape = SubResource( 47 )
 
 [node name="EyesTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -269,6 +666,9 @@ autostart = true
 [node name="CloseEyeTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/BossAnimation = SubResource( 49 )
 
 [connection signal="timeout" from="EyesTimer" to="." method="_on_EyesTimer_timeout"]
 [connection signal="timeout" from="CloseEyeTimer" to="." method="_on_CloseEyeTimer_timeout"]
