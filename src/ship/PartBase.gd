@@ -24,7 +24,7 @@ export var joints_softness: float = 0.0
 export var part_visual_size: Vector2 = Vector2(10,10)
 export(NodePath) var main_sprite_path 
 export(Texture) var item_icon
-onready var main_sprite: Sprite 
+onready var main_sprite 
 
 const popup_actions: Resource		 = preload("res://src/interface/pop_faces/PUFPartActions.tscn")
 var   custom_popup_actions: Resource = null
@@ -54,9 +54,12 @@ var action_controller: ActionController = ActionController.new()
 
 
 func _init():
-	# set_collision_layer_bit(0, false)
-	set_collision_layer_bit(8, true)
-	#set_collision_mask_bit(8, true)
+	collision_layer = 0
+	collision_mask = 0
+	set_collision_mask_bit(8, true)
+	set_collision_mask_bit(0, true)
+	set_collision_layer_bit(0, true)
+	set_collision_layer_bit(4, true)
 
 func _ready():
 	if (main_sprite_path):
@@ -124,7 +127,6 @@ func build():
 		print("cant find part no building for today")
 		return
 	print("build score: %f"% best_score)
-	z_index = best_part.z_index+1
 	best_part.sleeping = false
 	best_part.set_collision_layer_bit(0, false)
 
@@ -132,6 +134,11 @@ func build():
 	_create_joints()
 	if not children_parts.empty():
 		core.fix_joints(self)
+
+	if best_part != core:
+		z_index = best_part.z_index+1
+	else:
+		z_index = best_part.z_index-1	
 
 func _find_probes():
 	for c in get_children():
@@ -230,8 +237,13 @@ func get_part_global_rotation() -> float:
 		return global_rotation_degrees
 
 func get_part_size() -> Vector2:
-	if main_sprite:
+	if main_sprite is Sprite:
 		return main_sprite.texture.get_size() * main_sprite.scale
+	elif main_sprite is AnimatedSprite:
+		var frames = main_sprite.frames
+		var frames_name = frames.get_animation_names()
+		var frame_texture = frames.get_frame(frames_name[0], 0)
+		return frame_texture.get_size() * main_sprite.scale
 	else:
 		return part_visual_size * scale
 	
@@ -268,10 +280,12 @@ func on_click():
 func on_grab():
 	set_collision_layer_bit(0, false)
 	set_collision_mask_bit(0, false)
+	set_collision_layer_bit(4, false)
 	show_probes()
 
 func on_release():
 	set_collision_mask_bit(0, true)
+	set_collision_layer_bit(4, true)
 	hide_probes()
 
 func on_bp_activate():

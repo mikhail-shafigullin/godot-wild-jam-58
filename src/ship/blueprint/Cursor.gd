@@ -126,9 +126,9 @@ func get_part_under_cursor() -> PartBase:
 		return null
 	
 	_root.add_child(ray_caster)
-	ray_caster.collision_mask = 256
+	ray_caster.collision_mask = 255
 	ray_caster.global_position = _root.get_global_mouse_position()
-	ray_caster.cast_to = Vector2(-5,-10)
+	ray_caster.cast_to = Vector2(-10,-20)
 	ray_caster.force_raycast_update()
 
 	var last_hit = ray_caster.is_colliding()
@@ -146,8 +146,11 @@ func get_part_under_cursor() -> PartBase:
 	if not hits.empty():
 		var best_hit = hits[0]
 		for hit in hits:
-			if hit.z_index > best_hit.z_index:
-				best_hit = hit
+			var z_offset = 0
+			if hit is ShipCore:
+				z_offset = -50
+			if hit.z_index + z_offset > best_hit.z_index:
+					best_hit = hit
 		print("best hit :%s Z: %d"%[best_hit, best_hit.z_index])
 		
 		return best_hit
