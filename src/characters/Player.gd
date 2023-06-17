@@ -13,3 +13,11 @@ func _ready():
 	set_collision_mask_bit(6, true)
 
 	camera.make_current()
+	
+	if State.soundManager :
+		State.soundManager.startLevel(global_position.y)
+		State.soundManager.setMusicByYCoord(global_position.y)
+		
+func _process(delta):
+	if State.soundManager :
+		State.soundManager.setMusicByYCoord(global_position.y)
