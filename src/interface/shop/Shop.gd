@@ -17,11 +17,12 @@ onready var item_frame = preload("res://src/interface/shop/ItemFrame.tscn")
 func _ready():
 	populate_shop()
 	show_shop()
+	print(State.all_parts)
 
 func on_player_leave_base():
 	hide()
 
-func _input(_event):
+func _input(event):
 	money_label.text = "%s"%State.scrap
 
 func populate_shop():
@@ -52,6 +53,8 @@ func _populate_grid(grid: GridContainer, items_path: String):
 			frame.item_texture = r_n.item_icon
 			grid.add_child(frame)
 
+			State.all_parts.push_back(f.get_basename())
+
 		r_n.queue_free()
 
 func get_files(path):
@@ -72,15 +75,21 @@ func get_files(path):
 
 	return files
 
+var shop_status: bool
 func hide_shop():
 	$AnimationPlayer.play("hide")
+	shop_status = false
 	$ShowButton.pressed = true
 
 func hide_node():
 	hide()
 
 func show_shop():
-	$AnimationPlayer.play("show")
+	var animp: AnimationPlayer = $AnimationPlayer
+	if shop_status:
+		return
+	animp.play("show")
+	shop_status = true
 	$ShowButton.pressed = false
 
 func _on_ShowButton_toggled(button_pressed:bool):

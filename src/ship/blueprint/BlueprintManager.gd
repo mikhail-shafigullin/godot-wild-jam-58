@@ -40,17 +40,21 @@ func buy_part(path: String, price: float):
 			var new_part = new_part_res.instance()	
 			State.get_root_scene().add_child(new_part)
 			grab_part(new_part)	
+
+func pause_game_toggle():
+	get_tree().paused = !get_tree().paused
+	emit_signal("bp_paused")		
+	if get_tree().paused:
+		print("pause")
+
 	
 onready var grab_button = $ToolPanel/Grab
 func _on_gui_input(event: InputEvent):
 	if State.world.player_out:
 		grab_button.disabled = true
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_ESCAPE:
-			get_tree().paused = !get_tree().paused
-			emit_signal("bp_paused")		
-			if get_tree().paused:
-				print("pause")
+	# if event is InputEventKey:
+	# 	if event.pressed and event.scancode == KEY_ESCAPE:
+
 	
 	if event is InputEventMouseMotion:
 		if holding_part:
@@ -76,6 +80,7 @@ func _on_gui_input(event: InputEvent):
 func click_on_part(part: PartBase):
 	print("CLICK")
 	activate_part(part)
+	grab_button.disabled = !part.can_be_grabbed
 	bp_cursor.focus_on_part(part)
 
 

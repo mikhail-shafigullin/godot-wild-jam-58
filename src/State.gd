@@ -21,6 +21,7 @@ const unlocks = {
 
 #unlocked parts names
 var unlocked_parts: Array = ["TestThruster", "Cannon"]
+var all_parts: Array = []
 
 func save_game():
 	var save_game = File.new()

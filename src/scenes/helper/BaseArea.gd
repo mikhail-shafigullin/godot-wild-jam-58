@@ -6,3 +6,4 @@ func _ready():
 func exit(node):
     if node == State.player:
         State.world.player_out()
+        queue_free()

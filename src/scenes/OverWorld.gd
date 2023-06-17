@@ -8,10 +8,11 @@ var uv_offset: Vector3 = Vector3()
 
 onready var world_mask: Node2D = $GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask
 onready var rain_sprite: Sprite = $"Camera/Rain"
-onready var player: Node2D = $"GameScreen/ViewportControlWorld/World/Player"
+var player: Node2D
 onready var bp_manager: Control = $GameScreen/UILayer/UI/BlueprintManager 
 onready var rain_script: ShaderMaterial = rain_sprite.material
 export var shader_uv_scale: Vector3 = Vector3.ONE
+export var player_Z_kill: float = 450
 
 const game_over_popup_face: Resource = preload("res://src/interface/pop_faces/PUFGameOver.tscn")
 
@@ -41,8 +42,8 @@ func refund_money() -> float:
 	print(abs(max_hight))
 	return max(abs(max_hight) / 150 + score + (money_spend * (max_hight / 6500)), 100)
 
+var unlocked = []
 func get_unlocked_parts():
-	var unlocked = []
 	for key in State.unlocks:
 		if !State.unlocked_parts.has(State.unlocks[key]):
 			if max_hight > key:
@@ -99,6 +100,8 @@ onready var rain_speed_frame_time: float = 1/ float(rain_speed_fps)
 
 var rain_time_past: float
 var rain_speed_time_past: float
+
+
 func _process(delta):
 	rain_time_past += delta
 	rain_speed_fps += delta
@@ -129,7 +132,12 @@ func _physics_process(_delta):
 	var pyp = -player.global_position.y
 	if pyp > max_hight:
 		max_hight = pyp
-
+	
+	if -pyp > player_Z_kill:
+		game_over()
+		State.bp_manager.pause_game_toggle()
+		set_physics_process(false)
+	
 func player_out():
 	emit_signal("player_leave_base")
 	player_out = true

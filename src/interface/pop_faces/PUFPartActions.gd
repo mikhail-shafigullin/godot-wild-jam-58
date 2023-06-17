@@ -43,3 +43,4 @@ func create_var_prompt(data: Array):
    binder.functions = data[1]
    binder.scancode = data[0]
    var_binders.push_back(binder)
+

@@ -1,37 +1,37 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scenes/helper/BaseArea.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/characters/Player.gd" type="Script" id=3]
 [ext_resource path="res://NN_test/1x1.png" type="Texture" id=4]
-[ext_resource path="res://src/scenes/helper/BaseArea.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=42]
 extents = Vector2( 513.5, 52 )
 
 [node name="World" type="Node2D"]
 
-[node name="ground" type="StaticBody2D" parent="."]
+[node name="BaseArea" parent="." instance=ExtResource( 1 )]
+collision_layer = 65
+collision_mask = 65
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
-position = Vector2( 503.5, 42 )
-shape = SubResource( 42 )
+[node name="ground" type="StaticBody2D" parent="BaseArea"]
+position = Vector2( -503, 0 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Sprite" type="Sprite" parent="ground"]
+[node name="Sprite" type="Sprite" parent="BaseArea/ground"]
 position = Vector2( 507.25, 12 )
 scale = Vector2( 1015.5, 40 )
 texture = ExtResource( 4 )
 
-[node name="BaseArea" type="Area2D" parent="." instance=ExtResource( 1 )]
-collision_layer = 65
-collision_mask = 65
-script = ExtResource( 5 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BaseArea/ground"]
+visible = false
+position = Vector2( 503.5, 42 )
+shape = SubResource( 42 )
 
-[node name="Player" type="RigidBody2D" parent="." instance=ExtResource( 2 )]
-pause_mode = 2
+[node name="Player" parent="." instance=ExtResource( 2 )]
 collision_layer = 64
 collision_mask = 321
 mass = 15.13
-script = ExtResource( 3 )
-breaking_distance = 3.0
-part_visual_size = Vector2( 45, 45 )
+
+[editable path="BaseArea"]

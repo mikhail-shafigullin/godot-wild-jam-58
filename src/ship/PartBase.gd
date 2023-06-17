@@ -361,22 +361,23 @@ func part_disconnect_input():
 var holding_keys: Dictionary = {}
 func _input(event):
 	if event is InputEventKey:
-		if (input_map.has(event.scancode)):
-			if event.pressed:
-				if  not holding_keys.has(event.scancode):
-					holding_keys[event.scancode] = true
-					var func_name = input_map[event.scancode].get("pressed")
-					if func_name:
-						if has_method(func_name):
-							call(func_name)
-			else:
-				holding_keys.erase(event.scancode)
-				var func_name = input_map[event.scancode].get("released")
+		check_input(event)
+				
+func check_input(event):
+	if (input_map.has(event.scancode)):
+		if event.pressed:
+			if  not holding_keys.has(event.scancode):
+				holding_keys[event.scancode] = true
+				var func_name = input_map[event.scancode].get("pressed")
 				if func_name:
 					if has_method(func_name):
 						call(func_name)
-				
-
+		else:
+			holding_keys.erase(event.scancode)
+			var func_name = input_map[event.scancode].get("released")
+			if func_name:
+				if has_method(func_name):
+					call(func_name)
 
 # [0   "var"  ,  "value"   ]
 func set_part_value( data: Array ):

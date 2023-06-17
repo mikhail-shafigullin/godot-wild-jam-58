@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://NN_test/Mask.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/UI.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://src/sprites/backgrounds/background_sky_1.png" type="Texture" id=20]
 [ext_resource path="res://src/sprites/backgrounds/background_sky_0.png" type="Texture" id=21]
 [ext_resource path="res://src/sprites/backgrounds/background_sky_2.png" type="Texture" id=22]
+[ext_resource path="res://NN_test/UnlockAll.gd" type="Script" id=23]
 
 [sub_resource type="ShaderMaterial" id=26]
 shader = ExtResource( 6 )
@@ -192,6 +193,9 @@ shader_param/texture_1 = SubResource( 1 )
 pause_mode = 2
 script = ExtResource( 7 )
 rain_rate = 48.507
+
+[node name="UnlockAll" type="Node2D" parent="."]
+script = ExtResource( 23 )
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
@@ -564,6 +568,7 @@ texture = SubResource( 39 )
 offset = Vector2( 94.1593, -27.3596 )
 
 [node name="Camera" type="Camera2D" parent="."]
+current = true
 process_mode = 0
 drag_margin_left = 0.4
 drag_margin_top = 0.05
