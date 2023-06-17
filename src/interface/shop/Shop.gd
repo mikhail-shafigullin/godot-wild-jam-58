@@ -10,10 +10,15 @@ onready var thrust_grid = $ShopHB/Container/Thrust/GridContainer/TrustGrid
 onready var collect_grid = $ShopHB/Container/Collect/GridContainer/CollectGrid
 onready var util_grid = $ShopHB/Container/Util/GridContainer/UtilGrid
 
+onready var money_label = $ShopHB/Money/Number
+
 onready var item_frame = preload("res://src/interface/shop/ItemFrame.tscn")
 
 func _ready():
 	populate_shop()
+
+func _input(_event):
+	money_label.text = "%s"%State.scrap
 
 func populate_shop():
 	
@@ -34,10 +39,12 @@ func _populate_grid(grid: GridContainer, items_path: String):
 		var r_n = r.instance()
 		print( r_n)
 		if r_n is PartBase:
-			print("yes")
 			var frame = item_frame.instance()
 			frame.item_name = f.split(".")[0]
-			#print("part name: %s"%f.split(".")[0])
+			print("%s is loaded"%f.split(".")[0])
+			frame.item_data = r_n.get_part_data()
+			frame.item_price = r_n.price
+			frame.item_path = r.resource_path
 			frame.item_texture = r_n.item_icon
 			grid.add_child(frame)
 
@@ -63,7 +70,7 @@ func get_files(path):
 
 
 func _on_ShowButton_toggled(button_pressed:bool):
-	if button_pressed:
+	if $AnimationPlayer.get_current_animation() == "show":
 		$AnimationPlayer.play("hide")
 	else:
 		$AnimationPlayer.play("show")

@@ -8,7 +8,7 @@ var uv_offset: Vector3 = Vector3()
 onready var world_mask: Node2D = $GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask
 onready var rain_sprite: Sprite = $Camera/Rain
 onready var player: Node2D = $"GameScreen/ViewportControlWorld/World/temp world/Player"
-onready var bp_manager: Control = $GameScreen/UI/BlueprintManager 
+onready var bp_manager: Control = $GameScreen/UILayer/UI/BlueprintManager 
 onready var rain_script: ShaderMaterial = rain_sprite.material
 export var shader_uv_scale: Vector3 = Vector3.ONE
 
@@ -21,7 +21,7 @@ var score: float = 0
 var wind: Vector2
 
 func game_over():
-	State.ui.get_node("DeathRect").show()
+	State.ui.get_node("UI/DeathRect").show()
 	State.ui.show_popup(game_over_popup_face.instance(), {"title": "Game over"})
 	State.ui.popup.rect_position = State.ui.get_viewport().size * 0.5 - State.ui.popup.rect_size * 0.5
 	State.ui.popup.connect("visibility_changed", self, "_global_game_over")

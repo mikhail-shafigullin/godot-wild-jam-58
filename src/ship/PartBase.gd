@@ -16,6 +16,8 @@ var input_map: Dictionary = {}
 
 export var init_health: float = 100
 onready var health = init_health
+export var price: float = 100
+export var description: String = "part"
 export var armor: float = 1
 export var armor_weak: float = -1
 export var breaking_distance: float = 10
@@ -25,6 +27,16 @@ export var part_visual_size: Vector2 = Vector2(10,10)
 export(NodePath) var main_sprite_path 
 export(Texture) var item_icon
 onready var main_sprite 
+
+func get_part_data() -> Dictionary:
+	var data: Dictionary = {}
+	data["price"] = price
+	data["mass"] = mass
+	data["brake_point"] = breaking_distance
+	data["armor"] = armor
+	data["softness"] = joints_softness
+	data["description"] = description
+	return data
 
 const popup_actions: Resource		 = preload("res://src/interface/pop_faces/PUFPartActions.tscn")
 var   custom_popup_actions: Resource = null
@@ -53,7 +65,7 @@ var children_parts: Array = []
 var action_controller: ActionController = ActionController.new()
 
 
-func _init():
+func _ready():
 	collision_layer = 0
 	collision_mask = 0
 	set_collision_mask_bit(8, true)
@@ -61,7 +73,6 @@ func _init():
 	set_collision_layer_bit(0, true)
 	set_collision_layer_bit(4, true)
 
-func _ready():
 	if (main_sprite_path):
 		main_sprite = get_node(main_sprite_path)
 	_find_probes()

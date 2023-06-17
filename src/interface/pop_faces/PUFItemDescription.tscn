@@ -14,49 +14,36 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Name" type="Label" parent="Lables"]
-margin_right = 1024.0
+[node name="price" type="Label" parent="Lables"]
+margin_left = 512.0
+margin_right = 512.0
 margin_bottom = 14.0
-size_flags_vertical = 0
-text = "name"
-align = 1
-uppercase = true
+size_flags_horizontal = 4
 
-[node name="Heath" type="Label" parent="Lables"]
-margin_left = 476.0
+[node name="mass" type="Label" parent="Lables"]
+margin_left = 512.0
 margin_top = 18.0
-margin_right = 548.0
+margin_right = 512.0
 margin_bottom = 32.0
 size_flags_horizontal = 4
-text = "health: 100"
 
-[node name="ThrustType" type="Label" parent="Lables"]
-margin_left = 461.0
+[node name="armor" type="Label" parent="Lables"]
+margin_left = 512.0
 margin_top = 36.0
-margin_right = 563.0
+margin_right = 512.0
 margin_bottom = 50.0
 size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "thrust: one shot"
-
-[node name="Mass" type="Label" parent="Lables"]
-margin_left = 487.0
-margin_top = 54.0
-margin_right = 537.0
-margin_bottom = 68.0
-size_flags_horizontal = 4
-text = "mass: 1"
 
 [node name="Control" type="Control" parent="Lables"]
-margin_top = 72.0
+margin_top = 54.0
 margin_right = 1024.0
-margin_bottom = 92.0
+margin_bottom = 74.0
 rect_min_size = Vector2( 0, 20 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.09
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Lables"]
-margin_top = 96.0
+[node name="description" type="RichTextLabel" parent="Lables"]
+margin_top = 78.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 5
