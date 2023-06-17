@@ -434,12 +434,12 @@ texture = SubResource( 20 )
 position = Vector2( 346, 258 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 17 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 506, 193 )
 scale = Vector2( 0.255376, 0.255376 )
 frames = SubResource( 18 )
-frame = 7
+frame = 1
 playing = true

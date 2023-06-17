@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Core_0000.png-f0d18c4a54faa330bb3606d8c1a6e827.stex"
+path="res://.import/FuelTank_0004.png-ee65e5fc433541e6c2a5c7b63fee96ea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/player/core/Core_0000.png"
-dest_files=[ "res://.import/Core_0000.png-f0d18c4a54faa330bb3606d8c1a6e827.stex" ]
+source_file="res://src/sprites/player/fuelTank/FuelTank_0004.png"
+dest_files=[ "res://.import/FuelTank_0004.png-ee65e5fc433541e6c2a5c7b63fee96ea.stex" ]
 
 [params]
 

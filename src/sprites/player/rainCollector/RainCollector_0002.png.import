@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Core_0004.png-8b9c1a6cf76a63662b9dadea4dcccc24.stex"
+path="res://.import/RainCollector_0002.png-3d1eb9a437d5f078ce3349b8c16f230a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/player/core/Core_0004.png"
-dest_files=[ "res://.import/Core_0004.png-8b9c1a6cf76a63662b9dadea4dcccc24.stex" ]
+source_file="res://src/sprites/player/rainCollector/RainCollector_0002.png"
+dest_files=[ "res://.import/RainCollector_0002.png-3d1eb9a437d5f078ce3349b8c16f230a.stex" ]
 
 [params]
 
