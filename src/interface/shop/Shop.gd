@@ -16,6 +16,10 @@ onready var item_frame = preload("res://src/interface/shop/ItemFrame.tscn")
 
 func _ready():
 	populate_shop()
+	show_shop()
+
+func on_player_leave_base():
+	hide()
 
 func _input(_event):
 	money_label.text = "%s"%State.scrap
@@ -40,7 +44,7 @@ func _populate_grid(grid: GridContainer, items_path: String):
 		print( r_n)
 		if r_n is PartBase:
 			var frame = item_frame.instance()
-			frame.item_name = f.split(".")[0]
+			frame.item_name = f.get_basename()
 			print("%s is loaded"%f.split(".")[0])
 			frame.item_data = r_n.get_part_data()
 			frame.item_price = r_n.price
@@ -68,9 +72,16 @@ func get_files(path):
 
 	return files
 
+func hide_shop():
+	$AnimationPlayer.play("hide")
+	$ShowButton.pressed = true
+
+func show_shop():
+	$AnimationPlayer.play("show")
+	$ShowButton.pressed = false
 
 func _on_ShowButton_toggled(button_pressed:bool):
-	if $AnimationPlayer.get_current_animation() == "show":
-		$AnimationPlayer.play("hide")
+	if button_pressed:
+		hide_shop()
 	else:
-		$AnimationPlayer.play("show")
+		show_shop()

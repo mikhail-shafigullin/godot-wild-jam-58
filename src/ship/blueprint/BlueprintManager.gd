@@ -34,10 +34,11 @@ func _input(event):
 func buy_part(path: String, price: float):
 	if State.scrap >= price: 
 		State.scrap -= price
+		State.ui.shop.hide_shop()
 		var new_part_res: Resource = load(path)
 		if new_part_res:
 			var new_part = new_part_res.instance()	
-			State.world.add_child(new_part)
+			State.get_root_scene().add_child(new_part)
 			grab_part(new_part)	
 	
 

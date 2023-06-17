@@ -44,6 +44,8 @@ collision_mask = 273
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.21, 0.21 )
 frames = SubResource( 1 )
+frame = 2
+playing = true
 __meta__ = {
 "_edit_lock_": true
 }

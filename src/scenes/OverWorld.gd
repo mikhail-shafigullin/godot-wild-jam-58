@@ -1,4 +1,5 @@
 extends Node2D
+signal player_leave_base
 
 export var wind_direction: Vector2 = Vector2.ZERO
 export var gravity_direction: Vector2 = Vector2(0, -98)
@@ -17,6 +18,7 @@ const game_over_popup_face: Resource = preload("res://src/interface/pop_faces/PU
 var money_spend: float = 0
 var max_hight: float = 0
 var score: float = 0
+var player_out: bool = false
 
 var wind: Vector2
 
@@ -105,3 +107,9 @@ func _process(delta):
 	world_mask.w_offset = w_offset - player_vel2
 
 
+
+
+func player_out():
+	emit_signal("player_leave_base")
+	player_out = true
+	State.ui.shop.hide()

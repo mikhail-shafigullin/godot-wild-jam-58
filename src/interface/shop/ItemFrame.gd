@@ -6,7 +6,7 @@ var item_path: String
 var item_price: float
 var item_data: Dictionary = {}
 
-onready var buy_button = $BtnInfo
+onready var buy_button = $VBoxContainer/HBoxContainer/BtnBuy
 
 const popup_face: Resource = preload("res://src/interface/pop_faces/PUFItemDescription.tscn")
 const lock_texture: Texture = preload("res://src/ship/blueprint/pin_target.png")
@@ -17,10 +17,13 @@ onready var icon = $VBoxContainer/Icon
 func _ready():
 	update_visual()
 
+func _gui_input(event):
+	update_frame()
+
 func lock():
 	$LockRect.show()
 	buy_button.hide()
-	$VBoxContainer/HBoxContainer/BtnBuy.hide()
+	$BtnInfo.hide()
 	icon.texture = lock_texture
 
 func update_visual():
@@ -30,12 +33,12 @@ func update_visual():
 			icon.texture = item_texture
 		if item_price:
 			$VBoxContainer/HBoxContainer/BtnBuy.text = "buy: %s"%item_price
+		update_frame()
 	else:
 		lock()
 
 func _on_BtnInfo_pressed():
 	State.ui.show_popup(popup_face.instance(), item_data)
-
 
 func _on_BtnBuy_pressed():
 	buy_part()
@@ -43,6 +46,7 @@ func _on_BtnBuy_pressed():
 func buy_part():
 	if update_frame():
 		State.bp_manager.buy_part(item_path, item_price)
+		update_visual()
 
 func update_frame() -> bool:
 	if State.scrap <= item_price:

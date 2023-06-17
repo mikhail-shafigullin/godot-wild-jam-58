@@ -8,7 +8,10 @@ onready var ray_m = $RayMiddle
 onready var ray_r = $RayRight
 onready var rays = [ray_l, ray_m, ray_r]
 
+onready var anim_sprite = $AnimatedSprite
+
 func _ready():
+	anim_sprite.playing = false
 	for ray in rays:
 		ray.collision_mask = 0
 		# ray.set_collision_mask_bit(8, true)
@@ -28,11 +31,13 @@ func collect(wind: Vector2) -> float:
 	return max(efficiency * wind_speed * ((v + 0.5)*0.5), 0)
 
 func on_part_connect():
+	anim_sprite.playing = true
 	efficiency = base_efficiency * get_efficiency()
 	core.collectors.push_back(self)
 	set_process(true)
 
 func on_part_disconnect():
+	anim_sprite.playing = false
 	set_process(false)
 	var index = core.collectors.find(self)
 	if index != -1:
@@ -50,3 +55,4 @@ func _process(delta):
 			update_efficiency()
 			# print("new efficiency %s"%efficiency)
 		time_past = 0.0
+
