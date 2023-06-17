@@ -3,11 +3,22 @@ extends PartBase
 
 # parts:controllers Dictionary
 var parts:	Array = []
-var resource : float = 100
+var collectors: Array =  []
+var resource : float = 10
+export var resource_max: float = 100 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
+func _physics_process(delta):
+	var wind = State.world.get_wind()
+	var rain_rate = State.world.get_rain_rate()
+	for c in collectors:
+		var wps = c.collect(wind)
+		resource += wps * rain_rate *delta
+		# print(wps * rain_rate)
+	clamp(resource, -1, resource_max)
 
 func _part_disconnect(part: PartBase):
 	if parts.has(part):

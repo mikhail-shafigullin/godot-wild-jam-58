@@ -31,6 +31,16 @@ func _input(event):
 	if event.is_action_pressed("bp_rotate_left"):
 		rotation_target += rotation_step
 
+func buy_part(path: String, price: float):
+	if State.scrap >= price: 
+		State.scrap -= price
+		var new_part_res: Resource = load(path)
+		if new_part_res:
+			var new_part = new_part_res.instance()	
+			State.world.add_child(new_part)
+			grab_part(new_part)	
+	
+
 func _on_gui_input(event: InputEvent):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:

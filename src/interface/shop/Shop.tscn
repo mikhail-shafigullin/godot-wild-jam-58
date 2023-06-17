@@ -69,15 +69,15 @@ tracks/1/keys = {
 }
 
 [node name="Shop" type="Panel"]
-margin_left = -300.0
-margin_bottom = 604.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 300, 500 )
 mouse_filter = 2
 input_pass_on_modal_close_click = false
+size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="ShowButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0.356863 )
+modulate = Color( 1, 1, 1, 0.0509804 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -131,7 +131,7 @@ clip_text = true
 [node name="Container" type="TabContainer" parent="ShopHB"]
 margin_top = 54.0
 margin_right = 300.0
-margin_bottom = 604.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
@@ -402,7 +402,7 @@ scroll_horizontal_enabled = false
 
 [node name="CollectGrid" type="GridContainer" parent="ShopHB/Container/Collect/GridContainer"]
 margin_right = 284.0
-margin_bottom = 478.0
+margin_bottom = 474.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -467,7 +467,7 @@ scroll_horizontal_enabled = false
 
 [node name="UtilGrid" type="GridContainer" parent="ShopHB/Container/Util/GridContainer"]
 margin_right = 284.0
-margin_bottom = 478.0
+margin_bottom = 474.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -505,7 +505,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "show"
+autoplay = "hide"
 anims/hide = SubResource( 5 )
 anims/show = SubResource( 4 )
 

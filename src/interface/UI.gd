@@ -1,13 +1,17 @@
 extends CanvasLayer
 
-onready var popup: WindowDialog = $"PopUp"
-onready var shop: Panel = $Shop
-onready var bp_manager: BlueprintManager = $BlueprintManager
-onready var binder_dialog: ConfirmationDialog = $ActionBindDialog
+onready var popup: WindowDialog = $"UI/PopUp"
+onready var shop: Panel = $UI/Shop
+onready var bp_manager: BlueprintManager = $UI/BlueprintManager
+onready var binder_dialog: ConfirmationDialog = $UI/ActionBindDialog
+onready var fuel_gauge: TextureProgress = $UI/Fuel
 
 var popup_size: Vector2
 func _ready():
 	State.ui = self
+
+func _physics_process(_delta):
+	fuel_gauge.value = State.player.resource / State.player.resource_max
 
 func show_popup(popup_face: PopUpFace, data: Dictionary):
 	if popup.get_children():

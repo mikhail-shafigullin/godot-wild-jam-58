@@ -4,7 +4,10 @@ extends Control
 var title:String = "popup"
 var part_name: String = "none"
 
-func set_data(data: Dictionary):
-   if data.has("title"):
-      title = data["title"]
+var data: Dictionary = {}
+
+func set_data(_data: Dictionary):
+   data = _data
+   for key in data.keys():
+      set(key, data[key])
    

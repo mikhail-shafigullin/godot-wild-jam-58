@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ship/cannon/Cannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/ship/utils/Collector.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ship/thrust/TestThruster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://NN_test/1x1.png" type="Texture" id=9]
 
@@ -21,15 +22,7 @@ position = Vector2( 366, 473 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="BlueZ-5" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -38,15 +31,7 @@ self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 position = Vector2( 415, 522 )
 z_index = 5
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="GreeZ5" index="1"]
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
@@ -55,15 +40,7 @@ self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 position = Vector2( 427, 468 )
 rotation = -0.676792
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="RedZ5" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -73,15 +50,7 @@ position = Vector2( 569, 410 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="BlueZ-7" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -90,15 +59,7 @@ self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 position = Vector2( 675, 404 )
 z_index = 5
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="GreeZ7" index="1"]
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
@@ -107,15 +68,7 @@ self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 position = Vector2( 687, 350 )
 rotation = -0.676792
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="RedZ7" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -125,15 +78,7 @@ position = Vector2( 627, 478 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="BlueZ-6" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -142,15 +87,7 @@ self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 position = Vector2( 676, 527 )
 z_index = 5
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="GreeZ6" index="1"]
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
@@ -159,15 +96,7 @@ self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 position = Vector2( 688, 473 )
 rotation = -0.676792
 mass = 57.27
-init_health = null
-armor = null
-armor_weak = null
-breaking_distance = null
-can_be_grabbed = null
-joints_softness = null
-part_visual_size = null
-max_joint_score = null
-min_joint_score = null
+joints_softness = 0.0
 
 [node name="1X1" parent="RedZ6" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -195,6 +124,9 @@ position = Vector2( 179, 546 )
 
 [node name="Cannon2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 856, 545 )
+
+[node name="Collector" parent="." instance=ExtResource( 4 )]
+position = Vector2( 559, 442 )
 
 [editable path="BlueZ-5"]
 [editable path="GreeZ5"]

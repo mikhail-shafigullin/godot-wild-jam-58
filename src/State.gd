@@ -3,7 +3,7 @@ extends Node
 # Тут будут жить наши глобальные штуки
 
 # player currency
-var scrap: float
+var scrap: float = 322.0
 
 var sceneManager: Node2D;
 var player: ShipCore;
