@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CosmicMusic.mp3-76f2f228a4b379a3d1e501d49cc8723a.mp3str"
+
+[deps]
+
+source_file="res://src/audio/music/CosmicMusic.mp3"
+dest_files=[ "res://.import/CosmicMusic.mp3-76f2f228a4b379a3d1e501d49cc8723a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
