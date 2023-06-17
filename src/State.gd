@@ -10,6 +10,7 @@ var player: ShipCore;
 var bp_manager: BlueprintManager;
 var ui: CanvasLayer;
 var world: Node2D
+var soundManager: Node2D;
 const world_res = preload("res://src/scenes/OverWorld.tscn")
 const save_path = "user://game.save"
 

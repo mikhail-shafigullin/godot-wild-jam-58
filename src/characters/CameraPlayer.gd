@@ -9,7 +9,14 @@ var speed: float = 500;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if State.soundManager :
+		State.soundManager.startLevel(global_position.y)
+		State.soundManager.setMusicByYCoord(global_position.y)
+		
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if State.soundManager :
+		State.soundManager.setMusicByYCoord(global_position.y)
 	
 func _physics_process(delta):
 	var velocity = Vector2()
@@ -25,6 +32,4 @@ func _physics_process(delta):
 	translate(velocity * delta)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
