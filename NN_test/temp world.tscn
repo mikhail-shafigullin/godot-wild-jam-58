@@ -2,7 +2,7 @@
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/ship/cannon/Cannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/ship/thrust/Cannon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/ship/utils/Collector.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ship/thrust/TestThruster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/helper/BaseArea.tscn" type="PackedScene" id=6]
@@ -17,7 +17,7 @@ extents = Vector2( 513.5, 52 )
 position = Vector2( 508, 527 )
 collision_layer = 64
 collision_mask = 321
-mass = 15.13
+mass = 100.0
 breaking_distance = 3.0
 
 [node name="BlueZ-5" parent="." instance=ExtResource( 5 )]
@@ -25,7 +25,6 @@ position = Vector2( 366, 473 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="BlueZ-5" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -34,7 +33,6 @@ self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 position = Vector2( 415, 522 )
 z_index = 5
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="GreeZ5" index="1"]
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
@@ -43,7 +41,6 @@ self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 position = Vector2( 427, 468 )
 rotation = -0.676792
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="RedZ5" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -53,7 +50,6 @@ position = Vector2( 569, 410 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="BlueZ-7" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -62,7 +58,6 @@ self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 position = Vector2( 675, 404 )
 z_index = 5
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="GreeZ7" index="1"]
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
@@ -71,7 +66,6 @@ self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 position = Vector2( 687, 350 )
 rotation = -0.676792
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="RedZ7" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
@@ -81,7 +75,6 @@ position = Vector2( 627, 478 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="BlueZ-6" index="1"]
 self_modulate = Color( 0.435294, 0.435294, 1, 1 )
@@ -90,7 +83,6 @@ self_modulate = Color( 0.435294, 0.435294, 1, 1 )
 position = Vector2( 676, 527 )
 z_index = 5
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="GreeZ6" index="1"]
 self_modulate = Color( 0.435294, 1, 0.435294, 1 )
@@ -99,13 +91,14 @@ self_modulate = Color( 0.435294, 1, 0.435294, 1 )
 position = Vector2( 688, 473 )
 rotation = -0.676792
 mass = 57.27
-joints_softness = 0.0
 
 [node name="1X1" parent="RedZ6" index="1"]
 self_modulate = Color( 1, 0.435294, 0.435294, 1 )
 
 [node name="ground" type="StaticBody2D" parent="."]
 position = Vector2( 8, 583 )
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 position = Vector2( 503.5, 42 )

@@ -14,7 +14,6 @@ input_pickable = true
 mass = 82.11
 contact_monitor = true
 script = ExtResource( 2 )
-joints_softness = 0.1
 main_sprite_path = NodePath("1X1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

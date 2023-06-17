@@ -11,7 +11,11 @@ export var resource_max: float = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	set_collision_layer_bit(1, true) # active parts
+	set_collision_layer_bit(2, false) # inactive parts
+	set_collision_mask_bit(1, false) # active parts
+	set_collision_mask_bit(2, true) # inactive parts
+	
 
 func _physics_process(delta):
 	var wind = State.world.get_wind()

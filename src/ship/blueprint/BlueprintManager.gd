@@ -155,14 +155,14 @@ func release_part(part: PartBase):
 	holding_part = null
 	if not get_tree().paused:
 		part.apply_impulse(Vector2.ZERO, Vector2.ONE * randf()*part.mass*16)
-
+	part.on_release()
 	if (part.best_part):
 		print("build target is %s"%part.best_part.name)
 	if part.can_be_build():
 		part.build()
 	else:
-		part.set_collision_layer_bit(0, true)
-	part.on_release()
+#		part.set_collision_layer_bit(0, true)
+		pass
 
 
 func _on_Grab_pressed():

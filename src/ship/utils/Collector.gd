@@ -14,8 +14,9 @@ func _ready():
 	anim_sprite.playing = false
 	for ray in rays:
 		ray.collision_mask = 0
-		# ray.set_collision_mask_bit(8, true)
-		ray.set_collision_mask_bit(4, true)
+		ray.set_collision_mask_bit(1, true) # active parts
+		ray.set_collision_mask_bit(2, true) # inactive parts
+		ray.set_collision_mask_bit(5, true) # walls
 
 func get_efficiency() -> float:
 	var not_collided: int = rays.size()
