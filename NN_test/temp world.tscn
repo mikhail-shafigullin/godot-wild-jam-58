@@ -8,7 +8,6 @@
 [ext_resource path="res://src/scenes/helper/BaseArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://NN_test/1x1.png" type="Texture" id=9]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 513.5, 52 )
 
@@ -26,75 +25,57 @@ position = Vector2( 366, 473 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-
-[node name="1X1" parent="BlueZ-5" index="1"]
-self_modulate = Color( 0.435294, 0.435294, 1, 1 )
+thruster_force = 100.0
 
 [node name="GreeZ5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 415, 522 )
 z_index = 5
 mass = 57.27
-
-[node name="1X1" parent="GreeZ5" index="1"]
-self_modulate = Color( 0.435294, 1, 0.435294, 1 )
+thruster_force = 100.0
 
 [node name="RedZ5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 427, 468 )
 rotation = -0.676792
 mass = 57.27
-
-[node name="1X1" parent="RedZ5" index="1"]
-self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+thruster_force = 100.0
 
 [node name="BlueZ-7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 569, 410 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-
-[node name="1X1" parent="BlueZ-7" index="1"]
-self_modulate = Color( 0.435294, 0.435294, 1, 1 )
+thruster_force = 100.0
 
 [node name="GreeZ7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 675, 404 )
 z_index = 5
 mass = 57.27
-
-[node name="1X1" parent="GreeZ7" index="1"]
-self_modulate = Color( 0.435294, 1, 0.435294, 1 )
+thruster_force = 100.0
 
 [node name="RedZ7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 687, 350 )
 rotation = -0.676792
 mass = 57.27
-
-[node name="1X1" parent="RedZ7" index="1"]
-self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+thruster_force = 100.0
 
 [node name="BlueZ-6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 627, 478 )
 rotation = 1.60254
 z_index = -5
 mass = 57.27
-
-[node name="1X1" parent="BlueZ-6" index="1"]
-self_modulate = Color( 0.435294, 0.435294, 1, 1 )
+thruster_force = 100.0
 
 [node name="GreeZ6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 676, 527 )
 z_index = 5
 mass = 57.27
-
-[node name="1X1" parent="GreeZ6" index="1"]
-self_modulate = Color( 0.435294, 1, 0.435294, 1 )
+thruster_force = 100.0
 
 [node name="RedZ6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 688, 473 )
 rotation = -0.676792
 mass = 57.27
-
-[node name="1X1" parent="RedZ6" index="1"]
-self_modulate = Color( 1, 0.435294, 0.435294, 1 )
+thruster_force = 100.0
 
 [node name="ground" type="StaticBody2D" parent="."]
 position = Vector2( 8, 583 )

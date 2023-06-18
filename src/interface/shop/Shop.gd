@@ -41,6 +41,8 @@ func _populate_grid(grid: GridContainer, items_path: String):
 	for f in get_files(items_path):
 		print(f)
 		var r: PackedScene = load(items_path + f)
+		if !r:
+			return
 		var r_n = r.instance()
 		print( r_n)
 		if r_n is PartBase:
