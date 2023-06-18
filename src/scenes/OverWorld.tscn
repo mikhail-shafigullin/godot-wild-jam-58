@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://NN_test/Mask.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/UI.tscn" type="PackedScene" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://src/sprites/backgrounds/background_sky_0.png" type="Texture" id=21]
 [ext_resource path="res://src/sprites/backgrounds/background_sky_2.png" type="Texture" id=22]
 [ext_resource path="res://NN_test/UnlockAll.gd" type="Script" id=23]
+[ext_resource path="res://src/sprites/funfunfun/Ceilingcat.png" type="Texture" id=24]
+[ext_resource path="res://src/sprites/funfunfun/212-2123798_gmod-error-model-garrys-mod-error-model-733628690.png" type="Texture" id=25]
 
 [sub_resource type="ShaderMaterial" id=26]
 shader = ExtResource( 6 )
@@ -192,6 +194,9 @@ shader_param/texture_1 = SubResource( 1 )
 [node name="OverWorld" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -13585.0, -16804.0, -15458.0 ]
+}
 rain_rate = 48.507
 
 [node name="UnlockAll" type="Node2D" parent="."]
@@ -222,9 +227,9 @@ render_target_update_mode = 3
 [node name="World" parent="GameScreen/ViewportControlWorld/World" instance=ExtResource( 3 )]
 
 [node name="ViewportControlMask" type="ViewportContainer" parent="GameScreen"]
-margin_left = -256.0
-margin_top = -254.0
-margin_bottom = 2.0
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 256.0
+margin_bottom = 256.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -323,6 +328,7 @@ texture = ExtResource( 21 )
 offset = Vector2( 3167, 1949 )
 
 [node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 111, 1 )
 tile_set = SubResource( 31 )
 cell_y_sort = true
 show_collision = true
@@ -555,14 +561,62 @@ scale = Vector2( 35.3125, 64.6406 )
 texture = SubResource( 39 )
 offset = Vector2( 94.1593, -27.3596 )
 
+[node name="Sprite5" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+material = SubResource( 38 )
+position = Vector2( -2609, -11664 )
+scale = Vector2( 35.3125, 64.6406 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
+[node name="Sprite6" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+material = SubResource( 38 )
+position = Vector2( -2609, -15686.9 )
+scale = Vector2( 35.3125, 64.6406 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
+[node name="Sprite7" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+material = SubResource( 38 )
+position = Vector2( -2609, -19796 )
+scale = Vector2( 35.3125, 64.6406 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
+[node name="Sprite8" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+material = SubResource( 38 )
+position = Vector2( -2609, -23687.9 )
+scale = Vector2( 35.3125, 64.6406 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
+[node name="Sprite9" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+material = SubResource( 38 )
+position = Vector2( -2609, -27797 )
+scale = Vector2( 35.3125, 64.6406 )
+texture = SubResource( 39 )
+offset = Vector2( 94.1593, -27.3596 )
+
 [node name="Sprite3" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
 position = Vector2( -2609, -7367.83 )
 scale = Vector2( 35.3125, 24.3125 )
 texture = SubResource( 39 )
 offset = Vector2( 94.1593, -27.3596 )
 
-[node name="Sprite4" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
-position = Vector2( -2609, -7367.83 )
+[node name="212-2123798Gmod-error-model-garrys-mod-error-model-733628690" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+position = Vector2( 483, -13535 )
+texture = ExtResource( 25 )
+
+[node name="Ceilingcat" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer3"]
+position = Vector2( -513, -17007 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 24 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CosmicLevel/Background"]
+visible = false
+
+[node name="Sprite4" type="Sprite" parent="CosmicLevel/Background/ParallaxLayer"]
+visible = false
+position = Vector2( -2601, -7405.83 )
 scale = Vector2( 35.3125, 24.3125 )
 texture = SubResource( 39 )
 offset = Vector2( 94.1593, -27.3596 )
