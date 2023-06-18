@@ -8,7 +8,7 @@ var item_data: Dictionary = {}
 
 onready var buy_button = $VBoxContainer/HBoxContainer/BtnBuy
 
-const popup_face: Resource = preload("res://src/interface/pop_faces/PUFItemDescription.tscn")
+const popup_face: Resource = preload("res://src/interface/pop_faces/PopUpFace.tscn")
 const lock_texture: Texture = preload("res://src/ship/blueprint/pin_target.png")
 
 

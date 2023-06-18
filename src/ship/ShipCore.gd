@@ -6,6 +6,7 @@ var parts:	Array = []
 var tanks: Array = []
 var collectors: Array =  []
 var resource : float = 10
+export var resource_mass: float = 50
 export var resource_capacity: float = 100 
 export var resource_max: float = 100 
 
@@ -23,9 +24,11 @@ func _physics_process(delta):
 	var wind = State.world.get_wind()
 	var rain_rate = State.world.get_rain_rate()
 	
-	resource_max = resource_capacity
+	var fullness = resource / resource_max
+	mass = basic_mass + (resource_mass * fullness)
 	for t in tanks:
-		resource_max += t.resource_capacity
+		t.mass = t.basic_mass + (t.resource_mass * fullness)
+
 	if not get_tree().paused:	
 		for c in collectors:
 			var wps = c.collect(wind)
@@ -34,11 +37,11 @@ func _physics_process(delta):
 		
 	resource = clamp(resource, -1, resource_max)
 	
-	var fullness = resource / resource_max
-	for t in tanks:
-		t.mass = t.basic_mass + fullness * t.resource_capacity
+	# var fullness = resource / resource_max
+	# for t in tanks:
+	# 	t.mass = t.basic_mass + fullness * t.resource_capacity
 		
-	mass = basic_mass + fullness * resource
+	# mass = basic_mass + fullness * resource
 
 func _part_disconnect(part: PartBase):
 	if parts.has(part):

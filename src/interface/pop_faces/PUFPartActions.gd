@@ -10,6 +10,9 @@ onready var vbox = $VBoxContainer
 var call_binders: Array = []
 var var_binders: Array = []
 
+func _init():
+   lbls = null
+
 func setup_for(controller :ActionController):
 	for dictionary in controller.data:
 		if dictionary.has(ActionController.ActionType.CALL):

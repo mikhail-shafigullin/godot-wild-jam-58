@@ -2,22 +2,24 @@
 
 [ext_resource path="res://src/interface/pop_faces/PUFGameOver.gd" type="Script" id=1]
 
-[node name="PUFGameOver" type="Control"]
+[node name="PUFGameOver" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 444, 222 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+alignment = 1
 script = ExtResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_top = 266.0
+margin_right = 1024.0
+margin_bottom = 334.0
+alignment = 1
 
 [node name="max_hight" type="Label" parent="VBoxContainer"]
-margin_top = 66.0
 margin_right = 1024.0
-margin_bottom = 80.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "max hight: 1"
@@ -25,27 +27,27 @@ align = 1
 valign = 1
 
 [node name="refund" type="Label" parent="VBoxContainer"]
-margin_top = 217.0
+margin_top = 18.0
 margin_right = 1024.0
-margin_bottom = 231.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "refund: 0"
 align = 1
 
 [node name="score" type="Label" parent="VBoxContainer"]
-margin_top = 368.0
+margin_top = 36.0
 margin_right = 1024.0
-margin_bottom = 382.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "refund: 0"
 align = 1
 
 [node name="parts_unlocked" type="Label" parent="VBoxContainer"]
-margin_top = 519.0
+margin_top = 54.0
 margin_right = 1024.0
-margin_bottom = 533.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "parts unlocked: false"

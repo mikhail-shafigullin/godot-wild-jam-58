@@ -54,7 +54,7 @@ func pause_game_toggle():
 	
 func pause_game():
 	get_tree().paused = true
-	emit_signal("pause")
+	emit_signal("bp_paused")
 
 	
 onready var grab_button = $ToolPanel/Grab
