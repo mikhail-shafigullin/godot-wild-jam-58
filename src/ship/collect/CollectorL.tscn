@@ -13,7 +13,7 @@
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 1 )
 shader_param/from = Color( 0.443137, 0.184314, 0.160784, 1 )
-shader_param/to = Color( 0.396078, 0.0784314, 0.113725, 1 )
+shader_param/to = Color( 0.301961, 0.180392, 0.180392, 1 )
 shader_param/tolerance = 0.093
 
 [sub_resource type="SpriteFrames" id=1]
@@ -59,6 +59,7 @@ collision_mask = 273
 material = SubResource( 2 )
 scale = Vector2( 0.465534, 0.465534 )
 frames = SubResource( 1 )
+frame = 5
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

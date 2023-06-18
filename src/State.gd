@@ -16,14 +16,18 @@ const save_path = "user://game.save"
 
 const unlocks = {
 	100  : "Frame",
-	480  : "Collector",
+	480  : "CollectorM",
 	1100 : "Tank",
-	2000 : "Cannon",
-
+	2000 : "FrameL",
+	5000 : "Cannon",
+	8000 : "MediumThruster",
+   10000 : "CollectorL",
+   13337 : "SUPERTank",
+   17007 : "ImprovedThruster"
 }
 
 #unlocked parts names
-var unlocked_parts: Array = ["Thruster"]
+var unlocked_parts: Array = ["SmallThruster"]
 var all_parts: Array = []
 
 func save_game():

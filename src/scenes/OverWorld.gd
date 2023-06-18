@@ -140,6 +140,7 @@ func _process(delta):
 	world_mask.w_offset = w_offset - player_vel2
 
 
+var o_last_time
 func _physics_process(_delta):
 	var pyp = -player.global_position.y
 	if pyp > max_hight:
@@ -150,6 +151,32 @@ func _physics_process(_delta):
 		game_over()
 		player.global_position = Vector2.ZERO
 	
+	var timer: Timer = State.player.get_node("SpawnerTimer")
+	
+	if (pyp < 800):
+		timer.paused = true
+	else:
+		timer.paused = false
+			# if pyp < 3000:
+			# 	timer.wait_time = 9
+			# 	last_time = 9
+			# elif pyp < 6000:
+			# 	timer.wait_time = 5
+			# 	last_time = 5
+			# elif pyp < 9000:
+			# 	timer.wait_time = 2
+			# 	last_time = 2
+			# elif pyp < 13000:
+			# 	timer.wait_time = 1
+			# 	last_time = 1
+			# elif pyp < 16000:
+			# 	timer.wait_time = 13
+			# 	last_time = 13
+			# else:
+			# 	timer.paused = true
+			# 	last_time = 5555
+
+
 func player_out():
 	emit_signal("player_leave_base")
 	player_out = true

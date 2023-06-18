@@ -26,15 +26,16 @@ func zoom_out():
 	_zoom(false)
 
 func _zoom(zoom_out: bool):
-	if zoom_out:
-		if State.ui.zoom > Vector2(0.33,0.33):
-			State.ui.zoom -= State.ui.zoom_step
-			State.world.rain_script.set("shader_param/uv1_scale", floor(State.world.shader_uv_scale * 2.5 * State.ui.zoom.y))
-	else: 
-		if State.ui.zoom < Vector2(2,2):
-			State.ui.zoom += State.ui.zoom_step
-			State.world.rain_script.set("shader_param/uv1_scale", floor(State.world.shader_uv_scale * 2.5 * State.ui.zoom.y))
-	State.player.camera.zoom = State.ui.zoom
+	if (State.world and State.ui):
+		if zoom_out:
+			if State.ui.zoom > Vector2(0.33,0.33):
+				State.ui.zoom -= State.ui.zoom_step
+				State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
+		else: 
+			if State.ui.zoom < Vector2(2,2):
+				State.ui.zoom += State.ui.zoom_step
+				State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
+		State.player.camera.zoom = State.ui.zoom
 
 func _physics_process(_delta):
 	fuel_gauge.value = State.player.resource / State.player.resource_max

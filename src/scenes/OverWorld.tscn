@@ -199,6 +199,9 @@ __meta__ = {
 }
 rain_rate = 48.507
 
+[node name="UNLOCK ALL DELITE ME MEMEMEM" type="Node2D" parent="."]
+script = ExtResource( 23 )
+
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
 [node name="ViewportControlWorld" type="ViewportContainer" parent="GameScreen"]
@@ -638,9 +641,6 @@ self_modulate = Color( 0.611765, 0.803922, 0.807843, 0.658824 )
 material = SubResource( 2 )
 z_as_relative = false
 texture = ExtResource( 4 )
-
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource( 23 )
 
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]
 [editable path="GameScreen/UILayer"]

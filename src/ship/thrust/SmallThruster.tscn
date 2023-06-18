@@ -28,7 +28,7 @@ armor = 0.01
 joints_softness = 0.047
 main_sprite_path = NodePath("AnimatedSprite")
 item_icon = ExtResource( 1 )
-thruster_force = 800.0
+thruster_force = 28000.0
 consuming_rate = 10.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

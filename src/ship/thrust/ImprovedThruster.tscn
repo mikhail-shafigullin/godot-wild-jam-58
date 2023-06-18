@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/sprites/player/engine/Engine_0002.png" type="Texture" id=1]
 [ext_resource path="res://src/sprites/player/engine/Engine_0003.png" type="Texture" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://src/sprites/player/engine/Engine_0005.png" type="Texture" id=6]
 [ext_resource path="res://src/sprites/player/engine/Engine_0001.png" type="Texture" id=7]
 [ext_resource path="res://src/sprites/player/engine/Engine_0004.png" type="Texture" id=8]
+[ext_resource path="res://src/shaders/color_swap_shader.tres" type="Shader" id=9]
+[ext_resource path="res://src/sprites/funfunfun/Ceilingcat.png" type="Texture" id=10]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 9 )
+shader_param/from = Color( 0.388235, 0.137255, 0.113725, 1 )
+shader_param/to = Color( 0.705882, 0.905882, 0.945098, 1 )
+shader_param/tolerance = 0.086
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -21,28 +29,32 @@ animations = [ {
 input_pickable = true
 contact_monitor = true
 script = ExtResource( 5 )
+price = 9001.0
+description = "OP"
+basic_mass = 50.0
+main_sprite_path = NodePath("AnimatedSprite")
+item_icon = ExtResource( 10 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( -1.19895, 1.35597 )
 polygon = PoolVector2Array( 4, -11, 0, -13, -5, -12, -9, -8, -11, -6, -10, -4, -12, -1, -12, 4, -11, 7, -8, 8, -5, 8, -2, 9, -1, 11, 3, 11, 5, 9, 8, 8, 13, 7, 12, 4, 13, -1, 12, -4, 14, -7, 12, -10, 8, -11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.15, 0.15 )
+material = SubResource( 2 )
+scale = Vector2( 0.200106, 0.200106 )
 frames = SubResource( 1 )
-frame = 4
+frame = 5
 playing = true
+flip_h = true
 
 [node name="Probe" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( -9, 2 )
+position = Vector2( -13, 1 )
 
 [node name="Probe2" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 9, 2 )
+position = Vector2( 10, 0 )
 
 [node name="Probe3" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 0, 6 )
+position = Vector2( -2, 8 )
 
 [node name="Probe5" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 0, -3 )
+position = Vector2( 0, -10 )

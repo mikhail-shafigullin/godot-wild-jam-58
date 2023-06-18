@@ -12,7 +12,8 @@ func get_part_data() -> Dictionary:
 	data["brake_point"] = breaking_distance
 	data["armor"] = armor
 	data["softness"] = joints_softness
-	data["thruster_force"] = thruster_force / 100
+	data["thruster_force"] = thruster_force / 1000
+	data["consuming_rate"] = consuming_rate
 
 	data["description"] = description
 	return data

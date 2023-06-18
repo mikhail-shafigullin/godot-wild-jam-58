@@ -28,6 +28,7 @@ collision_mask = 257
 script = ExtResource( 1 )
 description = "core"
 basic_mass = 100.0
+can_be_grabbed = false
 main_sprite_path = NodePath("AnimatedSprite")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -39,7 +40,7 @@ position = Vector2( 0.000274658, -0.999603 )
 scale = Vector2( 0.31, 0.31 )
 z_index = 1075
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -60,8 +61,9 @@ scale = Vector2( 1.18783, 1.20871 )
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -293.396, -579.274 )
-rotation = 0.19004
+position = Vector2( -17.9609, -514.265 )
+rotation = -0.256878
+offset = 3394.79
 
 [node name="Position2D" type="Position2D" parent="Path2D/PathFollow2D"]
 position = Vector2( 119.38, 37.3458 )
@@ -70,11 +72,12 @@ scale = Vector2( 3.01373, 1.04207 )
 [node name="Position2D" type="Position2D" parent="Path2D/PathFollow2D"]
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -293.396, -579.274 )
-rotation = 0.19004
+position = Vector2( 7.15247, -519.707 )
+rotation = 0.185472
 
 [node name="SpawnerTimer" type="Timer" parent="."]
-wait_time = 0.58
+process_mode = 0
+wait_time = 5.623
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]

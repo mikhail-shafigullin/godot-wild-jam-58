@@ -22,6 +22,7 @@ collision_layer = 0
 collision_mask = 0
 mass = 1.52857
 script = ExtResource( 2 )
+init_health = 150.0
 description = " collect rain!"
 joints_softness = 0.02
 main_sprite_path = NodePath("AnimatedSprite")
@@ -45,7 +46,7 @@ collision_mask = 273
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.21, 0.21 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
