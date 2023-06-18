@@ -6,6 +6,8 @@ func _enter_tree():
 	State.player = self
 
 func _ready():
+	action_controller.bind_action(KEY_ESCAPE, "pause_game")
+	part_connect_input()
 	is_parts_root = true
 	can_sleep = false
 	# can_be_grabbed = false
@@ -21,3 +23,6 @@ func _ready():
 func _process(delta):
 	if State.soundManager :
 		State.soundManager.setMusicByYCoord(global_position.y)
+
+func pause_game():
+	State.bp_manager.pause_game_toggle()

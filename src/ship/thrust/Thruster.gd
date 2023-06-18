@@ -1,14 +1,14 @@
 class_name Thruster
 extends PartBase
 
-var thruster_force = Vector2(0, 666)
+export var thruster_force: float = 100
 var thruster_is_active: bool = false
 
 func _ready():
 	action_controller.bind_action(KEY_SPACE, "on", "off")
 
 func on():
-	applied_force = thruster_force.rotated(global_rotation)
+	applied_force = Vector2.UP.rotated(global_rotation) * thruster_force * mass
 	thruster_is_active = true
 	
 func off():

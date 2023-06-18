@@ -34,16 +34,30 @@ margin_right = 512.0
 margin_bottom = 50.0
 size_flags_horizontal = 4
 
-[node name="Control" type="Control" parent="Lables"]
+[node name="brake_point" type="Label" parent="Lables"]
+margin_left = 512.0
 margin_top = 54.0
+margin_right = 512.0
+margin_bottom = 68.0
+size_flags_horizontal = 4
+
+[node name="softness" type="Label" parent="Lables"]
+margin_left = 512.0
+margin_top = 72.0
+margin_right = 512.0
+margin_bottom = 86.0
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="Lables"]
+margin_top = 90.0
 margin_right = 1024.0
-margin_bottom = 74.0
+margin_bottom = 110.0
 rect_min_size = Vector2( 0, 20 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.09
 
 [node name="description" type="RichTextLabel" parent="Lables"]
-margin_top = 78.0
+margin_top = 114.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 5

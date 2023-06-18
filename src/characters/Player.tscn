@@ -1,17 +1,39 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=1]
+[ext_resource path="res://src/sprites/player/core2/Core_0000.png" type="Texture" id=2]
+[ext_resource path="res://src/sprites/player/core2/Core_0004.png" type="Texture" id=3]
+[ext_resource path="res://src/sprites/player/core2/Core_0003.png" type="Texture" id=4]
+[ext_resource path="res://src/sprites/player/core2/Core_0005.png" type="Texture" id=5]
+[ext_resource path="res://src/sprites/player/core2/Core_0001.png" type="Texture" id=6]
+[ext_resource path="res://src/sprites/player/core2/Core_0002.png" type="Texture" id=7]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 18.0
-height = 10.0
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
 
 [node name="Player" type="RigidBody2D"]
 pause_mode = 2
 collision_layer = 0
 collision_mask = 257
 script = ExtResource( 1 )
-part_visual_size = Vector2( 45, 45 )
+description = "core"
+basic_mass = 100.0
+main_sprite_path = NodePath("AnimatedSprite")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 4, -56, 0, -56, -5, -55, -12, -52, -18, -51, -18, -45, -16, -42, -16, -36, -19, -30, -18, -25, -16, -19, -17, -13, -16, -8, -18, -3, -11, -3, -10, -10, -3, -10, 3, -8, 8, -8, 10, -10, 12, -5, 9, -3, 19, -3, 17, -5, 16, -10, 18, -16, 18, -21, 19, -31, 17, -38, 15, -48, 9, -54 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -29 )
+scale = Vector2( 0.31, 0.31 )
+frames = SubResource( 1 )
+frame = 5
+playing = true
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -24,11 +46,3 @@ drag_margin_right = 0.4
 drag_margin_bottom = 0.33
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[node name="Core" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -23 )
-shape = SubResource( 1 )
-
-[node name="TempCore" type="Polygon2D" parent="Core"]
-color = Color( 0.733333, 0.733333, 0.733333, 1 )
-polygon = PoolVector2Array( 0, -23, -16, -13, -20, 12, -11, 23, 13, 23, 21, 12, 16, -14 )

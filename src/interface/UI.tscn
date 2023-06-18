@@ -42,7 +42,6 @@ margin_right = 48.0
 margin_bottom = 1.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-resizable = true
 
 [node name="ActionBindDialog" parent="UI" instance=ExtResource( 5 )]
 process_priority = 56

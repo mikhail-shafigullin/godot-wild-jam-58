@@ -32,7 +32,7 @@ onready var main_sprite
 func get_part_data() -> Dictionary:
 	var data: Dictionary = {}
 	data["price"] = price
-	data["mass"] = mass
+	data["mass"] = basic_mass
 	data["brake_point"] = breaking_distance
 	data["armor"] = armor
 	data["softness"] = joints_softness
@@ -74,6 +74,8 @@ func _ready():
 	set_collision_mask_bit(1, true) # active parts
 	set_collision_mask_bit(2, true) # inactive parts
 	set_collision_mask_bit(5, true) # walls
+
+	mass = basic_mass
 
 	if (main_sprite_path):
 		main_sprite = get_node(main_sprite_path)
@@ -361,22 +363,23 @@ func part_disconnect_input():
 var holding_keys: Dictionary = {}
 func _input(event):
 	if event is InputEventKey:
-		if (input_map.has(event.scancode)):
-			if event.pressed:
-				if  not holding_keys.has(event.scancode):
-					holding_keys[event.scancode] = true
-					var func_name = input_map[event.scancode].get("pressed")
-					if func_name:
-						if has_method(func_name):
-							call(func_name)
-			else:
-				holding_keys.erase(event.scancode)
-				var func_name = input_map[event.scancode].get("released")
+		check_input(event)
+				
+func check_input(event):
+	if (input_map.has(event.scancode)):
+		if event.pressed:
+			if  not holding_keys.has(event.scancode):
+				holding_keys[event.scancode] = true
+				var func_name = input_map[event.scancode].get("pressed")
 				if func_name:
 					if has_method(func_name):
 						call(func_name)
-				
-
+		else:
+			holding_keys.erase(event.scancode)
+			var func_name = input_map[event.scancode].get("released")
+			if func_name:
+				if has_method(func_name):
+					call(func_name)
 
 # [0   "var"  ,  "value"   ]
 func set_part_value( data: Array ):

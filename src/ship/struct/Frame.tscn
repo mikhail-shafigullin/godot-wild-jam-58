@@ -1,22 +1,53 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/ship/struct/Frame.gd" type="Script" id=1]
-[ext_resource path="res://NN_test/1x1.png" type="Texture" id=2]
-[ext_resource path="res://src/shaders/rain_texture_1.png" type="Texture" id=3]
+[ext_resource path="res://src/ship/blueprint/Probe.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/sprites/player/buildBlocks/BuildBlocks.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 19, 12 )
+extents = Vector2( 26, 9.5 )
 
 [node name="Frame" type="RigidBody2D"]
 position = Vector2( -1, 0 )
 collision_layer = 0
 script = ExtResource( 1 )
+init_health = 250.0
+price = 20.0
+description = "plumber1"
+basic_mass = 30.0
+breaking_distance = 20.0
+main_sprite_path = NodePath("Sprite")
 item_icon = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.411765, 0.615686, 0.67451, 1 )
-scale = Vector2( 40.5079, 25.3964 )
-texture = ExtResource( 2 )
+scale = Vector2( 0.270701, 0.287688 )
+texture = ExtResource( 3 )
+
+[node name="Probe" parent="." instance=ExtResource( 2 )]
+position = Vector2( -22, -8 )
+
+[node name="Probe2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -22, 7 )
+
+[node name="Probe3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 22, -8 )
+
+[node name="Probe4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 22, 5 )
+
+[node name="Probe5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 6 )
+
+[node name="Probe6" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1, -8 )
+
+[node name="Probe7" parent="." instance=ExtResource( 2 )]
+position = Vector2( -11, 0 )
+
+[node name="Probe8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 11, 0 )

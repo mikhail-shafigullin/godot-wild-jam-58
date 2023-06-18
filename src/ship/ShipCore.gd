@@ -16,6 +16,8 @@ func _ready():
 	set_collision_mask_bit(1, false) # active parts
 	set_collision_mask_bit(2, true) # inactive parts
 	
+	part_is_connected = true
+	pass
 
 func _physics_process(delta):
 	var wind = State.world.get_wind()

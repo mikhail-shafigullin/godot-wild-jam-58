@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/ship/thrust/Cannon.gd" type="Script" id=1]
 [ext_resource path="res://src/ship/blueprint/Probe.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/sprites/player/turret/Turret_0003.png" type="Texture" id=7]
 [ext_resource path="res://src/sprites/player/turret/Turret_0005.png" type="Texture" id=8]
 [ext_resource path="res://src/sprites/player/turret/Turret.png" type="Texture" id=9]
+[ext_resource path="res://src/sprites/player/Turret.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -25,8 +26,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -62.0 ]
 }
+description = "follow cursor!"
 breaking_distance = 50.0
 main_sprite_path = NodePath("AnimatedSprite")
+item_icon = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -111.481, 148.43 )
@@ -48,7 +51,7 @@ texture = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 2 )
-frame = 1
+frame = 3
 playing = true
 __meta__ = {
 "_edit_lock_": true
