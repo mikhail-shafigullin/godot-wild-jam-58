@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://NN_test/Mask.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/UI.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://src/sprites/backgrounds/background_sky_0.png" type="Texture" id=21]
 [ext_resource path="res://src/sprites/backgrounds/background_sky_2.png" type="Texture" id=22]
 [ext_resource path="res://NN_test/UnlockAll.gd" type="Script" id=23]
+[ext_resource path="res://src/shaders/hsv_shader.tres" type="Shader" id=24]
 
 [sub_resource type="ShaderMaterial" id=26]
 shader = ExtResource( 6 )
@@ -189,6 +190,12 @@ shader_param/rainSpeed = 0.0
 shader_param/variation = 0.0
 shader_param/texture_1 = SubResource( 1 )
 
+[sub_resource type="ShaderMaterial" id=41]
+shader = ExtResource( 24 )
+shader_param/h = 1.0
+shader_param/s = 0.733
+shader_param/v = 0.653
+
 [node name="OverWorld" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 7 )
@@ -220,9 +227,6 @@ usage = 1
 render_target_update_mode = 3
 
 [node name="World" parent="GameScreen/ViewportControlWorld/World" instance=ExtResource( 3 )]
-
-[node name="AnimatedSprite" parent="GameScreen/ViewportControlWorld/World/World/Player" index="1"]
-frame = 1
 
 [node name="Camera" parent="GameScreen/ViewportControlWorld/World/World/Player" index="2"]
 zoom = Vector2( 2, 2 )
@@ -593,7 +597,12 @@ material = SubResource( 2 )
 z_as_relative = false
 texture = ExtResource( 4 )
 
-[connection signal="timeout" from="GameScreen/ViewportControlWorld/World/World/Player/SpawnerTimer" to="GameScreen/ViewportControlWorld/World/World/Player" method="_on_SpawnerTimer_timeout"]
+[node name="ColorRect" type="ColorRect" parent="Camera"]
+material = SubResource( 41 )
+margin_left = -701.0
+margin_top = -466.0
+margin_right = 704.0
+margin_bottom = 413.0
 
 [editable path="GameScreen/ViewportControlWorld/World/World"]
 [editable path="GameScreen/ViewportControlWorld/World/World/BaseArea"]
