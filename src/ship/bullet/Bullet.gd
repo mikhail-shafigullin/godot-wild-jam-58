@@ -21,7 +21,7 @@ func on_taking_damage():
 func _on_Bullet_body_entered(body):
 	var blast = blast_scene.instance()
 	blast.global_transform = global_transform
-	cannon.core.get_parent().add_child(blast)
+	cannon.core.get_parent().call_deferred("add_child", blast)
 	queue_free()
 
 

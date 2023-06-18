@@ -6,6 +6,7 @@
 code = "shader_type canvas_item;
 
 uniform bool active = false;
+uniform vec4 toColor : hint_color;
 
 void fragment() {
 	vec4 previous_color = texture(TEXTURE, UV);
@@ -21,11 +22,19 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/active = false
+shader_param/toColor = null
 
 [node name="BossEye" type="RigidBody2D"]
 position = Vector2( 0, -22 )
+collision_layer = 96
+collision_mask = 96
 mode = 1
 script = ExtResource( 2 )
 
 [node name="EyeSprite" type="Sprite" parent="."]
 material = SubResource( 2 )
+
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]

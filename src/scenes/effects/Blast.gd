@@ -9,7 +9,7 @@ func _physics_process(delta):
 	for b in get_overlapping_bodies():
 		if b.is_in_group('on_taking_damage'):
 			b.on_taking_damage(blast_damage)
-	set_physics_process(false)
+	set_physics_process(false);
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
