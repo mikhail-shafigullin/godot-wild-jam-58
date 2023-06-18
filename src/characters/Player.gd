@@ -1,7 +1,11 @@
 extends ShipCore
 onready var camera: Camera2D = $Camera
 
-const enemy = preload("res://src/characters/NPCEnemy.tscn")
+const kamikaze_scene = preload("res://src/characters/Kamikaze.tscn")
+const smart_kamikaze_scene = preload("res://src/characters/SmartKamikaze.tscn")
+const shooter_scene = preload("res://src/characters/Shooter.tscn")
+const enemy_scenes = [kamikaze_scene, smart_kamikaze_scene, shooter_scene]
+
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	State.player = self
@@ -43,7 +47,8 @@ func _on_SpawnerTimer_timeout():
 	rng.randomize()
 	
 	$Path2D/PathFollow2D.offset = rng.randf_range(1, 1660)
-	var enemy_node = enemy.instance()
-	enemy_node.global_position = $Path2D/PathFollow2D/Position2D.global_position
-	get_parent().add_child(enemy_node)
-	print("spawn enemy")
+	
+	var enemy = enemy_scenes[randi() % enemy_scenes.size()].instance()
+	enemy.global_position = $Path2D/PathFollow2D/Position2D.global_position
+	get_parent().add_child(enemy)
+	print("%s spawned", enemy.name)

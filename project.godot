@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/Kamikaze.gd"
 }, {
-"base": "Node2D",
-"class": "OverWorld",
-"language": "GDScript",
-"path": "res://src/scenes/OverWorld.gd"
-}, {
 "base": "RigidBody2D",
 "class": "PartBase",
 "language": "GDScript",
@@ -79,6 +74,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ship/ShipCore.gd"
 }, {
+"base": "EnemyBase",
+"class": "Shooter",
+"language": "GDScript",
+"path": "res://src/characters/Shooter.gd"
+}, {
+"base": "EnemyBase",
+"class": "SmartKamikaze",
+"language": "GDScript",
+"path": "res://src/characters/SmartKamikaze.gd"
+}, {
 "base": "PartBase",
 "class": "Thruster",
 "language": "GDScript",
@@ -94,11 +99,12 @@ _global_script_class_icons={
 "EnemyBase": "",
 "Frame": "",
 "Kamikaze": "",
-"OverWorld": "",
 "PartBase": "",
 "PartUtil": "",
 "PopUpFace": "",
 "ShipCore": "",
+"Shooter": "",
+"SmartKamikaze": "",
 "Thruster": ""
 }
 
