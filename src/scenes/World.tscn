@@ -13,6 +13,9 @@ extents = Vector2( 513.5, 52 )
 collision_layer = 65
 collision_mask = 65
 
+[node name="CollisionShape2D" parent="BaseArea" index="0"]
+rotation = -0.0133331
+
 [node name="ground" type="StaticBody2D" parent="BaseArea"]
 position = Vector2( -503, 0 )
 __meta__ = {

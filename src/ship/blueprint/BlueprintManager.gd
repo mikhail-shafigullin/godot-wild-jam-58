@@ -18,16 +18,6 @@ var highlighted_part: PartBase = null
 func _ready():
 	State.bp_manager = self
 
-func _gui_input(event):
-	if event is InputEventMouseButton:
-		if State.ui.zoom > Vector2(0.33,0.33):
-			if event.button_index == BUTTON_WHEEL_UP:
-				State.ui.zoom -= State.ui.zoom_step
-				State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
-		if event.button_index == BUTTON_WHEEL_DOWN:
-			State.ui.zoom += State.ui.zoom_step
-			State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
-		State.player.camera.zoom = State.ui.zoom
 
 func _process(_delta):
 	# vp_offset = State.player.get_canvas_transform().origin

@@ -229,7 +229,7 @@ render_target_update_mode = 3
 [node name="World" parent="GameScreen/ViewportControlWorld/World" instance=ExtResource( 3 )]
 
 [node name="Camera" parent="GameScreen/ViewportControlWorld/World/World/Player" index="2"]
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 1, 1 )
 
 [node name="ViewportControlMask" type="ViewportContainer" parent="GameScreen"]
 margin_left = -256.0
@@ -606,6 +606,5 @@ margin_bottom = 413.0
 
 [editable path="GameScreen/ViewportControlWorld/World/World"]
 [editable path="GameScreen/ViewportControlWorld/World/World/BaseArea"]
-[editable path="GameScreen/ViewportControlWorld/World/World/Player"]
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]
 [editable path="GameScreen/UILayer"]
