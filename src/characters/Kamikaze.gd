@@ -16,6 +16,7 @@ func fight(delta: float):
 	player_position = player.global_position
 	var dir = (player_position - position).normalized()
 	linear_velocity = speed * dir
+	look_at(-linear_velocity)
 	pass
 
 func die():

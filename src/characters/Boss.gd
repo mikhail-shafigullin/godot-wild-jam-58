@@ -29,8 +29,11 @@ func _ready():
 func _on_EyesTimer_timeout():
 	var index = rand.randi_range(0, eyes.size()-1);
 	closedEye = eyes[index];
-	eyes[index].set_visible(false);
-	closedEyeTimer.start();
+	if closedEye :
+		eyes[index].set_visible(false);
+		closedEyeTimer.start();
+	
+	
 	
 
 func _on_CloseEyeTimer_timeout():
