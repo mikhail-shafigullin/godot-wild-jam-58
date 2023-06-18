@@ -15,8 +15,8 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 7 )
 shader_param/h = 1.0
-shader_param/s = 0.525
-shader_param/v = 0.525
+shader_param/s = 0.921
+shader_param/v = 1.0
 
 [node name="UILayer" type="CanvasLayer"]
 layer = 2

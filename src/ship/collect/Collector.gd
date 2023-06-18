@@ -1,7 +1,7 @@
 extends PartUtil
 
 var efficiency: float
-export var base_efficiency: float = 1.0
+export var base_efficiency: float = 0.1
 
 onready var ray_l = $RayLeft
 onready var ray_m = $RayMiddle

@@ -19,9 +19,16 @@ animations = [ {
 
 [node name="Tank" type="RigidBody2D"]
 script = ExtResource( 1 )
+init_health = 10.0
+price = 50.0
 description = "hold fluid"
+armor = -1.18
+breaking_distance = 4.255
+joints_softness = 0.53
 main_sprite_path = NodePath("AnimatedSprite")
 item_icon = ExtResource( 2 )
+resource_capacity = 50.0
+resource_mass = 30.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 75.4875, 849.132 )

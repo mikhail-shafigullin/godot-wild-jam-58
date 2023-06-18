@@ -25,10 +25,11 @@ price = 50.0
 description = "small"
 basic_mass = 30.0
 armor = 0.01
-joints_softness = 0.041
+joints_softness = 0.047
 main_sprite_path = NodePath("AnimatedSprite")
 item_icon = ExtResource( 8 )
-thruster_force = 2000.0
+thruster_force = 800.0
+consuming_rate = 80.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 4, -11, 0, -13, -5, -12, -9, -8, -11, -6, -10, -4, -12, -1, -12, 4, -11, 7, -8, 8, -5, 8, -2, 9, -1, 11, 3, 11, 5, 9, 8, 8, 13, 7, 12, 4, 13, -1, 12, -4, 14, -7, 12, -10, 8, -11 )
@@ -36,7 +37,7 @@ polygon = PoolVector2Array( 4, -11, 0, -13, -5, -12, -9, -8, -11, -6, -10, -4, -
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="Probe" parent="." instance=ExtResource( 1 )]

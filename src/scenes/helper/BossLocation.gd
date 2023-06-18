@@ -29,7 +29,7 @@ func get_rain_rate(pos: Vector2) -> float:
 
 	var rate = rain_base_rate * ( (end_pos - distance) / end_pos )
 
-	print(rate)
+	# print(rate)
 	if pos.abs().y > rain_hight:
 		return min(max(rate.x, 0), max(rate.y, 0))
 	else:

@@ -76,6 +76,8 @@ func _ready():
 	bp_manager.connect("bp_unpause", self, "_on_unpause")
 	_on_resize()
 
+	connect("player_leave_base", State.bp_manager, "free_active_part")
+
 	
 
 var mem_wind: Vector2

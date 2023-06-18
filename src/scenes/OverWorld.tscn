@@ -199,9 +199,6 @@ __meta__ = {
 }
 rain_rate = 48.507
 
-[node name="UnlockAll" type="Node2D" parent="."]
-script = ExtResource( 23 )
-
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
 [node name="ViewportControlWorld" type="ViewportContainer" parent="GameScreen"]
@@ -295,9 +292,10 @@ margin_bottom = 600.0
 color = Color( 0.439216, 0.376471, 0.372549, 0.0862745 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
-motion_mirroring = Vector2( 2000, 0 )
+motion_mirroring = Vector2( 2077, 0 )
 
 [node name="TextureRect" type="TextureRect" parent="Foreground/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.976471 )
 margin_left = -616.0
 margin_top = -1729.0
 margin_right = 1461.0
@@ -640,6 +638,9 @@ self_modulate = Color( 0.611765, 0.803922, 0.807843, 0.658824 )
 material = SubResource( 2 )
 z_as_relative = false
 texture = ExtResource( 4 )
+
+[node name="UnlockAll" type="Node2D" parent="."]
+script = ExtResource( 23 )
 
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]
 [editable path="GameScreen/UILayer"]
