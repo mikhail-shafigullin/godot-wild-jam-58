@@ -326,7 +326,8 @@ func on_bp_highlight_start():
 func on_bp_highlight_end():
 	modulate = Color.white
 
-func on_taking_damage():
+func on_taking_damage(damage: float):
+	health -= damage
 	if health < 0:
 		part_slice()
 	

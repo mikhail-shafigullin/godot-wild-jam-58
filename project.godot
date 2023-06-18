@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ship/blueprint/Probe.gd"
 }, {
-"base": "AnimatedSprite",
+"base": "Area2D",
 "class": "Blast",
 "language": "GDScript",
 "path": "res://src/scenes/effects/Blast.gd"
@@ -121,6 +121,7 @@ window/per_pixel_transparency/allowed=true
 
 clear=false
 trans=false
+Layer=false
 
 [gui]
 
@@ -149,6 +150,7 @@ bp_rotate_left={
 2d_physics/layer_4="bullets"
 2d_physics/layer_5="blueprints"
 2d_physics/layer_6="walls"
+2d_physics/layer_7="enemies"
 
 [physics]
 

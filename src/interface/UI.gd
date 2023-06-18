@@ -15,6 +15,9 @@ var popup_size: Vector2
 func _ready():
 	State.ui = self
 	State.player.camera.zoom = State.ui.zoom
+	
+func _process(delta):
+	set_height();
 
 func zoom_in():
 	_zoom(true)
@@ -59,11 +62,10 @@ func show_popup(popup_face: PopUpFace, data: Dictionary):
 	
 	popup.window_title = popup_face.title
 
+func set_height():
+	if State.player : 
+		var height = 35 + floor(State.player.global_position.y);
+		heightLabel.set_text(str(abs(height)))
 
 func _on_Button_pressed():
 	State.world.game_over()
-
-
-func set_height():
-	if State.player : 
-		heightLabel.set_text(str(State.player.global_position.y))
