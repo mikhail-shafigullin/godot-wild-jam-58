@@ -63,7 +63,7 @@ func unplug_part(part: PartBase):
 # slice will keep children and remove from parent
 func slice_part(part: PartBase):
 	if part == self:
-		print('game over')
+		State.game_over();
 		return
 	if not part.part_is_connected:
 		return
