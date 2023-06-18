@@ -221,12 +221,6 @@ render_target_update_mode = 3
 
 [node name="World" parent="GameScreen/ViewportControlWorld/World" instance=ExtResource( 3 )]
 
-[node name="AnimatedSprite" parent="GameScreen/ViewportControlWorld/World/World/Player" index="1"]
-frame = 1
-
-[node name="Camera" parent="GameScreen/ViewportControlWorld/World/World/Player" index="2"]
-zoom = Vector2( 2, 2 )
-
 [node name="ViewportControlMask" type="ViewportContainer" parent="GameScreen"]
 margin_left = -256.0
 margin_top = -254.0
@@ -593,10 +587,7 @@ material = SubResource( 2 )
 z_as_relative = false
 texture = ExtResource( 4 )
 
-[connection signal="timeout" from="GameScreen/ViewportControlWorld/World/World/Player/SpawnerTimer" to="GameScreen/ViewportControlWorld/World/World/Player" method="_on_SpawnerTimer_timeout"]
-
 [editable path="GameScreen/ViewportControlWorld/World/World"]
 [editable path="GameScreen/ViewportControlWorld/World/World/BaseArea"]
-[editable path="GameScreen/ViewportControlWorld/World/World/Player"]
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]
 [editable path="GameScreen/UILayer"]

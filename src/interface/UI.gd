@@ -8,12 +8,29 @@ onready var fuel_gauge: TextureProgress = $UI/Fuel
 onready var restart_button: Button = $UI/Button
 
 var zoom: Vector2 = Vector2.ONE
-var zoom_step: Vector2 = Vector2.ONE * 0.1
+var zoom_step: Vector2 = Vector2.ONE * 0.25
 
 var popup_size: Vector2
 func _ready():
 	State.ui = self
+	State.player.camera.zoom = State.ui.zoom
 
+func zoom_in():
+	_zoom(true)
+
+func zoom_out():
+	_zoom(false)
+
+func _zoom(zoom_out: bool):
+	if zoom_out:
+		if State.ui.zoom > Vector2(0.33,0.33):
+			State.ui.zoom -= State.ui.zoom_step
+			State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
+	else: 
+		if State.ui.zoom < Vector2(2,2):
+			State.ui.zoom += State.ui.zoom_step
+			State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
+	State.player.camera.zoom = State.ui.zoom
 
 func _physics_process(_delta):
 	fuel_gauge.value = State.player.resource / State.player.resource_max

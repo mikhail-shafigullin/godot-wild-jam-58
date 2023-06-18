@@ -6,8 +6,16 @@ const enemy = preload("res://src/characters/NPCEnemy.tscn")
 func _enter_tree():
 	State.player = self
 
+func zoom_in():
+	State.ui.zoom_in()
+
+func zoom_out():
+	State.ui.zoom_out()
+
 func _ready():
 	action_controller.bind_action(KEY_ESCAPE, "pause_game")
+	action_controller.bind_action(KEY_Z, "zoom_in")
+	action_controller.bind_action(KEY_X, "zoom_out")
 	part_connect_input()
 	is_parts_root = true
 	can_sleep = false

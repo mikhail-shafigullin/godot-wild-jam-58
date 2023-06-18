@@ -37,7 +37,6 @@ polygon = PoolVector2Array( 4, -56, 0, -56, -5, -55, -12, -52, -18, -51, -18, -4
 position = Vector2( 0, -29 )
 scale = Vector2( 0.31, 0.31 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Camera" type="Camera2D" parent="."]

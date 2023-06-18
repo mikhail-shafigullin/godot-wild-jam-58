@@ -9,6 +9,7 @@ onready var ray_r = $RayRight
 onready var rays = [ray_l, ray_m, ray_r]
 
 onready var anim_sprite = $AnimatedSprite
+var collecting: bool = true
 
 func _ready():
 	anim_sprite.playing = false

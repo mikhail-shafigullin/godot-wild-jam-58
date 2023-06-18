@@ -256,14 +256,15 @@ func get_part_global_rotation() -> float:
 
 func get_part_size() -> Vector2:
 	if main_sprite is Sprite:
-		return main_sprite.texture.get_size() * main_sprite.scale
+		return main_sprite.texture.get_size() * main_sprite.scale * (Vector2.ONE / State.ui.zoom)
+
 	elif main_sprite is AnimatedSprite:
 		var frames = main_sprite.frames
 		var frames_name = frames.get_animation_names()
 		var frame_texture = frames.get_frame(frames_name[0], 0)
-		return frame_texture.get_size() * main_sprite.scale
+		return frame_texture.get_size() * main_sprite.scale * (Vector2.ONE / State.ui.zoom)
 	else:
-		return part_visual_size * scale
+		return part_visual_size * scale * (Vector2.ONE / State.ui.zoom)
 	
 # Callbacks
 func on_slice():

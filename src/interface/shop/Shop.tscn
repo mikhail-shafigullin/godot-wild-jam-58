@@ -83,8 +83,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -12.0
 margin_right = 67.0
+focus_mode = 0
 toggle_mode = true
 pressed = true
+enabled_focus_mode = 0
 
 [node name="ShopHB" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -498,12 +500,14 @@ custom_styles/panel = SubResource( 2 )
 
 [node name="Button" type="Button" parent="ShopHB"]
 visible = false
-margin_top = 548.0
-margin_right = 304.0
-margin_bottom = 600.835
+margin_top = 580.0
+margin_right = 300.0
+margin_bottom = 600.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
+enabled_focus_mode = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "hide"

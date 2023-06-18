@@ -26,11 +26,11 @@ func _physics_process(delta):
 	resource_max = resource_capacity
 	for t in tanks:
 		resource_max += t.resource_capacity
-		
-	for c in collectors:
-		var wps = c.collect(wind)
-		resource += wps * rain_rate *delta
-		# print(wps * rain_rate)
+	if not get_tree().paused:	
+		for c in collectors:
+			var wps = c.collect(wind)
+			resource += wps * rain_rate *delta
+			# print(wps * rain_rate)
 		
 	resource = clamp(resource, -1, resource_max)
 	
