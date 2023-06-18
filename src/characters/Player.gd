@@ -43,12 +43,14 @@ func pause_game():
 
 
 func _on_SpawnerTimer_timeout():
+	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
+	print("asdasd " + str(State.player.global_position.y));
+	if State.player && State.player.global_position.y < -1800 :
+		$Path2D/PathFollow2D.offset = rng.randf_range(1, 1660)
 	
-	$Path2D/PathFollow2D.offset = rng.randf_range(1, 1660)
-	
-	var enemy = enemy_scenes[randi() % enemy_scenes.size()].instance()
-	enemy.global_position = $Path2D/PathFollow2D/Position2D.global_position
-	get_parent().add_child(enemy)
-	print("%s spawned", enemy.name)
+		var enemy = enemy_scenes[randi() % enemy_scenes.size()].instance()
+		enemy.global_position = $Path2D/PathFollow2D/Position2D.global_position
+		get_parent().add_child(enemy)
+		print("%s spawned", enemy.name)

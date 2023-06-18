@@ -20,7 +20,7 @@ func _physics_process(delta: float):
 	if player:
 		if is_alive:
 			fight(delta)
-		if (abs(player.position.x - position.x) + abs(player.position.y - position.y) > 777):
+		if (abs(player.position.x - position.x) + abs(player.position.y - position.y) > 2000):
 			if !is_boss :
 				queue_free()
 
