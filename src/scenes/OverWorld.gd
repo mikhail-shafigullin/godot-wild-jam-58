@@ -44,13 +44,13 @@ func refund_money() -> float:
 	if !player_out:
 		return money_spend
 	print(abs(max_hight))
-	return max(abs(max_hight) / 150 + score + (money_spend * (max_hight / 6500)), 100)
+	return max(abs(max_hight) / 150 + score + (money_spend * (max_hight / 6500)), 500)
 
 var unlocked = []
 func get_unlocked_parts():
 	for key in State.unlocks:
 		if !State.unlocked_parts.has(State.unlocks[key]):
-			if max_hight > key:
+			if max_hight > abs(key):
 				unlocked.push_back(State.unlocks[key])
 	return unlocked
 

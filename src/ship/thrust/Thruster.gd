@@ -34,7 +34,7 @@ func _physics_process(delta):
 		var consume = consuming_rate * delta
 		if (core.resource - consume) > 0: 
 			applied_force = Vector2.UP.rotated(global_rotation) * thruster_force * mass
-			core.resource -= 1 * delta
+			core.resource -= consume
 		else:
 			thruster_is_active = false
 			applied_force = Vector2.ZERO

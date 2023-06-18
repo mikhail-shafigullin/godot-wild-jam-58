@@ -639,7 +639,7 @@ material = SubResource( 2 )
 z_as_relative = false
 texture = ExtResource( 4 )
 
-[node name="UnlockAll" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 script = ExtResource( 23 )
 
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]

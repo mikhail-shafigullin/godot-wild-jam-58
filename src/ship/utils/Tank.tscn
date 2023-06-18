@@ -23,8 +23,8 @@ init_health = 10.0
 price = 50.0
 description = "hold fluid"
 armor = -1.18
-breaking_distance = 4.255
-joints_softness = 0.53
+breaking_distance = 8.65
+joints_softness = 0.917
 main_sprite_path = NodePath("AnimatedSprite")
 item_icon = ExtResource( 2 )
 resource_capacity = 50.0
@@ -38,7 +38,7 @@ polygon = PoolVector2Array( -7.2026, -8.29718, -7.62387, -8.19253, -7.62387, -7.
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Probe" parent="." instance=ExtResource( 8 )]

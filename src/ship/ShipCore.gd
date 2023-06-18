@@ -5,10 +5,10 @@ extends PartBase
 var parts:	Array = []
 var tanks: Array = []
 var collectors: Array =  []
-var resource : float = 10
+var resource : float = 50
 export var resource_mass: float = 50
-export var resource_capacity: float = 100 
-export var resource_max: float = 100 
+# export var resource_capacity: float = 100
+export var resource_max: float = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

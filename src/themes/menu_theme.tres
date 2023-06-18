@@ -51,7 +51,6 @@ axis_stretch_vertical = 2
 [sub_resource type="StyleBoxTexture" id=3]
 
 [sub_resource type="DynamicFont" id=8]
-size = 18
 font_data = ExtResource( 1 )
 
 [resource]
