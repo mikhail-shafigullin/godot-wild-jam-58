@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/scenes/screens/UpgradeScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/themes/menu_theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/sprites/UpgradeBackground.png" type="Texture" id=3]
+[ext_resource path="res://src/audio/music/GarbageMusic.mp3" type="AudioStream" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+next_pass = SubResource( 1 )
 
 [node name="UpgradeScreen" type="Node2D"]
 script = ExtResource( 1 )
@@ -46,7 +52,7 @@ margin_right = 263.0
 margin_bottom = 118.835
 theme = ExtResource( 2 )
 disabled = true
-text = "Land Building"
+text = "Alternative Settings"
 
 [node name="HSeparator" type="HSeparator" parent="UI/VBoxContainer"]
 margin_top = 122.0
@@ -60,7 +66,7 @@ margin_right = 263.0
 margin_bottom = 184.835
 theme = ExtResource( 2 )
 disabled = true
-text = "Ship Building"
+text = "Neighbor Mod"
 
 [node name="HSeparator2" type="HSeparator" parent="UI/VBoxContainer"]
 margin_top = 188.0
@@ -74,7 +80,7 @@ margin_right = 263.0
 margin_bottom = 250.835
 theme = ExtResource( 2 )
 disabled = true
-text = "Weaponary"
+text = "Batch Update"
 
 [node name="HSeparator3" type="HSeparator" parent="UI/VBoxContainer"]
 margin_top = 254.0
@@ -88,6 +94,33 @@ margin_right = 263.0
 margin_bottom = 316.835
 theme = ExtResource( 2 )
 disabled = true
-text = "Engine"
+text = "No Exit"
+
+[node name="GlobalVolume" type="HSlider" parent="."]
+margin_left = 792.0
+margin_top = 556.0
+margin_right = 1008.0
+margin_bottom = 585.0
+min_value = -30.0
+max_value = 30.0
+value = 1.0
+
+[node name="SoundSettings" type="Label" parent="GlobalVolume"]
+material = SubResource( 2 )
+margin_left = 1.0
+margin_top = -25.0
+margin_right = 212.0
+margin_bottom = 4.0
+custom_colors/font_color = Color( 0.294118, 0.192157, 0.192157, 1 )
+custom_colors/font_outline_modulate = Color( 0.403922, 0.215686, 0.215686, 1 )
+text = "Sound Settings"
+align = 1
+valign = 1
+percent_visible = -0.0769231
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
 
 [connection signal="pressed" from="UI/VBoxContainer/Start Launching" to="." method="_on_Start_Launching_pressed"]
+[connection signal="value_changed" from="GlobalVolume" to="." method="_on_GlobalVolume_value_changed"]
