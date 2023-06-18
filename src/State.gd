@@ -70,6 +70,7 @@ func get_root_scene() -> Node2D:
 	return null
 
 func game_over():
+	get_tree().paused = false
 	var world_parent = world.get_parent()
 	scrap += world.refund_money()
 	unlocked_parts += world.get_unlocked_parts()

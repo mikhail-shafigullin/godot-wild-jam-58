@@ -25,9 +25,12 @@ var wind: Vector2
 
 func game_over():
 	State.ui.get_node("UI/DeathRect").show()
+	if get_tree().paused:
+		_on_pause()
 	State.ui.show_popup(game_over_popup_face.instance(), {	"title": "Game over",
 															"max_hight": max_hight,
-															"refund": refund_money(), 
+															"refund": refund_money(),
+															"score": score,
 															"parts_unlocked": get_unlocked_parts()})
 
 	State.ui.popup.rect_position = State.ui.get_viewport().size * 0.5 - State.ui.popup.rect_size * 0.5
@@ -57,6 +60,8 @@ func get_rain_rate():
 	return rain_rate * 1
 
 func _ready():
+	get_tree().paused = false
+	_on_unpause()
 	player = State.player
 	State.world = self
 	rain_script.set("shader_param/rainRate", rain_rate)
@@ -67,6 +72,7 @@ func _ready():
 
 	get_tree().connect("screen_resized", self, "_on_resize")
 	bp_manager.connect("bp_paused", self, "_on_pause")
+	bp_manager.connect("bp_unpause", self, "_on_unpause")
 	_on_resize()
 
 	
@@ -75,19 +81,21 @@ var mem_wind: Vector2
 var mem_gr: Vector2
 
 func _on_pause():
-	if get_tree().paused: 
-		mem_wind = wind_direction
-		mem_gr = gravity_direction
-		wind_direction = Vector2.ZERO
-		gravity_direction = Vector2.ZERO
-		rain_script.set("shader_param/rainSpeed", 0)
-		#rain_sprite.rotation = deg2rad(180)
-		set_process(false)
-	else:
-		
+	mem_wind = wind_direction
+	mem_gr = gravity_direction
+	wind_direction = Vector2.ZERO
+	gravity_direction = Vector2.ZERO
+	rain_script.set("shader_param/rainSpeed", 0)
+	#rain_sprite.rotation = deg2rad(180)
+	set_process(false)
+	set_physics_process(false)
+
+func _on_unpause():	
+	if mem_gr != Vector2.ZERO:
 		wind_direction = mem_wind
 		gravity_direction = mem_gr
-		set_process(true)
+	set_process(true)
+	set_physics_process(true)
 
 func _on_resize():
 	var vp_size = get_viewport().get_size()
@@ -135,9 +143,9 @@ func _physics_process(_delta):
 		max_hight = pyp
 	
 	if -pyp > player_Z_kill:
+		State.bp_manager.pause_game()
 		game_over()
-		State.bp_manager.pause_game_toggle()
-		set_physics_process(false)
+		player.global_position = Vector2.ZERO
 	
 func player_out():
 	emit_signal("player_leave_base")

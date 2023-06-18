@@ -1,6 +1,7 @@
 class_name BlueprintManager
 extends Control
 signal bp_paused
+signal bp_unpause
 
 onready var bp_cursor = $Cursor
 
@@ -43,9 +44,16 @@ func buy_part(path: String, price: float):
 
 func pause_game_toggle():
 	get_tree().paused = !get_tree().paused
-	emit_signal("bp_paused")		
 	if get_tree().paused:
 		print("pause")
+		emit_signal("bp_paused")		
+	else:
+		print("unpause")
+		emit_signal("bp_unpause")
+	
+func pause_game():
+	get_tree().paused = true
+	emit_signal("pause")
 
 	
 onready var grab_button = $ToolPanel/Grab

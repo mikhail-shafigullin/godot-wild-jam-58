@@ -7,6 +7,6 @@ func _ready():
     for label in labels.get_children():
         for key in data.keys():
             print(key)
-            var node = labels.get_node(key)
-            if node:
+            if labels.has_node(key):
+                var node = labels.get_node(key)
                 node.set("text", "%s : %s"%[key ,data[key]])
