@@ -10,6 +10,7 @@ onready var hitTimer: Timer = $HitTimer;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$EyeSprite.set_texture(eyeTexture)
+	is_boss = true;
 	pass # Replace with function body.
 
 

@@ -7,6 +7,7 @@ export var health: float = 100
 export var speed: float = 100
 
 var is_alive: bool = true
+var is_boss: bool = false
 
 func _ready():
 	player = State.player
@@ -20,7 +21,8 @@ func _physics_process(delta: float):
 		if is_alive:
 			fight(delta)
 		if (abs(player.position.x - position.x) + abs(player.position.y - position.y) > 777):
-			queue_free()
+			if !is_boss :
+				queue_free()
 
 func fight(delta: float):
 	pass
