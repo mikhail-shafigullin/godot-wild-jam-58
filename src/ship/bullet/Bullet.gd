@@ -11,7 +11,8 @@ var blast_scene = load("res://src/scenes/effects/Blast.tscn")
 func _ready():
 	pass # Replace with function body.
 
-
+func on_taking_damage():
+	queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -21,11 +22,6 @@ func _on_Bullet_body_entered(body):
 	var blast = blast_scene.instance()
 	blast.global_transform = global_transform
 	cannon.core.get_parent().add_child(blast)
-	for b in $EffectArea.get_overlapping_bodies():
-		if b is PartBase:
-			b.health -= damage
-			print(b.health)
-			b.on_taking_damage()
 	queue_free()
 
 
