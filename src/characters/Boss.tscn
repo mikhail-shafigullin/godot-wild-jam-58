@@ -452,9 +452,6 @@ rotation = -0.349066
 texture = ExtResource( 53 )
 offset = Vector2( 350, 0 )
 
-[node name="BossEffect01" type="Sprite" parent="Wings/right"]
-position = Vector2( -462.857, -17.1429 )
-
 [node name="left" type="Node2D" parent="Wings"]
 position = Vector2( 17.1429, -28.5714 )
 
