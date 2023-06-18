@@ -4,7 +4,7 @@ extends RigidBody2D
 onready var player:Node2D = State.player
 
 export var health: float = 100
-export var speed: float = 333
+export var speed: float = 100
 
 var is_alive: bool = true
 

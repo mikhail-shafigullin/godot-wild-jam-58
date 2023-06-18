@@ -26,6 +26,7 @@ func fight(delta: float):
 	var prediction_parameter = (p + sqrt(p2 + u2 * d)) / d
 	
 	linear_velocity = u / prediction_parameter + player_linear_velocity
+	look_at(-linear_velocity)
 
 func die():
 	print("%s is dead. Reward: %s"% [ name, reward])
