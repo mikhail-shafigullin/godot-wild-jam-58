@@ -1,7 +1,8 @@
 class_name EnemyBase
 extends RigidBody2D
 
-var player:Node2D;
+onready var player:Node2D = State.player
+onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 
 export var health: float = 100
 export var speed: float = 100
@@ -36,5 +37,8 @@ func on_taking_damage(damage: float):
 
 func die():
 	is_alive = false
-#	applied_force = Vector2.ZERO
-#	applied_torque = deg2rad(360 * randf() - 180) * 100 * mass
+	collision_layer = 0
+	collision_mask = 0
+	animated_sprite.stop()
+	animated_sprite.set_modulate(Color(0.5, 0.5, 0.5))
+
