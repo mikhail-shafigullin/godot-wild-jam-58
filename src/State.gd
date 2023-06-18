@@ -3,7 +3,7 @@ extends Node
 # Тут будут жить наши глобальные штуки
 
 # player currency
-var scrap: float = 322.0
+var scrap: float = 500.0
 
 var sceneManager: Node2D;
 var player: ShipCore;
@@ -16,11 +16,14 @@ const save_path = "user://game.save"
 
 const unlocks = {
 	-111 : "Frame",
-	-55555555 : "Collector"
+	-5555: "Thruster",
+	-55555555 : "Collector",
+	1000: "Cannon",
+	5000: "Tank"
 }
 
 #unlocked parts names
-var unlocked_parts: Array = ["TestThruster", "Cannon"]
+var unlocked_parts: Array = ["Thruster", "Collector"]
 var all_parts: Array = []
 
 func save_game():
