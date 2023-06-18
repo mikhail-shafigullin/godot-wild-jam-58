@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ship/struct/Frame.gd"
 }, {
+"base": "PartBase",
+"class": "ImprovedThruster",
+"language": "GDScript",
+"path": "res://src/ship/thrust/ImprovedThruster.gd"
+}, {
 "base": "EnemyBase",
 "class": "Kamikaze",
 "language": "GDScript",
@@ -69,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ship/utils/PartUtil.gd"
 }, {
-"base": "VBoxContainer",
+"base": "Control",
 "class": "PopUpFace",
 "language": "GDScript",
 "path": "res://src/interface/pop_faces/PopUpFace.gd"
@@ -103,6 +108,7 @@ _global_script_class_icons={
 "Cannon": "",
 "EnemyBase": "",
 "Frame": "",
+"ImprovedThruster": "",
 "Kamikaze": "",
 "OverWorld": "",
 "PartBase": "",

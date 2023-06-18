@@ -20,4 +20,6 @@ func fight(delta: float):
 
 func die():
 	print("%s is dead. Reward: %s"% [ name, reward])
+	applied_force = Vector2.ZERO
+	applied_torque = deg2rad(360 * randf() - 180) * 100 * mass
 	State.world.score += reward

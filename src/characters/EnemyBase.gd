@@ -31,5 +31,5 @@ func on_taking_damage(damage: float):
 
 func die():
 	is_alive = false
-	applied_force = Vector2.ZERO
-	applied_torque = deg2rad(360 * randf() - 180) * 100 * mass
+#	applied_force = Vector2.ZERO
+#	applied_torque = deg2rad(360 * randf() - 180) * 100 * mass
