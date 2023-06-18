@@ -1,6 +1,7 @@
 extends ShipCore
 onready var camera: Camera2D = $Camera
 
+var Enemy = preload("res://src/characters/NPCEnemy.tscn")
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	State.player = self
@@ -26,3 +27,14 @@ func _process(delta):
 
 func pause_game():
 	State.bp_manager.pause_game_toggle()
+
+
+func _on_SpawnerTimer_timeout():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
+	$Path2D/PathFollow2D.offset = rng.randf_range(1, 1660)
+	var enemy = Enemy.instance()
+	enemy.position = $Path2D/PathFollow2D/Position2D.global_position
+	add_child(enemy)
+	print("spawn enemy")
