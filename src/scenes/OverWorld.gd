@@ -1,3 +1,4 @@
+class_name OverWorld
 extends Node2D
 signal player_leave_base
 
@@ -130,7 +131,7 @@ func _process(delta):
 		# rain_sprite.rotation = ang - PI*1.5
 		rain_script.set("shader_param/uv1_offset", uv_offset)
 		rain_script.set("shader_param/rainSpeed", w_speed * 0.01)
-		rain_script.set("shader_param/rainRate", rain_rate)
+		# rain_script.set("shader_param/rainRate", rain_rate)
 		rain_speed_time_past = 0.0
 
 

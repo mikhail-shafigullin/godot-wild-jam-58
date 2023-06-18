@@ -31,15 +31,17 @@ basic_mass = 100.0
 main_sprite_path = NodePath("AnimatedSprite")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.000274658, 28.0004 )
 polygon = PoolVector2Array( 4, -56, 0, -56, -5, -55, -12, -52, -18, -51, -18, -45, -16, -42, -16, -36, -19, -30, -18, -25, -16, -19, -17, -13, -16, -8, -18, -3, -11, -3, -10, -10, -3, -10, 3, -8, 8, -8, 10, -10, 12, -5, 9, -3, 19, -3, 17, -5, 16, -10, 18, -16, 18, -21, 19, -31, 17, -38, 15, -48, 9, -54 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -29 )
+position = Vector2( 0.000274658, -0.999603 )
 scale = Vector2( 0.31, 0.31 )
 frames = SubResource( 1 )
 playing = true
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 0.000274658, 28.0004 )
 process_mode = 0
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
@@ -51,7 +53,7 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2( -28.4962, -6.82376 )
+position = Vector2( -28.4959, 21.1766 )
 scale = Vector2( 1.09269, 1.05214 )
 curve = SubResource( 2 )
 

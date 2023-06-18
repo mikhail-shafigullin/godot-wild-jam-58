@@ -3,7 +3,7 @@
 [ext_resource path="res://src/scenes/helper/BaseArea.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 2443.13
+radius = 350.0
 
 [node name="BaseArea" type="Area2D"]
 collision_layer = 64
