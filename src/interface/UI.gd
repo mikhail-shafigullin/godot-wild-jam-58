@@ -6,6 +6,7 @@ onready var bp_manager: BlueprintManager = $UI/BlueprintManager
 onready var binder_dialog: ConfirmationDialog = $UI/ActionBindDialog
 onready var fuel_gauge: TextureProgress = $UI/Fuel
 onready var restart_button: Button = $UI/Button
+onready var heightLabel: RichTextLabel = $UI/HeightLabel
 
 var zoom: Vector2 = Vector2.ONE
 var zoom_step: Vector2 = Vector2.ONE * 0.25
@@ -61,3 +62,8 @@ func show_popup(popup_face: PopUpFace, data: Dictionary):
 
 func _on_Button_pressed():
 	State.world.game_over()
+
+
+func set_height():
+	if State.player : 
+		heightLabel.set_text(str(State.player.global_position.y))

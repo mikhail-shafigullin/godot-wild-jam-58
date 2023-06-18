@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
 [ext_resource path="res://src/themes/Vollkorn-SemiBold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/sprites/button/Button.png" type="Texture" id=2]
@@ -50,6 +50,9 @@ axis_stretch_vertical = 2
 
 [sub_resource type="StyleBoxTexture" id=3]
 
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
 [resource]
 Button/colors/font_color = Color( 0.294118, 0.192157, 0.192157, 1 )
 Button/colors/font_color_disabled = Color( 0.215686, 0.172549, 0.172549, 0.2 )
@@ -63,3 +66,4 @@ Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 7 )
 HSeparator/constants/separation = 6
 HSeparator/styles/separator = SubResource( 3 )
+RichTextLabel/fonts/normal_font = SubResource( 8 )
