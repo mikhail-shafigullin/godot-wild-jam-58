@@ -21,7 +21,10 @@ animations = [ {
 } ]
 
 [node name="Kamikaze" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 0
 script = ExtResource( 13 )
+speed = 133.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -32,5 +35,7 @@ position = Vector2( 6, -2 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 2 )
 animation = "move"
-frame = 3
+frame = 2
 playing = true
+
+[connection signal="body_entered" from="." to="." method="_on_Kamikaze_body_entered"]
