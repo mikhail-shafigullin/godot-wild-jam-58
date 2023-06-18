@@ -1,7 +1,7 @@
-class_name Thruster
+class_name ImprovedThruster
 extends PartBase
 
-export var thruster_force: float = 30000
+export var thruster_force: float = 60000
 export var consuming_rate: float = 5
 var thruster_is_active: bool = false
 
@@ -32,9 +32,9 @@ func off():
 func _physics_process(delta):
 	if thruster_is_active:
 		var consume = consuming_rate * delta
-		if (core.resource - consume) > 0:
-#			print('FORCE APPLIED = ', thruster_force)
-			applied_force = Vector2.UP.rotated(global_rotation) * thruster_force
+		if (core.resource - consume) > 0: 
+#			look_at(get_global_mouse_position())
+			applied_force = (get_global_mouse_position() - global_position).normalized() * thruster_force
 			core.resource -= consume
 		else:
 			thruster_is_active = false
@@ -42,3 +42,4 @@ func _physics_process(delta):
 	
 func on_part_disabled():
 	off()
+	

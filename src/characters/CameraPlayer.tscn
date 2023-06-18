@@ -135,7 +135,7 @@ texture = ExtResource( 2 )
 position = Vector2( -51, 31 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
 offset = Vector2( -9.75604, -131.707 )
 
@@ -143,7 +143,7 @@ offset = Vector2( -9.75604, -131.707 )
 position = Vector2( 62, 31 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 4 )
-frame = 4
+frame = 3
 playing = true
 offset = Vector2( -9.75604, -131.707 )
 
@@ -156,7 +156,7 @@ texture = ExtResource( 31 )
 position = Vector2( 0, -67 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 5 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="."]
@@ -164,7 +164,6 @@ position = Vector2( 24, 18 )
 rotation = 0.475088
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="."]
@@ -172,13 +171,14 @@ position = Vector2( -21, -13 )
 rotation = -0.472972
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 7 )
+frame = 5
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1, 1.19209e-07 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 3 )
-frame = 2
+frame = 1
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -188,5 +188,5 @@ __meta__ = {
 position = Vector2( 51, -18 )
 scale = Vector2( 0.208333, 0.208333 )
 frames = SubResource( 2 )
-frame = 5
+frame = 4
 playing = true
