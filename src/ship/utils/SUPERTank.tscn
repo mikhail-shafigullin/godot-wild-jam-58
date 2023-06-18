@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tank.gd" type="Script" id=1]
 [ext_resource path="res://src/sprites/player/fuelTank/FuelTank_0000.png" type="Texture" id=2]
@@ -8,6 +8,13 @@
 [ext_resource path="res://src/sprites/player/fuelTank/FuelTank_0003.png" type="Texture" id=6]
 [ext_resource path="res://src/sprites/player/fuelTank/FuelTank_0001.png" type="Texture" id=7]
 [ext_resource path="res://src/ship/blueprint/Probe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/shaders/color_swap_shader.tres" type="Shader" id=9]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 9 )
+shader_param/from = Color( 0.376471, 0.180392, 0.160784, 1 )
+shader_param/to = Color( 0.439216, 0.545098, 0.596078, 1 )
+shader_param/tolerance = 0.112
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,28 +27,37 @@ animations = [ {
 [node name="Tank" type="RigidBody2D"]
 script = ExtResource( 1 )
 init_health = 10.0
-price = 50.0
-description = "hold fluid"
-armor = -1.18
-breaking_distance = 8.65
-joints_softness = 0.917
+price = 450.0
+description = "hold SUPER fluid"
+basic_mass = 40.0
+armor = 3.337
+breaking_distance = 10.523
+joints_softness = 0.045
 main_sprite_path = NodePath("AnimatedSprite")
 item_icon = ExtResource( 2 )
-resource_capacity = 50.0
-resource_mass = 30.0
+resource_capacity = 500.0
+resource_mass = 300.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 75.4875, 849.132 )
 scale = Vector2( 11.869, 105.112 )
 polygon = PoolVector2Array( -7.2026, -8.29718, -7.62387, -8.19253, -7.62387, -7.93567, -7.2026, -7.85956, -5.68605, -7.85956, -5.01202, -7.90712, -5.01202, -8.00226, -5.34903, -8.04032, -5.34903, -8.14497, -5.09627, -8.18302, -5.68605, -8.29718 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 2 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
 frame = 3
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Probe" parent="." instance=ExtResource( 8 )]
+position = Vector2( 0, 8 )
 
 [node name="Probe2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 9, 12 )
@@ -54,3 +70,18 @@ position = Vector2( -8, -12 )
 
 [node name="Probe5" parent="." instance=ExtResource( 8 )]
 position = Vector2( 9, -12 )
+
+[node name="Probe6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 0, -7 )
+
+[node name="Probe7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 6, 16 )
+
+[node name="Probe8" parent="." instance=ExtResource( 8 )]
+position = Vector2( -5, 16 )
+
+[node name="Probe9" parent="." instance=ExtResource( 8 )]
+position = Vector2( -5, -15 )
+
+[node name="Probe10" parent="." instance=ExtResource( 8 )]
+position = Vector2( 5, -14 )

@@ -1,31 +1,31 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/ship/blueprint/Probe.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0000.png" type="Texture" id=2]
-[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0004.png" type="Texture" id=3]
+[ext_resource path="res://src/ship/collect/Collector.gd" type="Script" id=2]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0000.png" type="Texture" id=3]
 [ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0001.png" type="Texture" id=4]
-[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0005.png" type="Texture" id=5]
-[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0003.png" type="Texture" id=6]
-[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0002.png" type="Texture" id=7]
-[ext_resource path="res://src/ship/collect/Collector.gd" type="Script" id=8]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0003.png" type="Texture" id=5]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0002.png" type="Texture" id=6]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0004.png" type="Texture" id=7]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0005.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 30.0
 } ]
 
-[node name="Collector" type="RigidBody2D"]
+[node name="CollectorS" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
 mass = 1.52857
-script = ExtResource( 8 )
+script = ExtResource( 2 )
 description = " collect rain!"
 joints_softness = 0.02
 main_sprite_path = NodePath("AnimatedSprite")
-item_icon = ExtResource( 2 )
+item_icon = ExtResource( 3 )
 
 [node name="RayLeft" type="RayCast2D" parent="."]
 position = Vector2( -20, -14 )
@@ -47,11 +47,9 @@ scale = Vector2( 0.21, 0.21 )
 frames = SubResource( 1 )
 frame = 1
 playing = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2( 0, 4 )
 polygon = PoolVector2Array( -5, 10, 4, 11, 15, 6, 15, -7, 10, -10, 19, -16, 8, -19, -8, -19, -21, -17, -15, -9, -15, 7 )
 

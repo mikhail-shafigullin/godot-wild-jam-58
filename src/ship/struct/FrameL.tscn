@@ -5,36 +5,28 @@
 [ext_resource path="res://src/sprites/player/buildBlocks/BuildBlocks.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 21.4125, 10.8965 )
+extents = Vector2( 26, 9.5 )
 
 [node name="Frame" type="RigidBody2D"]
 position = Vector2( -1, 0 )
 collision_layer = 0
 script = ExtResource( 1 )
-init_health = 500.0
-price = 50.0
+init_health = 250.0
+price = 20.0
 description = "plumber1"
-basic_mass = 55.0
-armor = 3.0
-breaking_distance = 32.0
+basic_mass = 30.0
+breaking_distance = 20.0
 main_sprite_path = NodePath("Sprite")
 item_icon = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.411765, 0.615686, 0.67451, 1 )
-scale = Vector2( 0.270701, 0.545455 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.5 )
-scale = Vector2( 1.12084, 1.6978 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.411765, 0.615686, 0.67451, 1 )
+scale = Vector2( 0.270701, 0.287688 )
+texture = ExtResource( 3 )
 
 [node name="Probe" parent="." instance=ExtResource( 2 )]
 position = Vector2( -22, -8 )
@@ -51,26 +43,8 @@ position = Vector2( 22, 5 )
 [node name="Probe5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 6 )
 
-[node name="Probe12" parent="." instance=ExtResource( 2 )]
-position = Vector2( -22, 15 )
-
-[node name="Probe13" parent="." instance=ExtResource( 2 )]
-position = Vector2( 22, 13 )
-
-[node name="Probe14" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 14 )
-
 [node name="Probe6" parent="." instance=ExtResource( 2 )]
 position = Vector2( -1, -8 )
-
-[node name="Probe9" parent="." instance=ExtResource( 2 )]
-position = Vector2( -22, -16 )
-
-[node name="Probe10" parent="." instance=ExtResource( 2 )]
-position = Vector2( 22, -16 )
-
-[node name="Probe11" parent="." instance=ExtResource( 2 )]
-position = Vector2( -1, -16 )
 
 [node name="Probe7" parent="." instance=ExtResource( 2 )]
 position = Vector2( -11, 0 )

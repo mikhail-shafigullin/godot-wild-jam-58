@@ -18,7 +18,7 @@ animations = [ {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -232, -176, 0, 0, 0, 0, 307.037, -176, 0, 0, 0, 0, 306.074, 129.093, 0, 0, 0, 0, -231.149, 129.093, 0, 0, 0, 0, -232, -176 )
+"points": PoolVector2Array( 0, 0, 0, 0, 7.15247, -519.707, 0, 0, 0, 0, 377.577, -450.211, 0, 0, 0, 0, 559.421, -115.144, 0, 0, 0, 0, 564.473, 119.816, 0, 0, 0, 0, 446.61, 491.286, 0, 0, 0, 0, -260.563, 489.631, 0, 0, 0, 0, -460.087, 119.816, 0, 0, 0, 0, -455.036, -204.496, 0, 0, 0, 0, -242.884, -455.175, 0, 0, 0, 0, 12.2037, -522.189 )
 }
 
 [node name="Player" type="RigidBody2D"]
@@ -39,6 +39,7 @@ position = Vector2( 0.000274658, -0.999603 )
 scale = Vector2( 0.31, 0.31 )
 z_index = 1075
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -55,21 +56,25 @@ editor_draw_drag_margin = true
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( -28.4959, 21.1766 )
-scale = Vector2( 1.09269, 1.05214 )
+scale = Vector2( 1.18783, 1.20871 )
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -232, -176 )
+position = Vector2( -293.396, -579.274 )
+rotation = 0.19004
 
 [node name="Position2D" type="Position2D" parent="Path2D/PathFollow2D"]
+position = Vector2( 119.38, 37.3458 )
+scale = Vector2( 3.01373, 1.04207 )
 
 [node name="Position2D" type="Position2D" parent="Path2D/PathFollow2D"]
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -232, -176 )
+position = Vector2( -293.396, -579.274 )
+rotation = 0.19004
 
 [node name="SpawnerTimer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 0.58
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]

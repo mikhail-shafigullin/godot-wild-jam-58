@@ -31,7 +31,7 @@ joints_softness = 0.047
 main_sprite_path = NodePath("AnimatedSprite")
 item_icon = ExtResource( 1 )
 thruster_force = 3000.0
-consuming_rate = 25.0
+consuming_rate = 35.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2( 1.7691, 1.7691 )
@@ -43,7 +43,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.266543, 0.266543 )
 frames = SubResource( 1 )
-frame = 5
+frame = 4
 playing = true
 __meta__ = {
 "_edit_lock_": true

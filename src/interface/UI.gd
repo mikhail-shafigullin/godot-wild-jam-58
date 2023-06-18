@@ -29,11 +29,11 @@ func _zoom(zoom_out: bool):
 	if zoom_out:
 		if State.ui.zoom > Vector2(0.33,0.33):
 			State.ui.zoom -= State.ui.zoom_step
-			State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
+			State.world.rain_script.set("shader_param/uv1_scale", floor(State.world.shader_uv_scale * 2.5 * State.ui.zoom.y))
 	else: 
 		if State.ui.zoom < Vector2(2,2):
 			State.ui.zoom += State.ui.zoom_step
-			State.world.rain_script.set("shader_param/uv1_scale", State.world.shader_uv_scale * 2.5 * State.ui.zoom.y)
+			State.world.rain_script.set("shader_param/uv1_scale", floor(State.world.shader_uv_scale * 2.5 * State.ui.zoom.y))
 	State.player.camera.zoom = State.ui.zoom
 
 func _physics_process(_delta):
@@ -62,10 +62,12 @@ func show_popup(popup_face: PopUpFace, data: Dictionary):
 	
 	popup.window_title = popup_face.title
 
+onready var hvs = $UI/HSV.material
 func set_height():
 	if State.player : 
 		var height = 35 + floor(State.player.global_position.y);
 		heightLabel.set_text(str(abs(height)))
+		hvs.set("shader_param/v", clamp( (abs(height)/2000), 0.5, 1.0))
 
 func _on_Button_pressed():
 	State.world.game_over()
