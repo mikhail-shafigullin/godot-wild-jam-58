@@ -38,6 +38,7 @@ polygon = PoolVector2Array( 4, -56, 0, -56, -5, -55, -12, -52, -18, -51, -18, -4
 position = Vector2( 0.000274658, -0.999603 )
 scale = Vector2( 0.31, 0.31 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -68,7 +69,7 @@ position = Vector2( -232, -176 )
 position = Vector2( -232, -176 )
 
 [node name="SpawnerTimer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 4.0
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]

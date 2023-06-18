@@ -28,4 +28,6 @@ shape = SubResource( 48 )
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
 [connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]
