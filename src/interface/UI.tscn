@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/interface/UI.gd" type="Script" id=1]
 [ext_resource path="res://src/ship/blueprint/BlueprintManager.tscn" type="PackedScene" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://src/ship/blueprint/pin_target.png" type="Texture" id=4]
 [ext_resource path="res://src/interface/Helpers/ActionBindDialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/interface/save/Save.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/shaders/hsv_shader.tres" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 7 )
+shader_param/h = 1.0
+shader_param/s = 0.525
+shader_param/v = 0.525
 
 [node name="UILayer" type="CanvasLayer"]
 layer = 2
@@ -20,6 +27,11 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.4 )
+
+[node name="HSV" type="ColorRect" parent="UI"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="BlueprintManager" parent="UI" instance=ExtResource( 2 )]
 __meta__ = {
