@@ -13,11 +13,12 @@ onready var closedEyeTimer: Timer = $CloseEyeTimer;
 var rand=RandomNumberGenerator.new()
 
 var closedEye;
-
+onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	eyes.append_array(eyesNode.get_children());
+	animationPlayer.play("BossAnimation")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
