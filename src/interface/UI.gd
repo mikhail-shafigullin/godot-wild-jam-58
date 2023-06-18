@@ -7,9 +7,13 @@ onready var binder_dialog: ConfirmationDialog = $UI/ActionBindDialog
 onready var fuel_gauge: TextureProgress = $UI/Fuel
 onready var restart_button: Button = $UI/Button
 
+var zoom: Vector2 = Vector2.ONE
+var zoom_step: Vector2 = Vector2.ONE * 0.1
+
 var popup_size: Vector2
 func _ready():
 	State.ui = self
+
 
 func _physics_process(_delta):
 	fuel_gauge.value = State.player.resource / State.player.resource_max

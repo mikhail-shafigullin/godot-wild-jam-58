@@ -15,6 +15,7 @@ func _ready():
 #	set_collision_layer_bit(6, true)
 #	set_collision_mask_bit(6, true)
 
+
 	camera.make_current()
 	
 	if State.soundManager :

@@ -42,13 +42,13 @@ func _process(delta):
 		if follow:
 			if follow_target:
 				if follow_target is PartBase:
-					set_cursor_position(follow_target.get_part_global_position(),
+					set_cursor_position(follow_target.get_part_global_position() * Vector2.ONE / State.ui.zoom,
 										follow_target.get_part_global_rotation())
 				else:
-					set_cursor_position(follow_target.global_position,
+					set_cursor_position(follow_target.global_position * Vector2.ONE / State.ui.zoom,
 										follow_target.global_rotation_degrees)
 			else:
-				set_cursor_position(root_scene.get_global_mouse_position(),
+				set_cursor_position(State.player.get_global_mouse_position() * Vector2.ONE / State.ui.zoom,
 									root_scene.global_rotation_degrees)
 								
 func lock_on(node, activate = true):

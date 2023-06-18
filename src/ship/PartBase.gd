@@ -195,7 +195,10 @@ func _scan_probes():
 		emit_signal("on_best_part_change", best_part)
 
 func part_score_in_range(score: float, _part: PartBase = self) -> bool:
-	return score > _part.min_joint_score and score < _part.max_joint_score
+	if _part:
+		return score > _part.min_joint_score and score < _part.max_joint_score
+	else:
+		return false;
 	
 func _score_probes(pos:Vector2, _probes: Array) -> float:
 	var sum = Vector2()
