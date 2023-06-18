@@ -2,16 +2,22 @@ class_name Kamikaze
 extends EnemyBase
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var reward: float = 35
 
+var player_position: Vector2
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
 
+func _physics_process(delta: float):
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func fight(delta: float):
+	player_position = player.global_position
+	var dir = (player_position - position).normalized()
+	linear_velocity = speed * dir
+	pass
+
+func die():
+	print("%s is dead. Reward: %s"% [ name, reward])
+	State.world.score += reward
