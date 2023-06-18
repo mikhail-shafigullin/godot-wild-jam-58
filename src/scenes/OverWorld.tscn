@@ -641,7 +641,5 @@ material = SubResource( 2 )
 z_as_relative = false
 texture = ExtResource( 4 )
 
-[editable path="GameScreen/ViewportControlWorld/World/World"]
-[editable path="GameScreen/ViewportControlWorld/World/World/BaseArea"]
 [editable path="GameScreen/ViewportControlMask/WorldMask/MaskLayer/Mask"]
 [editable path="GameScreen/UILayer"]
