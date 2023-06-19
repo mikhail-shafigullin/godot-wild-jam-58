@@ -43,6 +43,7 @@ func pause_game():
 
 
 func _on_SpawnerTimer_timeout():
+	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
