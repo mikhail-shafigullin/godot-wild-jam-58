@@ -19,11 +19,11 @@ animations = [ {
 
 [node name="Tank" type="RigidBody2D"]
 script = ExtResource( 1 )
-init_health = 10.0
+init_health = 0.016
 price = 50.0
 description = "hold fluid"
-armor = -1.1
-breaking_distance = 10.277
+armor = -1.18
+breaking_distance = -0.84
 joints_softness = 0.917
 main_sprite_path = NodePath("AnimatedSprite")
 item_icon = ExtResource( 2 )

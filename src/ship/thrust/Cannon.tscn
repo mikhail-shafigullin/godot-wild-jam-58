@@ -26,6 +26,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -62.0 ]
 }
+price = 350.0
 description = "follow cursor!"
 breaking_distance = 50.0
 main_sprite_path = NodePath("AnimatedSprite")
@@ -51,7 +52,6 @@ texture = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 __meta__ = {
 "_edit_lock_": true

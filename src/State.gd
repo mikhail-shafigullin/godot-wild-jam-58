@@ -3,7 +3,7 @@ extends Node
 # Тут будут жить наши глобальные штуки
 
 # player currency
-var scrap: float = 500.0
+var scrap: float = 300.0
 
 var sceneManager: Node2D;
 var player: ShipCore;
@@ -15,15 +15,19 @@ const world_res = preload("res://src/scenes/OverWorld.tscn")
 const save_path = "user://game.save"
 
 const unlocks = {
-	-111 : "Frame",
-	-5555: "Thruster",
-	-55555555 : "Collector",
-	1000: "Cannon",
-	5000: "Tank"
+	100  : "Frame",
+	480  : "CollectorM",
+	1100 : "Tank",
+	2000 : "FrameL",
+	5000 : "Cannon",
+	8000 : "MediumThruster",
+   10000 : "CollectorL",
+   13337 : "SUPERTank",
+   17007 : "ImprovedThruster"
 }
 
 #unlocked parts names
-var unlocked_parts: Array = ["Thruster", "Collector"]
+var unlocked_parts: Array = ["SmallThruster"]
 var all_parts: Array = []
 
 func save_game():

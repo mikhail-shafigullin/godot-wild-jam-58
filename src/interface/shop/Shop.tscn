@@ -216,7 +216,132 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 tab_align = 0
 
+[node name="Thrust" type="Control" parent="ShopHB/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="ScrollContainer" parent="ShopHB/Container/Thrust"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -8.0
+margin_bottom = -36.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="TrustGrid" type="GridContainer" parent="ShopHB/Container/Thrust/GridContainer"]
+margin_right = 272.0
+margin_bottom = 788.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Control" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_right = 134.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control2" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_left = 138.0
+margin_right = 272.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control3" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_top = 132.0
+margin_right = 134.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control4" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_left = 138.0
+margin_top = 132.0
+margin_right = 272.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control5" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_top = 264.0
+margin_right = 134.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control6" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_left = 138.0
+margin_top = 264.0
+margin_right = 272.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control7" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_top = 396.0
+margin_right = 134.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control8" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_left = 138.0
+margin_top = 396.0
+margin_right = 272.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control9" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_top = 528.0
+margin_right = 134.0
+margin_bottom = 656.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control10" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_left = 138.0
+margin_top = 528.0
+margin_right = 272.0
+margin_bottom = 656.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control11" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_top = 660.0
+margin_right = 134.0
+margin_bottom = 788.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Control12" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
+margin_left = 138.0
+margin_top = 660.0
+margin_right = 272.0
+margin_bottom = 788.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
 [node name="Struct" type="Control" parent="ShopHB/Container"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -234,7 +359,7 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="StructGrid" type="GridContainer" parent="ShopHB/Container/Struct/GridContainer"]
-margin_right = 272.0
+margin_right = 284.0
 margin_bottom = 788.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -331,131 +456,6 @@ custom_styles/panel = SubResource( 2 )
 margin_left = 138.0
 margin_top = 660.0
 margin_right = 272.0
-margin_bottom = 788.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Thrust" type="Control" parent="ShopHB/Container"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="GridContainer" type="ScrollContainer" parent="ShopHB/Container/Thrust"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -8.0
-margin_bottom = -36.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-
-[node name="TrustGrid" type="GridContainer" parent="ShopHB/Container/Thrust/GridContainer"]
-margin_right = 284.0
-margin_bottom = 788.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 2
-
-[node name="Control" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_right = 136.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control2" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_left = 140.0
-margin_right = 276.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control3" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_top = 132.0
-margin_right = 136.0
-margin_bottom = 260.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control4" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_left = 140.0
-margin_top = 132.0
-margin_right = 276.0
-margin_bottom = 260.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control5" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_top = 264.0
-margin_right = 136.0
-margin_bottom = 392.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control6" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_left = 140.0
-margin_top = 264.0
-margin_right = 276.0
-margin_bottom = 392.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control7" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_top = 396.0
-margin_right = 136.0
-margin_bottom = 524.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control8" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_left = 140.0
-margin_top = 396.0
-margin_right = 276.0
-margin_bottom = 524.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control9" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_top = 528.0
-margin_right = 136.0
-margin_bottom = 656.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control10" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_left = 140.0
-margin_top = 528.0
-margin_right = 276.0
-margin_bottom = 656.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control11" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_top = 660.0
-margin_right = 136.0
-margin_bottom = 788.0
-rect_min_size = Vector2( 0, 128 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="Control12" type="Panel" parent="ShopHB/Container/Thrust/GridContainer/TrustGrid"]
-margin_left = 140.0
-margin_top = 660.0
-margin_right = 276.0
 margin_bottom = 788.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3

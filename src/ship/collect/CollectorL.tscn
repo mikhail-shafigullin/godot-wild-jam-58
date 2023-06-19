@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/shaders/color_swap_shader.tres" type="Shader" id=1]
+[ext_resource path="res://src/ship/blueprint/Probe.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ship/collect/Collector.gd" type="Script" id=3]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0000.png" type="Texture" id=4]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0001.png" type="Texture" id=5]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0003.png" type="Texture" id=6]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0002.png" type="Texture" id=7]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0004.png" type="Texture" id=8]
+[ext_resource path="res://src/sprites/player/rainCollector/RainCollector_0005.png" type="Texture" id=9]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/from = Color( 0.443137, 0.184314, 0.160784, 1 )
+shader_param/to = Color( 0.301961, 0.180392, 0.180392, 1 )
+shader_param/tolerance = 0.093
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
+
+[node name="CollectorL" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+mass = 1.52857
+script = ExtResource( 3 )
+init_health = 200.0
+price = 325.0
+description = " collect rain!"
+basic_mass = 30.0
+armor = 0.436
+breaking_distance = 16.0
+joints_softness = 0.033
+main_sprite_path = NodePath("AnimatedSprite")
+item_icon = ExtResource( 4 )
+base_efficiency = 0.666
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+position = Vector2( -39, -35 )
+cast_to = Vector2( 0, -50 )
+collision_mask = 273
+
+[node name="RayMiddle" type="RayCast2D" parent="."]
+position = Vector2( 1, -40 )
+cast_to = Vector2( 0, -50 )
+collision_mask = 273
+
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2( 37, -31 )
+cast_to = Vector2( 0, -50 )
+collision_mask = 273
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 0.465534, 0.465534 )
+frames = SubResource( 1 )
+frame = 5
+playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 0, 4 )
+scale = Vector2( 2.05877, 2.05877 )
+polygon = PoolVector2Array( -5, 10, 4, 11, 15, 6, 15, -7, 10, -10, 19, -16, 8, -19, -8, -19, -21, -17, -15, -9, -15, 7 )
+
+[node name="Probe" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -9 )
+
+[node name="Probe6" parent="." instance=ExtResource( 2 )]
+position = Vector2( -30, -8 )
+
+[node name="Probe7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 29, -7 )
+
+[node name="Probe2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 20 )
+
+[node name="Probe3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 12, 20 )
+
+[node name="Probe4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -13, 21 )
+
+[node name="Probe5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 1 )
+
+[node name="Probe8" parent="." instance=ExtResource( 2 )]
+position = Vector2( -14, -4 )
+
+[node name="Probe9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 13, -4 )
+
+[node name="Probe10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 14 )
+
+[node name="Probe11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 11, 10 )
+
+[node name="Probe12" parent="." instance=ExtResource( 2 )]
+position = Vector2( -12, 10 )
+
+[node name="Probe13" parent="." instance=ExtResource( 2 )]
+position = Vector2( -24, 10 )
+
+[node name="Probe14" parent="." instance=ExtResource( 2 )]
+position = Vector2( -18, 18 )
+
+[node name="Probe15" parent="." instance=ExtResource( 2 )]
+position = Vector2( 25, 9 )
+
+[node name="Probe16" parent="." instance=ExtResource( 2 )]
+position = Vector2( 18, 17 )
