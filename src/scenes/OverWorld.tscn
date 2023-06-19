@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://NN_test/Mask.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/UI.tscn" type="PackedScene" id=2]
@@ -22,7 +22,6 @@
 [ext_resource path="res://src/sprites/backgrounds/background_sky_1.png" type="Texture" id=20]
 [ext_resource path="res://src/sprites/backgrounds/background_sky_0.png" type="Texture" id=21]
 [ext_resource path="res://src/sprites/backgrounds/background_sky_2.png" type="Texture" id=22]
-[ext_resource path="res://NN_test/UnlockAll.gd" type="Script" id=23]
 [ext_resource path="res://src/sprites/funfunfun/Ceilingcat.png" type="Texture" id=24]
 [ext_resource path="res://src/sprites/funfunfun/212-2123798_gmod-error-model-garrys-mod-error-model-733628690.png" type="Texture" id=25]
 
@@ -198,9 +197,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ -13585.0, -16804.0, -15458.0 ]
 }
 rain_rate = 48.507
-
-[node name="UNLOCK ALL DELITE ME MEMEMEM" type="Node2D" parent="."]
-script = ExtResource( 23 )
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
