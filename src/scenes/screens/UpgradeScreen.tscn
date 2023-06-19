@@ -3,7 +3,7 @@
 [ext_resource path="res://src/scenes/screens/UpgradeScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/themes/menu_theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/sprites/UpgradeBackground.png" type="Texture" id=3]
-[ext_resource path="res://src/audio/music/GarbageMusic.mp3" type="AudioStream" id=4]
+[ext_resource path="res://src/audio/music/CryingGODSHOP.mp3" type="AudioStream" id=4]
 [ext_resource path="res://src/sprites/funfunfun/EndScreenAnim2_0003.png" type="Texture" id=5]
 [ext_resource path="res://src/sprites/funfunfun/EndScreenAnim2_0004.png" type="Texture" id=6]
 [ext_resource path="res://src/sprites/funfunfun/EndScreenAnim2_0001.png" type="Texture" id=7]
@@ -137,7 +137,6 @@ volume_db = -15.0
 position = Vector2( 336, 220 )
 scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 centered = false
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CryingGODSHOP.mp3-d943c370b6adddcc90c34b8bc3b4bf2c.mp3str"
+
+[deps]
+
+source_file="res://src/audio/music/CryingGODSHOP.mp3"
+dest_files=[ "res://.import/CryingGODSHOP.mp3-d943c370b6adddcc90c34b8bc3b4bf2c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
